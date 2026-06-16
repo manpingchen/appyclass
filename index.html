@@ -1713,7 +1713,8 @@
       }
       .ac-body {
         flex: 1;
-        overflow-y: auto;
+        overflow: hidden;
+        /* overflow-y: auto; */
         padding: 14px 12px 14px;
       }
       .ac-card-grid {
@@ -1728,19 +1729,21 @@
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
       .ac-card-title {
-        font-size: 1.5rem;
+        font-size: 1.45rem;
         font-weight: 500;
         color: #1a1a1a;
         font-family: "Londrina Solid", sans-serif;
-        padding: 0.75rem 0.75rem 0.5rem;
-        line-height: 1.2;
+        padding: 0 0.75rem;
+        margin: 0.5rem 0 0.4rem;
+        line-height: 1.1;
         letter-spacing: 0.0125em;
         height: calc(1.5rem * 1.2 * 2);
         overflow: hidden;
-        display: -webkit-box;
         -webkit-line-clamp: 2;
         line-clamp: 2;
         -webkit-box-orient: vertical;
+        display: flex;
+        align-items: center;
       }
       .ac-card-img {
         width: 90%;
@@ -1815,6 +1818,116 @@
         font-size: 22px;
         line-height: 1;
         padding-right: 2px;
+      }
+      .float-next {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        z-index: 100;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.38);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #fff;
+        font-size: 22px;
+        line-height: 1;
+        padding-left: 2px;
+      }
+      /* ── ART CLUB DETAIL ── */
+      #s-art-club-detail {
+        background-image: url("assets/club/art/bg.jpg");
+        background-size: cover;
+        background-position: center top;
+      }
+      .acd-hero {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+      .acd-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px 18px 24px;
+      }
+      .acd-title {
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 28px;
+        font-weight: 400;
+        color: #1a2c6e;
+        margin: 0 0 12px;
+      }
+      .acd-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+      .acd-meta-pill {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background: rgba(255,255,255,0.72);
+        border-radius: 999px;
+        padding: 5px 11px;
+        font-size: 12px;
+        font-weight: 700;
+        color: #1a2c6e;
+      }
+      .acd-meta-pill img { width: 14px; height: 14px; }
+      .acd-desc {
+        font-size: 13px;
+        line-height: 1.65;
+        color: #2a3560;
+        margin-bottom: 24px;
+      }
+      .acd-steps-title {
+        font-size: 13px;
+        font-weight: 800;
+        color: #1a2c6e;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .acd-step {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+        align-items: flex-start;
+      }
+      .acd-step-num {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #1a2c6e;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .acd-step-text { font-size: 13px; color: #2a3560; line-height: 1.5; }
+      .acd-start-btn {
+        width: 100%;
+        padding: 14px;
+        border-radius: 14px;
+        border: none;
+        background: #1a2c6e;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 800;
+        cursor: pointer;
+        margin-top: 8px;
       }
     </style>
   </head>
@@ -3186,6 +3299,7 @@
 ══════════════════════════════════════════ -->
       <div class="screen" id="s-art-club">
         <div class="float-back" onclick="go('s-kid-apps')">&#8249;</div>
+        <div class="float-next" onclick="go('s-art-club-detail')">&#8250;</div>
         <div class="ac-header">
           <div class="ac-topbar">
             <img class="ac-logo" src="assets/club/art/Logo.png" alt="Art Makers" />
@@ -3613,6 +3727,49 @@
               <button class="k-modal-action" onclick="go('s-kid-balance')">Ask Parents</button>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     ART CLUB · DETAIL (Paper Crane)
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-art-club-detail">
+        <div class="float-back" onclick="go('s-art-club')">&#8249;</div>
+        <img class="acd-hero" src="assets/club/art/images/crane.png" alt="Paper Crane" />
+        <div class="acd-body">
+          <h1 class="acd-title">Paper Crane</h1>
+          <div class="acd-meta">
+            <div class="acd-meta-pill">
+              <img src="assets/club/art/navbar-icon/Clock.svg" alt="" />
+              30 mins
+            </div>
+            <div class="acd-meta-pill">
+              <img src="assets/club/art/navbar-icon/level.svg" alt="" />
+              Easy
+            </div>
+            <div class="acd-meta-pill">
+              <img src="assets/club/art/navbar-icon/Customizable.svg" alt="" />
+              Customizable
+            </div>
+          </div>
+          <p class="acd-desc">
+            Learn the ancient Japanese art of origami by folding a beautiful paper crane.
+            Use any square paper you like — the more colourful, the better!
+          </p>
+          <div class="acd-steps-title">What you need</div>
+          <div class="acd-step">
+            <div class="acd-step-num">1</div>
+            <div class="acd-step-text">One sheet of square paper (15 × 15 cm works great)</div>
+          </div>
+          <div class="acd-step">
+            <div class="acd-step-num">2</div>
+            <div class="acd-step-text">A flat surface to fold on</div>
+          </div>
+          <div class="acd-step">
+            <div class="acd-step-num">3</div>
+            <div class="acd-step-text">Optional: markers or stickers to decorate</div>
+          </div>
+          <button class="acd-start-btn">Start Activity ✦</button>
         </div>
       </div>
     </div>
