@@ -1,0 +1,3328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Bonusbox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&family=Londrina+Solid:wght@100;300;400;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "Readex Pro",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background: #1a1870;
+        display: flex;
+        justify-content: center;
+        min-height: 100dvh;
+      }
+
+      .phone {
+        width: 100%;
+        min-height: 100dvh;
+        overflow: hidden;
+      }
+
+      /* ── Screen management ─────────────────── */
+      .screen {
+        display: none;
+        width: 100%;
+        max-width: 100%;
+        height: 100dvh;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .screen.active {
+        display: flex;
+        animation: fadeIn 0.15s ease-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0.6;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Tap zones (inside content blocks) */
+      .tap {
+        position: absolute;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .tap:active {
+        background: rgba(255, 255, 255, 0.07);
+        border-radius: 8px;
+      }
+
+      /* Content image block */
+      .content-img {
+        width: 100%;
+        display: block;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+      .content-wrap {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ══════════════════════════════════════
+             LANDING
+          ══════════════════════════════════════ */
+      .landing {
+        flex: 1;
+        background: linear-gradient(170deg, #1a1870 0%, #100e50 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 28px;
+      }
+      .landing img {
+        width: 72px;
+        margin-bottom: 14px;
+      }
+      .landing h1 {
+        color: #f59e0b;
+        font-size: 28px;
+        font-weight: 900;
+      }
+      .landing p {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 14px;
+        margin: 6px 0 52px;
+        text-align: center;
+      }
+      .l-btn {
+        width: 100%;
+        border: none;
+        border-radius: 18px;
+        padding: 20px 22px;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .l-btn:active {
+        opacity: 0.85;
+      }
+      .l-parent {
+        background: linear-gradient(135deg, #2d2a8e, #1a1870);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      .l-kid {
+        background: linear-gradient(135deg, #1d4ed8, #1e40af);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      .l-icon {
+        font-size: 32px;
+      }
+      .l-text strong {
+        display: block;
+        color: #fff;
+        font-size: 17px;
+        font-weight: 700;
+      }
+      .l-text small {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 13px;
+      }
+
+      /* ══════════════════════════════════════
+             PARENT — shared chrome
+          ══════════════════════════════════════ */
+      .p-topbar {
+        background: #1a1870;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 16px 8px;
+        flex-shrink: 0;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .p-logo {
+        height: 46px;
+        width: auto;
+        cursor: pointer;
+      }
+      .p-icons {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .p-icons img {
+        padding: 0.125rem;
+        height: 30px;
+        width: 30px;
+        object-fit: contain;
+      }
+
+      /* Sub-nav row: back + scrollable tabs */
+      .p-nav-row {
+        display: flex;
+        align-items: center;
+        background: #1a1870;
+        padding: 4px 0 16px 16px;
+        gap: 4px;
+        flex-shrink: 0;
+      }
+      .p-back {
+        color: #fff;
+        font-size: 24px;
+        font-weight: 300;
+        padding: 6px 8px;
+        cursor: pointer;
+        flex-shrink: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .p-tabs {
+        display: flex;
+        gap: 4px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .p-tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .p-tab {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 8px 12px;
+        border-radius: 12px;
+        cursor: pointer;
+        min-width: 66px;
+        flex-shrink: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .p-tab img {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+      }
+      .p-tab span {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.857rem;
+        white-space: nowrap;
+      }
+      .p-tab.on {
+        background: #2d2a8e;
+      }
+      .p-tab.on span {
+        color: #fff;
+      }
+
+      /* Breadcrumb for reward-list screen */
+      .p-crumb {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+        padding: 2px 16px 14px;
+        background: #1a1870;
+        flex-shrink: 0;
+      }
+      .p-crumb-back {
+        color: #fff;
+        font-size: 28px;
+        cursor: pointer;
+        flex-shrink: 0;
+        line-height: 1;
+      }
+      .p-crumb-title {
+        color: #fff;
+        font-size: 22px;
+        font-weight: 600;
+      }
+
+      /* Scrollable body */
+      .p-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 4px 16px 16px;
+        background: #1a1870;
+        max-width: 500px;
+        margin: 0 auto;
+        width: 100%;
+      }
+      .r-row {
+        cursor: pointer;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        overflow: hidden;
+      }
+
+      .rewards {
+        display: flex;
+        gap: 0.5rem;
+        flex-direction: column;
+      }
+
+      .rewards .r-row {
+        margin: 0;
+      }
+
+      .r-row img {
+        width: 100%;
+        display: block;
+      }
+
+      /* Typography */
+      .club-badge {
+        display: inline-block;
+        background: #5b3fa6;
+        color: #c7c3dd;
+        font-size: 11px;
+        font-weight: 500;
+        border-radius: 999px;
+        padding: 3px 10px;
+        margin-bottom: 6px;
+      }
+      .p-h2 {
+        color: #fff;
+        line-height: 1.5em;
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 3px;
+        letter-spacing: 0.0125em;
+      }
+      .p-sub {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+        font-weight: 300;
+        line-height: 1.5em;
+        letter-spacing: 0.05em;
+      }
+      .p-sec {
+        color: #fff;
+        line-height: 1.5em;
+        font-size: 1.15rem;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+      }
+      .p-sec-sub {
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 0.85rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+        line-height: 1.5em;
+        letter-spacing: 0.05em;
+      }
+
+      /* Card */
+
+      .p-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 13px 14px;
+      }
+      .p-row:last-child {
+        border-bottom: none;
+      }
+      .p-row-label {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .p-row-label small {
+        display: block;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 12px;
+        font-weight: 400;
+        margin-top: 2px;
+      }
+      .p-chip {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background: #1a1870;
+        border-radius: 10px;
+        padding: 7px 11px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      /* Convert row */
+      .p-conv {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #13104a;
+        border-radius: 12px;
+        padding: 12px 14px;
+        margin-bottom: 8px;
+      }
+      .p-cval {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .p-arr {
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 16px;
+        padding: 0 2px;
+      }
+      .p-edit {
+        color: rgba(255, 255, 255, 0.3);
+        margin-left: auto;
+        font-size: 15px;
+      }
+
+      /* Habit item */
+      .p-habit {
+        background: #13104a;
+        border-radius: 12px;
+        padding: 13px 14px;
+        margin-bottom: 8px;
+      }
+      .p-hrow {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 4px;
+      }
+      .p-hname {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        flex: 1;
+      }
+      .p-hrwd {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+      }
+      .p-hdesc {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 12px;
+      }
+
+      /* Add button */
+      .p-add {
+        border: 1px dashed rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        padding: 11px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 13px;
+        cursor: pointer;
+        margin-bottom: 14px;
+      }
+
+      .p-link {
+        color: #818cf8;
+        font-size: 13px;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      /* Parent bottom nav */
+      .p-bottom {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        background: #13104a;
+        padding: 1rem 0 max(20px, env(safe-area-inset-bottom));
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        flex-shrink: 0;
+        position: sticky;
+        bottom: 0;
+        z-index: 10;
+      }
+      .p-bnav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        cursor: pointer;
+        padding: 6px 0;
+        -webkit-tap-highlight-color: transparent;
+        color: white;
+        font-weight: 400;
+      }
+      .p-bnav img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+      }
+      .p-bnav span {
+        font-size: 0.85rem;
+      }
+      .p-bnav.on img {
+        filter: none;
+      }
+      .p-bnav.on span {
+        color: #f59e0b;
+      }
+
+      /* Placeholder */
+      .p-ph {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        color: rgba(255, 255, 255, 0.25);
+        font-size: 15px;
+      }
+      .p-ph span {
+        font-size: 52px;
+      }
+
+      /* ══════════════════════════════════════
+             KIDS — shared chrome
+          ══════════════════════════════════════ */
+      .k-topbar {
+        background: #1a1870;
+        padding: 10px 12px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .k-topbar-pill {
+        background: linear-gradient(to top left, rgba(118, 116, 242, 0.5), rgba(37, 32, 172, 0.5));
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 14px;
+        height: 58px;
+      }
+      .k-crystal {
+        height: 38px;
+        width: auto;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .k-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .k-notif {
+        height: 28px;
+        width: auto;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .k-avatar {
+        background: #f59e0b;
+        color: #000;
+        font-weight: 800;
+        font-size: 15px;
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Kids bottom nav */
+      .k-bottom {
+        display: flex;
+        flex-shrink: 0;
+        position: sticky;
+        bottom: 0;
+        gap: 0.5rem;
+        z-index: 10;
+        padding: 1rem 1rem 2rem;
+      }
+      .k-bnav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .k-bnav img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .k-bnav span {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.85rem;
+        text-align: center;
+        font-weight: 300;
+        font-family: "Londrina Solid", sans-serif;
+      }
+      .k-bnav.on span {
+        color: #f59e0b;
+      }
+
+      /* ══════════════════════════════════════
+             NOTIFICATION MODAL
+          ══════════════════════════════════════ */
+      .modal-overlay {
+        display: none;
+      }
+
+      .notification-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100dvh;
+        background: #1a1870;
+        z-index: 101;
+        animation: slideUpFull 0.3s ease-out;
+        flex-direction: column;
+      }
+      .notification-modal.active {
+        display: flex;
+      }
+      @keyframes slideUpFull {
+        from {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px;
+        background: #1a1870;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        flex-shrink: 0;
+      }
+      .modal-title {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .modal-close {
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 24px;
+        cursor: pointer;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .modal-close:active {
+        color: #fff;
+      }
+
+      .notification-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        flex: 1;
+        overflow-y: auto;
+        background: #1a1870;
+        padding: 0;
+      }
+      .notification-item {
+        background: #13104a;
+        border-radius: 0;
+        padding: 16px;
+        border-left: 3px solid #f59e0b;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        cursor: pointer;
+      }
+      .notification-item:active {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .notification-badge {
+        display: inline-block;
+        background: #ef4444;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        border-radius: 999px;
+        padding: 2px 8px;
+        margin-bottom: 6px;
+      }
+      .notification-title {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .notification-desc {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+      .notification-time {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 11px;
+        margin-top: 6px;
+      }
+
+      .notification-empty {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.4);
+        padding: 32px 16px;
+      }
+      .notification-empty span {
+        font-size: 40px;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      /* ══ NOTIFICATIONS ══ */
+      .notif-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #13104a;
+        border-radius: 14px;
+        padding: 12px;
+        margin-bottom: 8px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .notif-item:active {
+        opacity: 0.8;
+      }
+      .notif-thumb {
+        width: 54px;
+        height: 54px;
+        border-radius: 10px;
+        flex-shrink: 0;
+        background-size: cover;
+        background-position: center;
+      }
+      .notif-avatar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+      }
+      .notif-body {
+        flex: 1;
+        min-width: 0;
+      }
+      .notif-tag {
+        color: #a78bfa;
+        font-size: 11px;
+        font-weight: 600;
+      }
+      .notif-title {
+        color: #fff;
+        font-size: 13px;
+        margin: 2px 0;
+        line-height: 1.3;
+      }
+      .notif-time {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 12px;
+      }
+      .notif-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: #f59e0b;
+        flex-shrink: 0;
+        align-self: flex-start;
+        margin-top: 4px;
+      }
+      /* ══ PENDING REQUESTS ══ */
+      .pending-tab {
+        padding: 9px 16px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.5);
+        border: 1.5px solid rgba(255, 255, 255, 0.18);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .pending-tab-on {
+        background: #3730a3;
+        border-color: transparent;
+        color: #fff;
+      }
+
+      .extra-time {
+        font-size: 1.15rem;
+        font-weight: 500;
+        color: white;
+      }
+      .child-chips {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      .child-chip {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: #13104a;
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .child-chip-on {
+        color: #fff;
+        background: #2d2a8e;
+      }
+      .child-chip-avatar {
+        width: 22px;
+        height: 22px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 800;
+      }
+      .mission-card {
+        background: #13104a;
+        border-radius: 16px;
+        padding: 14px;
+        margin-bottom: 10px;
+        border-left: 3px solid #5b3fa6;
+      }
+      .mission-img {
+        width: 72px;
+        height: 72px;
+        border-radius: 10px;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+      .mission-cat {
+        color: #a78bfa;
+        font-size: 11px;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+      .mission-card.craft .mission-cat {
+        color: #6ec8df;
+      }
+      .mission-card.craft {
+        border-color: #6ec8df;
+      }
+      .mission-title {
+        color: #fff;
+        font-size: 1.15rem;
+        font-weight: 500;
+      }
+      .mission-time {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 13px;
+        margin-top: 2px;
+      }
+      .mission-btn {
+        flex: 1;
+        padding: 13px;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .mission-btn:active {
+        opacity: 0.8;
+      }
+      .mission-btn-outline {
+        background: transparent;
+        border: 1px solid #f59e0b;
+        color: #fff;
+      }
+      .mission-btn-fill {
+        background: #f59e0b;
+        color: #000;
+      }
+      .time-stepper {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: #2d2a8e;
+        border: none;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 300;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* ══ KID WALLET CONTENT ══ */
+      .k-wallet {
+        flex: 1;
+        overflow-y: auto;
+        padding: 0.5rem 1rem;
+        background: #1a1870;
+      }
+      .k-screentime {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        gap: 12px;
+      }
+      .k-st-label {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.25;
+        flex-shrink: 0;
+      }
+      .k-st-right {
+        flex: 1;
+        max-width: 200px;
+        text-align: right;
+      }
+      .k-st-value {
+        font-family: "Londrina Solid", sans-serif;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 400;
+        white-space: nowrap;
+      }
+      .k-progress {
+        width: 100%;
+        margin-top: 6px;
+        max-width: 200px;
+      }
+      .k-bal-row {
+        display: flex;
+        align-items: flex-end;
+        gap: 1rem;
+        margin-bottom: 20px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .k-bal-row::-webkit-scrollbar {
+        display: none;
+      }
+      .k-bal-item {
+        flex-shrink: 0;
+        min-width: 72px;
+      }
+      .k-bal-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+      }
+      .k-bal-icon {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+      }
+      .k-bal-emoji {
+        font-size: 36px;
+        line-height: 1;
+      }
+      .k-bal-num {
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 40px;
+        font-weight: 400;
+        color: #fff;
+        line-height: 1;
+      }
+      .currency-sign {
+        font-family:
+          "Readex Pro",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+      .k-bal-dim {
+        opacity: 0.38;
+      }
+      .k-crystal-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .k-grid-crystal {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: contain;
+      }
+      .k-trophy-row {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+      .k-trophy-img {
+        width: 90px;
+        object-fit: contain;
+      }
+
+      .k-unlock-msg {
+        text-align: center;
+        padding: 16px 8px 8px;
+        position: relative;
+        cursor: pointer;
+      }
+      .k-unlock-nice {
+        color: #fff;
+        font-size: 15px;
+        margin-bottom: 6px;
+      }
+      .k-unlock-name {
+        font-family: "Londrina Solid", sans-serif;
+        color: #f59e0b;
+        font-size: 52px;
+        font-weight: 400;
+        line-height: 1.05;
+        margin-bottom: 6px;
+      }
+      .k-unlock-sub {
+        color: #fff;
+        font-size: 15px;
+      }
+      .k-star {
+        position: absolute;
+        font-size: 22px;
+        pointer-events: none;
+      }
+
+      /* ══ KID APPS SCREEN ══ */
+      .k-apps-back-row {
+        padding: 4px 16px 0;
+      }
+      .k-apps-content {
+        flex: 1;
+        overflow-y: auto;
+        background: #1a1870;
+        display: flex;
+        flex-direction: column;
+        padding: 12px 12px 0;
+        min-height: 0;
+      }
+      .k-apps-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 14px;
+        flex-shrink: 0;
+      }
+      .k-apps-crystal {
+        width: 68px;
+        height: 68px;
+        object-fit: contain;
+      }
+      .k-app-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        flex: 1;
+        margin-bottom: 14px;
+      }
+      .k-app-tile {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 16px;
+        display: block;
+      }
+      .k-apps-content-top {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 1rem;
+        justify-content: space-between;
+      }
+      .k-apps-screentime {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+        padding: 12px 0;
+        flex-shrink: 0;
+      }
+      .k-apps-screentime .k-st-label {
+        font-size: 0.75rem;
+        font-weight: 300;
+      }
+
+      /* ══ REMAINING TIME BAR (dynamic) ══ */
+      .k-modal-back-bar {
+        padding: 4px 16px 0;
+      }
+      .k-modal-remaining {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .k-rem-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      .k-rem-label {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 13px;
+        font-weight: 500;
+      }
+      .k-rem-value {
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+      .k-rem-bar {
+        width: 100%;
+        height: 10px;
+        border-radius: 999px;
+        background: #383090;
+        overflow: hidden;
+      }
+      .k-rem-fill {
+        height: 100%;
+        border-radius: 999px;
+        background: #2dd4bf;
+        transition: width 0.25s ease;
+      }
+      /* legacy — no longer used */
+      .k-modal-st-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 16px 12px;
+      }
+      .k-back-btn {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 36px;
+        font-weight: 300;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0 4px;
+        -webkit-tap-highlight-color: transparent;
+        flex-shrink: 0;
+      }
+      .k-st-info {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      /* ══ BUY / SAVE TIME MODAL SCREENS ══ */
+      .k-modal-overlay {
+        flex: 1;
+        background: #1a1870;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px 24px;
+      }
+      .k-modal-wrap {
+        width: 100%;
+        max-width: 360px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .k-modal-icon-ring {
+        width: 90px;
+        height: 90px;
+        border-radius: 999px;
+        background: #0d0b2e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+        margin-bottom: -45px;
+        flex-shrink: 0;
+      }
+      .k-modal-icon-clip {
+        width: 100%;
+        height: 100%;
+        border-radius: 999px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .k-modal-icon-clip img {
+        height: 60%;
+        width: 60%;
+        object-fit: contain;
+      }
+      .k-modal-card {
+        width: 100%;
+        background: linear-gradient(to bottom, #0d0b2e 15%, #1a1468 40%, #5b59c0);
+        border-radius: 22px;
+        padding: 26px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 26px;
+      }
+      .k-modal-q {
+        font-family: "Londrina Solid", sans-serif;
+        width: 100%;
+        padding: 16px;
+        color: #fff;
+        font-size: 2rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        line-height: 1.3;
+      }
+      .k-modal-display {
+        width: 100%;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .k-modal-num-wrap {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+      }
+      .k-modal-display span {
+        text-align: center;
+        color: #fff;
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 48px;
+        font-weight: 400;
+        line-height: 1;
+      }
+      .k-modal-unit {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 13px;
+        font-weight: 500;
+      }
+      .k-step-btn {
+        width: 72px;
+        height: 72px;
+        border-radius: 14px;
+        flex-shrink: 0;
+        background: #f59e0b;
+        border: none;
+        color: #fff;
+        font-size: 42px;
+        font-weight: 300;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-tap-highlight-color: transparent;
+        line-height: 1;
+      }
+      .k-step-btn:active {
+        opacity: 0.8;
+      }
+      .k-modal-cost {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+      .k-cost-crystal {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+      }
+      .k-modal-action {
+        width: 100%;
+        padding: 18px;
+        border-radius: 14px;
+        border: none;
+        background: linear-gradient(135deg, #5b7fff, #3d3de8);
+        color: #fff;
+        font-size: 20px;
+        font-weight: 800;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        margin-top: 4px;
+      }
+      .k-modal-action:active {
+        opacity: 0.85;
+      }
+      .k-ask-note {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 12px;
+        text-align: center;
+        line-height: 1.4;
+      }
+
+      /* ══ PARENT SCREENTIME CONTROL ══ */
+      .sc-tab-row {
+        display: flex;
+        margin: 0 16px 12px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        padding: 4px;
+        gap: 4px;
+        flex-shrink: 0;
+      }
+      .sc-tab {
+        flex: 1;
+        text-align: center;
+        padding: 10px 6px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .sc-tab.on {
+        background: #4f46e5;
+        color: #fff;
+      }
+      .sc-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 0 16px 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        scrollbar-width: none;
+      }
+      .sc-body::-webkit-scrollbar {
+        display: none;
+      }
+      .sc-day-label {
+        color: #fff;
+        font-size: 1.15rem;
+        font-weight: 500;
+        margin: 0 0 4px;
+      }
+      .sc-card {
+        background: #2d2880;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .sc-card-header {
+        display: flex;
+        align-items: center;
+        padding: 14px 16px;
+        gap: 12px;
+        cursor: pointer;
+      }
+      .sc-icon {
+        width: 22px;
+        height: 30px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+      .sc-card-title {
+        flex: 1;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .sc-time-badge {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 15px;
+        font-weight: 500;
+      }
+      .sc-chevron {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 11px;
+        margin-left: 4px;
+      }
+      .sc-app-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0 14px 14px;
+      }
+      .sc-app-grid .sc-app-icon {
+        width: calc(25% - 7.5px);
+        max-width: 100px;
+        aspect-ratio: 1;
+      }
+      .sc-app-grid .sc-app-add {
+        width: calc(25% - 7.5px);
+        max-width: 100px;
+      }
+      .sc-app-icon {
+        width: 100%;
+        aspect-ratio: 1;
+        max-width: 100px;
+        object-fit: cover;
+      }
+      .sc-app-add {
+        width: 56px;
+        height: 56px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 30px;
+        font-weight: 300;
+        cursor: pointer;
+      }
+      .sc-time-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 14px 14px;
+      }
+      .sc-time-pill {
+        background: #1a1468;
+        border-radius: 10px;
+        padding: 10px 22px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+      }
+      .sc-edit-icon {
+        padding: 0.25rem;
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+        cursor: pointer;
+        opacity: 0.8;
+      }
+
+      /* ── App Lockdown tab ── */
+      .sc-lock-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+      }
+      .sc-lock-title {
+        color: #fff;
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .sc-lock-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .sc-filter-icon {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .sc-search-icon {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+        cursor: pointer;
+        opacity: 0.7;
+      }
+      .sc-lock-desc {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 13px;
+        line-height: 1.5;
+        margin-bottom: 4px;
+      }
+      .sc-lock-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .sc-lock-grid .sc-app-wrap {
+        width: calc(25% - 7.5px);
+        max-width: 100px;
+      }
+      .sc-app-wrap {
+        position: relative;
+      }
+      .sc-lock-badge {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+        pointer-events: none;
+      }
+      .sc-lock-all-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0 4px;
+      }
+      .sc-lock-icon {
+        font-size: 20px;
+      }
+      .sc-lock-all-label {
+        color: #fff;
+        font-size: 17px;
+        font-weight: 700;
+      }
+
+      /* ── Category sub-tabs ── */
+      .sc-cat-tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .sc-cat-tab {
+        padding: 6px 16px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.07);
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .sc-cat-tab.on {
+        background: #4f46e5;
+        color: #fff;
+      }
+      .sc-cat-body {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="phone">
+      <!-- ══════════════════════════════════════════
+     LANDING
+══════════════════════════════════════════ -->
+      <div class="screen active" id="s-landing">
+        <div class="landing">
+          <img src="assets/bonusbox/logo.png" alt="Bonusbox" />
+          <h1>Bonusbox</h1>
+          <p>Screen time your kids will love to earn</p>
+
+          <button class="l-btn l-parent" onclick="go('s-parent-rewards')">
+            <span class="l-icon">👨‍👩‍👧</span>
+            <div class="l-text">
+              <strong>I'm a Parent</strong>
+              <small>Manage rewards &amp; rules</small>
+            </div>
+          </button>
+
+          <button class="l-btn l-kid" onclick="go('s-kid-balance')">
+            <span class="l-icon">🧒</span>
+            <div class="l-text">
+              <strong>I'm a Kid</strong>
+              <small>Check my balance &amp; apps</small>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     PARENT · REWARD LIST  (full HTML, SVG rows)
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-parent-rewards">
+        <div class="p-topbar">
+          <img class="p-logo" src="assets/bonusbox/logo.png" alt="" onclick="go('s-landing')" />
+          <div class="p-icons">
+            <img src="assets/bonusbox/parents/navbar/search.svg" alt="" />
+            <img
+              src="assets/bonusbox/parents/navbar/notification.svg"
+              onclick="go('s-parent-notifications')"
+              style="cursor: pointer"
+              alt=""
+              style="cursor: pointer"
+              onclick="openNotificationModal()"
+            />
+            <img src="assets/bonusbox/parents/navbar/avatar.svg" alt="" />
+          </div>
+        </div>
+
+        <div class="p-crumb">
+          <div class="p-crumb-back" onclick="go('s-landing')">‹</div>
+          <div class="p-crumb-title">Rewards</div>
+        </div>
+
+        <div class="p-body">
+          <p class="p-h2">Reward Items</p>
+          <p class="p-sub">Apply to all Appy Class apps and games.</p>
+          <div class="rewards">
+            <div class="r-row" onclick="go('s-parent-stars')">
+              <img src="assets/bonusbox/parents/reward-activation-screen/stars.svg" alt="Stars" />
+            </div>
+            <div class="r-row" onclick="go('s-parent-crystals')">
+              <img
+                src="assets/bonusbox/parents/reward-activation-screen/crystals.svg"
+                alt="Crystals"
+              />
+            </div>
+            <div class="r-row" onclick="go('s-parent-pocket')">
+              <img
+                src="assets/bonusbox/parents/reward-activation-screen/money.svg"
+                alt="Pocket Money"
+              />
+            </div>
+            <div class="r-row" onclick="go('s-parent-trophies')">
+              <img
+                src="assets/bonusbox/parents/reward-activation-screen/trophies.svg"
+                alt="Trophies"
+              />
+            </div>
+            <div class="r-row" onclick="go('s-parent-activities')">
+              <img
+                src="assets/bonusbox/parents/reward-activation-screen/activities.svg"
+                alt="Unlocked Activities"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="p-bottom">
+          <div class="p-bnav on">
+            <img src="assets/bonusbox/parents/bottom-nav/rewards-on.svg" alt="" /><span
+              >Rewards</span
+            >
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-control')">
+            <img src="assets/bonusbox/parents/bottom-nav/control.svg" alt="" /><span>Control</span>
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-learning')">
+            <img src="assets/bonusbox/parents/bottom-nav/learning.svg" alt="" /><span
+              >Learning</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     PARENT · STARS
+     content image: assets/bonusbox/parents/reward setting - stars.jpg
+     → swap src with cropped content-only version (no header, no tabs row, no footer)
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-parent-stars">
+        <div class="p-topbar">
+          <img class="p-logo" src="assets/bonusbox/logo.png" alt="" onclick="go('s-landing')" />
+          <div class="p-icons">
+            <img src="assets/bonusbox/parents/navbar/search.svg" alt="" />
+            <img
+              src="assets/bonusbox/parents/navbar/notification.svg"
+              onclick="go('s-parent-notifications')"
+              style="cursor: pointer"
+              alt=""
+              style="cursor: pointer"
+              onclick="openNotificationModal()"
+            />
+            <img src="assets/bonusbox/parents/navbar/avatar.svg" alt="" />
+          </div>
+        </div>
+
+        <div class="p-nav-row">
+          <div class="p-back" onclick="go('s-parent-rewards')">‹</div>
+          <div class="p-tabs">
+            <div class="p-tab on">
+              <img src="assets/bonusbox/parents/reward-nav/stars.svg" alt="" /><span>Stars</span>
+            </div>
+            <div class="p-tab" onclick="go('s-parent-crystals')">
+              <img src="assets/bonusbox/parents/reward-nav/crystals.svg" alt="" /><span
+                >Crystals</span
+              >
+            </div>
+            <div class="p-tab" onclick="go('s-parent-pocket')">
+              <img src="assets/bonusbox/parents/reward-nav/pocket-money.svg" alt="" /><span
+                >Pocket Money</span
+              >
+            </div>
+            <div class="p-tab" onclick="go('s-parent-trophies')">
+              <img src="assets/bonusbox/parents/reward-nav/trophies.svg" alt="" /><span
+                >Trophies</span
+              >
+            </div>
+            <div class="p-tab" onclick="go('s-parent-activities')">
+              <img src="assets/bonusbox/parents/reward-nav/activites.svg" alt="" /><span
+                >Activities</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="p-body">
+          <span class="club-badge">Club-Only</span>
+          <p class="p-h2">Stars</p>
+          <p class="p-sub">Apply to Appy Club apps only.</p>
+
+          <p class="p-sec">Reward value</p>
+          <p class="p-sec-sub">Stars are awarded instantly.</p>
+          <div class="r-row">
+            <img src="assets/bonusbox/parents/stars/Frame 432.svg" alt="" />
+          </div>
+
+          <p class="p-sec">Star to crystal conversion</p>
+          <p class="p-sec-sub">Crystals are converted weekly.</p>
+          <div class="r-row">
+            <img src="assets/bonusbox/parents/stars/Frame 433.svg" alt="" />
+          </div>
+        </div>
+
+        <div class="p-bottom">
+          <div class="p-bnav on">
+            <img src="assets/bonusbox/parents/bottom-nav/rewards-on.svg" alt="" /><span
+              >Rewards</span
+            >
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-control')">
+            <img src="assets/bonusbox/parents/bottom-nav/control.svg" alt="" /><span>Control</span>
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-learning')">
+            <img src="assets/bonusbox/parents/bottom-nav/learning.svg" alt="" /><span
+              >Learning</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     PARENT · CRYSTALS (full HTML)
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-parent-crystals">
+        <div class="p-topbar">
+          <img class="p-logo" src="assets/bonusbox/logo.png" alt="" onclick="go('s-landing')" />
+          <div class="p-icons">
+            <img src="assets/bonusbox/parents/navbar/search.svg" alt="" />
+            <img
+              src="assets/bonusbox/parents/navbar/notification.svg"
+              onclick="go('s-parent-notifications')"
+              style="cursor: pointer"
+              alt=""
+              style="cursor: pointer"
+              onclick="openNotificationModal()"
+            />
+            <img src="assets/bonusbox/parents/navbar/avatar.svg" alt="" />
+          </div>
+        </div>
+        <div class="p-nav-row">
+          <div class="p-back" onclick="go('s-parent-rewards')">‹</div>
+          <div class="p-tabs">
+            <div class="p-tab" onclick="go('s-parent-stars')">
+              <img src="assets/bonusbox/parents/reward-nav/stars.svg" alt="" /><span>Stars</span>
+            </div>
+            <div class="p-tab on">
+              <img src="assets/bonusbox/parents/reward-nav/crystals.svg" alt="" /><span
+                >Crystals</span
+              >
+            </div>
+            <div class="p-tab" onclick="go('s-parent-pocket')">
+              <img src="assets/bonusbox/parents/reward-nav/pocket-money.svg" alt="" /><span
+                >Pocket Money</span
+              >
+            </div>
+            <div class="p-tab" onclick="go('s-parent-trophies')">
+              <img src="assets/bonusbox/parents/reward-nav/trophies.svg" alt="" /><span
+                >Trophies</span
+              >
+            </div>
+            <div class="p-tab" onclick="go('s-parent-activities')">
+              <img src="assets/bonusbox/parents/reward-nav/activites.svg" alt="" /><span
+                >Activities</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="p-body">
+          <p class="p-h2">Crystals</p>
+          <p class="p-sub">
+            Academic achievements award Crystals instantly. Crystals earned from behavioural
+            achievements are paid out weekly based on Stars earned.
+          </p>
+          <p class="p-sec">Academic achievements</p>
+          <p class="p-sec-sub">Crystals are awarded instantly.</p>
+          <div class="r-row">
+            <img src="assets/bonusbox/parents/crystals/Frame 432.svg" alt="" />
+          </div>
+          <span class="club-badge">Club-Only</span>
+          <p class="p-sec" style="margin-top: 8px">Behavioural achievements</p>
+          <p class="p-sec-sub">Crystals are awarded weekly.</p>
+          <div class="r-row">
+            <img src="assets/bonusbox/parents/crystals/Frame 433.svg" alt="" />
+          </div>
+          <span class="p-link">Update conversion rate in Stars &gt;</span>
+        </div>
+        <div class="p-bottom">
+          <div class="p-bnav on">
+            <img src="assets/bonusbox/parents/bottom-nav/rewards-on.svg" alt="" /><span
+              >Rewards</span
+            >
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-control')">
+            <img src="assets/bonusbox/parents/bottom-nav/control.svg" alt="" /><span>Control</span>
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-learning')">
+            <img src="assets/bonusbox/parents/bottom-nav/learning.svg" alt="" /><span
+              >Learning</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     PARENT · POCKET MONEY (full HTML)
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-parent-pocket">
+        <div class="p-topbar">
+          <img class="p-logo" src="assets/bonusbox/logo.png" alt="" onclick="go('s-landing')" />
+          <div class="p-icons">
+            <img src="assets/bonusbox/parents/navbar/search.svg" alt="" />
+            <img
+              src="assets/bonusbox/parents/navbar/notification.svg"
+              onclick="go('s-parent-notifications')"
+              style="cursor: pointer"
+              alt=""
+              style="cursor: pointer"
+              onclick="openNotificationModal()"
+            />
+            <img src="assets/bonusbox/parents/navbar/avatar.svg" alt="" />
+          </div>
+        </div>
+        <div class="p-nav-row">
+          <div class="p-back" onclick="go('s-parent-rewards')">‹</div>
+          <div class="p-tabs">
+            <div class="p-tab" onclick="go('s-parent-stars')">
+              <img src="assets/bonusbox/parents/reward-nav/stars.svg" alt="" /><span>Stars</span>
+            </div>
+            <div class="p-tab" onclick="go('s-parent-crystals')">
+              <img src="assets/bonusbox/parents/reward-nav/crystals.svg" alt="" /><span
+                >Crystals</span
+              >
+            </div>
+            <div class="p-tab on">
+              <img src="assets/bonusbox/parents/reward-nav/pocket-money.svg" alt="" /><span
+                >Pocket Money</span
+              >
+            </div>
+            <div class="p-tab" onclick="go('s-parent-trophies')">
+              <img src="assets/bonusbox/parents/reward-nav/trophies.svg" alt="" /><span
+                >Trophies</span
+              >
+            </div>
+            <div class="p-tab" onclick="go('s-parent-activities')">
+              <img src="assets/bonusbox/parents/reward-nav/activites.svg" alt="" /><span
+                >Activities</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="p-body">
+          <p class="p-h2">Pocket Money</p>
+          <p class="p-sub">
+            Pocket Money can be given occasionally as a daily reward, or as a weekly bonus.
+          </p>
+          <p class="p-sec">Reward value</p>
+          <p class="p-sec-sub">Crystals are awarded instantly.</p>
+          <div class="r-row">
+            <img src="assets/bonusbox/parents/pocket-money/Frame 432.svg" alt="" />
+          </div>
+          <span class="club-badge">Club-Only</span>
+          <p class="p-sec" style="margin-top: 8px">Behavioural achievements</p>
+          <p class="p-sec-sub">
+            Pocket Money are awarded weekly when behavioural achievements are met in Appy Club.
+          </p>
+          <div class="r-row">
+            <img src="assets/bonusbox/parents/pocket-money/Frame 433.svg" alt="" />
+          </div>
+        </div>
+        <div class="p-bottom">
+          <div class="p-bnav on">
+            <img src="assets/bonusbox/parents/bottom-nav/rewards-on.svg" alt="" /><span
+              >Rewards</span
+            >
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-control')">
+            <img src="assets/bonusbox/parents/bottom-nav/control.svg" alt="" /><span>Control</span>
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-learning')">
+            <img src="assets/bonusbox/parents/bottom-nav/learning.svg" alt="" /><span
+              >Learning</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     PARENT · TROPHIES (full HTML)
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-parent-trophies">
+        <div class="p-topbar">
+          <img class="p-logo" src="assets/bonusbox/logo.png" alt="" onclick="go('s-landing')" />
+          <div class="p-icons">
+            <img src="assets/bonusbox/parents/navbar/search.svg" alt="" />
+            <img
+              src="assets/bonusbox/parents/navbar/notification.svg"
+              onclick="go('s-parent-notifications')"
+              style="cursor: pointer"
+              alt=""
+              style="cursor: pointer"
+              onclick="openNotificationModal()"
+            />
+            <img src="assets/bonusbox/parents/navbar/avatar.svg" alt="" />
+          </div>
+        </div>
+        <div class="p-nav-row">
+          <div class="p-back" onclick="go('s-parent-rewards')">‹</div>
+          <div class="p-tabs">
+            <div class="p-tab" onclick="go('s-parent-stars')">
+              <img src="assets/bonusbox/parents/reward-nav/stars.svg" alt="" /><span>Stars</span>
+            </div>
+            <div class="p-tab" onclick="go('s-parent-crystals')">
+              <img src="assets/bonusbox/parents/reward-nav/crystals.svg" alt="" /><span
+                >Crystals</span
+              >
+            </div>
+            <div class="p-tab" onclick="go('s-parent-pocket')">
+              <img src="assets/bonusbox/parents/reward-nav/pocket-money.svg" alt="" /><span
+                >Pocket Money</span
+              >
+            </div>
+            <div class="p-tab on">
+              <img src="assets/bonusbox/parents/reward-nav/trophies.svg" alt="" /><span
+                >Trophies</span
+              >
+            </div>
+            <div class="p-tab" onclick="go('s-parent-activities')">
+              <img src="assets/bonusbox/parents/reward-nav/activites.svg" alt="" /><span
+                >Activities</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="p-body">
+          <span class="club-badge">Club-Only</span>
+          <p class="p-h2" style="margin-top: 6px">Trophies</p>
+          <p class="p-sub">
+            Special rewards celebrate consistent behaviour or completed challenges. Awarded
+            instantly.
+          </p>
+          <p class="p-sec">Habit streaks</p>
+          <div class="r-row">
+            <img src="assets/bonusbox/parents/trophies/Frame 432.svg" alt="" />
+          </div>
+          <p class="p-sec">Challenges</p>
+          <div class="r-row">
+            <img src="assets/bonusbox/parents/trophies/Frame 432-1.svg" alt="" />
+          </div>
+          <p class="p-sec">Trophy to crystal conversion</p>
+          <div class="r-row">
+            <img src="assets/bonusbox/parents/trophies/Frame 433.svg" alt="" />
+          </div>
+        </div>
+        <div class="p-bottom">
+          <div class="p-bnav on">
+            <img src="assets/bonusbox/parents/bottom-nav/rewards-on.svg" alt="" /><span
+              >Rewards</span
+            >
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-control')">
+            <img src="assets/bonusbox/parents/bottom-nav/control.svg" alt="" /><span>Control</span>
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-learning')">
+            <img src="assets/bonusbox/parents/bottom-nav/learning.svg" alt="" /><span
+              >Learning</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     PARENT · ACTIVITIES (full HTML)
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-parent-activities">
+        <div class="p-topbar">
+          <img class="p-logo" src="assets/bonusbox/logo.png" alt="" onclick="go('s-landing')" />
+          <div class="p-icons">
+            <img src="assets/bonusbox/parents/navbar/search.svg" alt="" />
+            <img
+              src="assets/bonusbox/parents/navbar/notification.svg"
+              onclick="go('s-parent-notifications')"
+              style="cursor: pointer"
+              alt=""
+              style="cursor: pointer"
+              onclick="openNotificationModal()"
+            />
+            <img src="assets/bonusbox/parents/navbar/avatar.svg" alt="" />
+          </div>
+        </div>
+        <div class="p-nav-row">
+          <div class="p-back" onclick="go('s-parent-rewards')">‹</div>
+          <div class="p-tabs">
+            <div class="p-tab" onclick="go('s-parent-stars')">
+              <img src="assets/bonusbox/parents/reward-nav/stars.svg" alt="" /><span>Stars</span>
+            </div>
+            <div class="p-tab" onclick="go('s-parent-crystals')">
+              <img src="assets/bonusbox/parents/reward-nav/crystals.svg" alt="" /><span
+                >Crystals</span
+              >
+            </div>
+            <div class="p-tab" onclick="go('s-parent-pocket')">
+              <img src="assets/bonusbox/parents/reward-nav/pocket-money.svg" alt="" /><span
+                >Pocket Money</span
+              >
+            </div>
+            <div class="p-tab" onclick="go('s-parent-trophies')">
+              <img src="assets/bonusbox/parents/reward-nav/trophies.svg" alt="" /><span
+                >Trophies</span
+              >
+            </div>
+            <div class="p-tab on">
+              <img src="assets/bonusbox/parents/reward-nav/activites.svg" alt="" /><span
+                >Activities</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="p-body">
+          <span class="club-badge">Club-Only</span>
+          <p class="p-h2" style="margin-top: 6px">Unlocked Activities</p>
+          <p class="p-sub">
+            Special interactive rewards appear in the wallet when weekly behaviour goals are
+            achieved in Appy Club.
+          </p>
+          <p class="p-sec">Activities &amp; Unlock conditional</p>
+          <div class="r-row">
+            <img src="assets/bonusbox/parents/activities/Frame 432.svg " alt="" />
+          </div>
+        </div>
+        <div class="p-bottom">
+          <div class="p-bnav on">
+            <img src="assets/bonusbox/parents/bottom-nav/rewards-on.svg" alt="" /><span
+              >Rewards</span
+            >
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-control')">
+            <img src="assets/bonusbox/parents/bottom-nav/control.svg" alt="" /><span>Control</span>
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-learning')">
+            <img src="assets/bonusbox/parents/bottom-nav/learning.svg" alt="" /><span
+              >Learning</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     PARENT · CONTROL (placeholder)
+══════════════════════════════════════════ -->
+      <!-- ══════════════════════════════════════════
+     PARENT · SCREENTIME CONTROL
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-parent-control">
+        <div class="p-topbar">
+          <img class="p-logo" src="assets/bonusbox/logo.png" alt="" onclick="go('s-landing')" />
+          <div class="p-icons">
+            <img src="assets/bonusbox/parents/navbar/search.svg" alt="" />
+            <img
+              src="assets/bonusbox/parents/navbar/notification.svg"
+              alt=""
+              style="cursor: pointer"
+              onclick="openNotificationModal()"
+            />
+            <img src="assets/bonusbox/parents/navbar/avatar.svg" alt="" />
+          </div>
+        </div>
+
+        <div class="p-crumb">
+          <div class="p-crumb-back" onclick="go('s-parent-rewards')">&#8249;</div>
+          <div class="p-crumb-title">Screentime Control</div>
+        </div>
+
+        <div class="sc-tab-row">
+          <div class="sc-tab on" onclick="switchScTab(this, 'playtime')">Playtime</div>
+          <div class="sc-tab" onclick="switchScTab(this, 'lockdown')">App Lockdown</div>
+        </div>
+
+        <div class="sc-body sc-body-playtime">
+          <p class="sc-day-label">Daily Playtime</p>
+
+          <!-- Gaming Apps — expanded -->
+          <div class="sc-card">
+            <div class="sc-card-header">
+              <img
+                src="assets/bonusbox/parents/screentime-control/Group 26.svg"
+                class="sc-icon"
+                alt=""
+              />
+              <span class="sc-card-title">Gaming Apps</span>
+              <span class="sc-chevron up">&#9650;</span>
+            </div>
+            <div class="sc-app-grid">
+              <img src="assets/bonusbox/parents/apps/image.png" class="sc-app-icon" />
+              <img src="assets/bonusbox/parents/apps/image-1.png" class="sc-app-icon" />
+              <img src="assets/bonusbox/parents/apps/image-2.png" class="sc-app-icon" />
+              <img src="assets/bonusbox/parents/apps/image-3.png" class="sc-app-icon" />
+              <img src="assets/bonusbox/parents/apps/image-4.png" class="sc-app-icon" />
+              <img src="assets/bonusbox/parents/apps/image 2.png" class="sc-app-icon" />
+              <img src="assets/bonusbox/parents/apps/image 2-1.png" class="sc-app-icon" />
+              <div class="sc-app-add">+</div>
+            </div>
+            <div class="sc-time-row">
+              <div class="sc-time-pill">30&nbsp;&nbsp;mins</div>
+              <img src="assets/bonusbox/parents/edit.svg" class="sc-edit-icon" alt="edit" />
+            </div>
+          </div>
+
+          <!-- Video Apps — collapsed -->
+          <div class="sc-card">
+            <div class="sc-card-header">
+              <img
+                src="assets/bonusbox/parents/screentime-control/Group 27.svg"
+                class="sc-icon"
+                alt=""
+              />
+              <span class="sc-card-title">Video Apps</span>
+              <span class="sc-time-badge">20 mins</span>
+              <span class="sc-chevron">&#9660;</span>
+            </div>
+          </div>
+
+          <!-- Crystal exchange rate — collapsed -->
+          <div class="sc-card">
+            <div class="sc-card-header">
+              <img
+                src="assets/bonusbox/parents/screentime-control/Group 26-1.svg"
+                class="sc-icon"
+                alt=""
+              />
+              <span class="sc-card-title">Crystal exchange rate</span>
+              <span class="sc-time-badge">2 mins</span>
+              <span class="sc-chevron">&#9660;</span>
+            </div>
+          </div>
+
+          <!-- Bonus Time — collapsed -->
+          <div class="sc-card">
+            <div class="sc-card-header">
+              <img
+                src="assets/bonusbox/parents/screentime-control/Group 29.svg"
+                class="sc-icon"
+                alt=""
+              />
+              <span class="sc-card-title">Bonus Time</span>
+              <span class="sc-time-badge">10 mins</span>
+              <span class="sc-chevron">&#9660;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── APP LOCKDOWN TAB ── -->
+        <div class="sc-body sc-body-lockdown" style="display: none">
+          <div class="sc-lock-header">
+            <p class="sc-lock-title">Locked Applications</p>
+            <div class="sc-lock-actions">
+              <span class="sc-filter-icon">&#9776;</span>
+              <img src="assets/bonusbox/parents/navbar/search.svg" class="sc-search-icon" alt="" />
+            </div>
+          </div>
+          <p class="sc-lock-desc">Different app types can have different unlock conditions.</p>
+
+          <!-- Category sub-tabs -->
+          <div class="sc-cat-tabs">
+            <div class="sc-cat-tab on" onclick="switchCatTab(this,'gaming')">Gaming</div>
+            <div class="sc-cat-tab" onclick="switchCatTab(this,'video')">Video</div>
+            <div class="sc-cat-tab" onclick="switchCatTab(this,'social')">Social</div>
+          </div>
+
+          <!-- Gaming -->
+          <div class="sc-cat-body" id="cat-gaming">
+          <div class="sc-lock-grid">
+            <div class="sc-app-wrap locked">
+              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+              <img src="assets/bonusbox/parents/apps/image.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap locked">
+              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+              <img src="assets/bonusbox/parents/apps/image-1.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap locked">
+              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+              <img src="assets/bonusbox/parents/apps/image-2.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap locked">
+              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+              <img src="assets/bonusbox/parents/apps/image-3.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap locked">
+              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+              <img src="assets/bonusbox/parents/apps/image-4.png" class="sc-app-icon" />
+            </div>
+          </div>
+          <div class="sc-lock-all-row">
+            <span class="sc-lock-icon">&#128274;</span>
+            <span class="sc-lock-all-label">Lock All</span>
+          </div>
+          <div class="sc-lock-grid">
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-1.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-2.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-3.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-4.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-5.png" class="sc-app-icon" />
+            </div>
+          </div>
+          </div>
+
+          <!-- Video -->
+          <div class="sc-cat-body" id="cat-video" style="display:none">
+          <div class="sc-lock-grid">
+            <div class="sc-app-wrap locked">
+              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+              <img src="assets/bonusbox/parents/apps/image 2.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap locked">
+              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+              <img src="assets/bonusbox/parents/apps/image 2-1.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap locked">
+              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+              <img src="assets/bonusbox/parents/apps/image 2-2.png" class="sc-app-icon" />
+            </div>
+          </div>
+          <div class="sc-lock-all-row">
+            <span class="sc-lock-icon">&#128274;</span>
+            <span class="sc-lock-all-label">Lock All</span>
+          </div>
+          <div class="sc-lock-grid">
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-6.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-7.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-8.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-9.png" class="sc-app-icon" />
+            </div>
+          </div>
+          </div>
+
+          <!-- Social -->
+          <div class="sc-cat-body" id="cat-social" style="display:none">
+          <div class="sc-lock-grid">
+            <div class="sc-app-wrap locked">
+              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+              <img src="assets/bonusbox/parents/apps/image 2-3.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap locked">
+              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+              <img src="assets/bonusbox/parents/apps/image 2-4.png" class="sc-app-icon" />
+            </div>
+          </div>
+          <div class="sc-lock-all-row">
+            <span class="sc-lock-icon">&#128274;</span>
+            <span class="sc-lock-all-label">Lock All</span>
+          </div>
+          <div class="sc-lock-grid">
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-10.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-11.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-12.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-13.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-14.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-15.png" class="sc-app-icon" />
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <div class="p-bottom">
+          <div class="p-bnav" onclick="go('s-parent-rewards')">
+            <img src="assets/bonusbox/parents/bottom-nav/rewards.svg" alt="" /><span>Rewards</span>
+          </div>
+          <div class="p-bnav on">
+            <img src="assets/bonusbox/parents/bottom-nav/control-on.svg" alt="" /><span
+              >Control</span
+            >
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-learning')">
+            <img src="assets/bonusbox/parents/bottom-nav/learning.svg" alt="" /><span
+              >Learning</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     PARENT · LEARNING (placeholder)
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-parent-learning">
+        <div class="p-topbar">
+          <img class="p-logo" src="assets/bonusbox/logo.png" alt="" onclick="go('s-landing')" />
+          <div class="p-icons">
+            <img src="assets/bonusbox/parents/navbar/search.svg" alt="" />
+            <img
+              src="assets/bonusbox/parents/navbar/notification.svg"
+              onclick="go('s-parent-notifications')"
+              style="cursor: pointer"
+              alt=""
+              style="cursor: pointer"
+              onclick="openNotificationModal()"
+            />
+            <img src="assets/bonusbox/parents/navbar/avatar.svg" alt="" />
+          </div>
+        </div>
+        <div class="p-ph"><span>🎓</span>Learning</div>
+        <div class="p-bottom">
+          <div class="p-bnav" onclick="go('s-parent-rewards')">
+            <img src="assets/bonusbox/parents/bottom-nav/rewards.svg" alt="" /><span>Rewards</span>
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-control')">
+            <img src="assets/bonusbox/parents/bottom-nav/control.svg" alt="" /><span>Control</span>
+          </div>
+          <div class="p-bnav on">
+            <img src="assets/bonusbox/parents/bottom-nav/learning-on.svg" alt="" /><span
+              >Learning</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     PARENT · NOTIFICATIONS
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-parent-notifications">
+        <div class="p-topbar">
+          <img class="p-logo" src="assets/bonusbox/logo.png" alt="" onclick="go('s-landing')" />
+          <div class="p-icons">
+            <img src="assets/bonusbox/parents/navbar/search.svg" alt="" />
+            <img
+              src="assets/bonusbox/parents/navbar/notification.svg"
+              onclick="go('s-parent-notifications')"
+              style="cursor: pointer"
+              alt=""
+            />
+            <img src="assets/bonusbox/parents/navbar/avatar.svg" alt="" />
+          </div>
+        </div>
+
+        <div class="p-crumb">
+          <div class="p-crumb-back" onclick="go('s-parent-rewards')">‹</div>
+          <div class="p-crumb-title">Notifications</div>
+          <div style="width: 24px"></div>
+        </div>
+
+        <div class="p-body" style="padding-top: 8px">
+          <p
+            style="
+              color: rgba(255, 255, 255, 0.4);
+              font-size: 12px;
+              font-weight: 600;
+              letter-spacing: 0.04em;
+              margin-bottom: 10px;
+              text-transform: uppercase;
+            "
+          >
+            Pending
+          </p>
+
+          <!-- notification item -->
+          <div class="notif-item" onclick="go('s-parent-pending-missions')">
+            <div
+              class="notif-thumb"
+              style="background-image: url(&quot;assets/bonusbox/parents/missions/bed.png&quot;)"
+            ></div>
+            <div class="notif-body">
+              <span class="notif-tag">Good Deed</span>
+              <p class="notif-title">Ellie submitted <strong>Make Bed</strong></p>
+              <p class="notif-time">1 hour ago</p>
+            </div>
+            <div class="notif-dot"></div>
+          </div>
+
+          <div class="notif-item" onclick="go('s-parent-pending-missions')">
+            <div
+              class="notif-thumb"
+              style="background-image: url(&quot;assets/bonusbox/parents/missions/table.png&quot;)"
+            ></div>
+            <div class="notif-body">
+              <span class="notif-tag">Good Deed</span>
+              <p class="notif-title">Mattie submitted <strong>Wipe dining table</strong></p>
+              <p class="notif-time">Yesterday</p>
+            </div>
+          </div>
+
+          <div class="notif-item" onclick="go('s-parent-pending-missions')">
+            <div
+              class="notif-thumb"
+              style="background-image: url(&quot;assets/bonusbox/parents/missions/craft.png&quot;)"
+            ></div>
+            <div class="notif-body">
+              <span class="notif-tag">Crafts</span>
+              <p class="notif-title">Ellie submitted <strong>Paper Crane</strong></p>
+              <p class="notif-time">2 days ago</p>
+            </div>
+          </div>
+
+          <p
+            style="
+              color: rgba(255, 255, 255, 0.4);
+              font-size: 12px;
+              font-weight: 600;
+              letter-spacing: 0.04em;
+              margin: 18px 0 10px;
+              text-transform: uppercase;
+            "
+          >
+            Time Requests
+          </p>
+
+          <div class="notif-item" onclick="go('s-parent-pending-time')">
+            <div
+              class="notif-thumb notif-avatar"
+              style="background: #f59e0b; color: #000; font-weight: 800; font-size: 18px"
+            >
+              E
+            </div>
+            <div class="notif-body">
+              <span class="notif-tag" style="color: #60a5fa">Time Request</span>
+              <p class="notif-title">Ellie requested <strong>10 mins</strong> extra time</p>
+              <p class="notif-time">Yesterday</p>
+            </div>
+            <div class="notif-dot"></div>
+          </div>
+
+          <div class="notif-item" onclick="go('s-parent-pending-time')">
+            <div
+              class="notif-thumb notif-avatar"
+              style="background: #22d3ee; color: #000; font-weight: 800; font-size: 18px"
+            >
+              M
+            </div>
+            <div class="notif-body">
+              <span class="notif-tag" style="color: #60a5fa">Time Request</span>
+              <p class="notif-title">Mattie requested <strong>10 mins</strong> extra time</p>
+              <p class="notif-time">2 hours ago</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-bottom">
+          <div class="p-bnav" onclick="go('s-parent-rewards')">
+            <img src="assets/bonusbox/parents/bottom-nav/rewards.svg" alt="" /><span>Rewards</span>
+          </div>
+          <div class="p-bnav on">
+            <img src="assets/bonusbox/parents/bottom-nav/control-on.svg" alt="" /><span
+              >Control</span
+            >
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-learning')">
+            <img src="assets/bonusbox/parents/bottom-nav/learning.svg" alt="" /><span
+              >Learning</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     PARENT · PENDING MISSIONS
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-parent-pending-missions">
+        <div class="p-topbar">
+          <img class="p-logo" src="assets/bonusbox/logo.png" alt="" onclick="go('s-landing')" />
+          <div class="p-icons">
+            <img src="assets/bonusbox/parents/navbar/search.svg" alt="" />
+            <img
+              src="assets/bonusbox/parents/navbar/notification.svg"
+              onclick="go('s-parent-notifications')"
+              style="cursor: pointer"
+              alt=""
+            />
+            <img src="assets/bonusbox/parents/navbar/avatar.svg" alt="" />
+          </div>
+        </div>
+
+        <div class="p-crumb">
+          <div class="p-crumb-back" onclick="go('s-parent-notifications')">‹</div>
+          <div class="p-crumb-title">Pending Requests</div>
+          <div style="width: 24px"></div>
+        </div>
+
+        <!-- tabs -->
+        <div
+          style="
+            display: flex;
+            gap: 8px;
+            padding: 0 16px 16px;
+            flex-shrink: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+          "
+        >
+          <div class="pending-tab pending-tab-on">Appy Club Pending Missions (4)</div>
+          <div class="pending-tab" onclick="go('s-parent-pending-time')" style="cursor: pointer">
+            Time Request (2)
+          </div>
+        </div>
+
+        <div class="p-body">
+          <!-- child filter -->
+          <div class="child-chips">
+            <div class="child-chip child-chip-on">
+              <span class="child-chip-avatar" style="background: #f59e0b; color: #000">E</span>Ellie
+              (3)
+            </div>
+            <div class="child-chip">
+              <span class="child-chip-avatar" style="background: #22d3ee; color: #000">M</span
+              >Mattie (1)
+            </div>
+          </div>
+
+          <!-- mission card -->
+          <div class="mission-card">
+            <div style="display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px">
+              <img src="assets/bonusbox/parents/missions/bed.png" class="mission-img" />
+              <div>
+                <p class="mission-cat">Good Deed</p>
+                <p class="mission-title">Make Bed</p>
+                <p class="mission-time">1 hour ago</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px">
+              <button class="mission-btn mission-btn-outline">Review</button>
+              <button class="mission-btn mission-btn-fill">Approve</button>
+            </div>
+          </div>
+
+          <div class="mission-card">
+            <div style="display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px">
+              <img src="assets/bonusbox/parents/missions/table.png" class="mission-img" />
+              <div>
+                <p class="mission-cat">Good Deed</p>
+                <p class="mission-title">Wipe dining table</p>
+                <p class="mission-time">Yesterday</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px">
+              <button class="mission-btn mission-btn-outline">Review</button>
+              <button class="mission-btn mission-btn-fill">Approve</button>
+            </div>
+          </div>
+
+          <div class="mission-card craft">
+            <div style="display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px">
+              <img src="assets/bonusbox/parents/missions/craft.png" class="mission-img" />
+              <div>
+                <p class="mission-cat">Crafts</p>
+                <p class="mission-title">Paper Crane</p>
+                <p class="mission-time">2 days ago</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px">
+              <button class="mission-btn mission-btn-outline">Review</button>
+              <button class="mission-btn mission-btn-fill">Approve</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-bottom">
+          <div class="p-bnav" onclick="go('s-parent-rewards')">
+            <img src="assets/bonusbox/parents/bottom-nav/rewards.svg" alt="" /><span>Rewards</span>
+          </div>
+          <div class="p-bnav on">
+            <img src="assets/bonusbox/parents/bottom-nav/control-on.svg" alt="" /><span
+              >Control</span
+            >
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-learning')">
+            <img src="assets/bonusbox/parents/bottom-nav/learning.svg" alt="" /><span
+              >Learning</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     PARENT · PENDING TIME REQUESTS
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-parent-pending-time">
+        <div class="p-topbar">
+          <img class="p-logo" src="assets/bonusbox/logo.png" alt="" onclick="go('s-landing')" />
+          <div class="p-icons">
+            <img src="assets/bonusbox/parents/navbar/search.svg" alt="" />
+            <img
+              src="assets/bonusbox/parents/navbar/notification.svg"
+              onclick="go('s-parent-notifications')"
+              style="cursor: pointer"
+              alt=""
+            />
+            <img src="assets/bonusbox/parents/navbar/avatar.svg" alt="" />
+          </div>
+        </div>
+
+        <div class="p-crumb">
+          <div class="p-crumb-back" onclick="go('s-parent-notifications')">‹</div>
+          <div class="p-crumb-title">Pending Requests</div>
+          <div style="width: 24px"></div>
+        </div>
+
+        <!-- tabs -->
+        <div
+          style="
+            display: flex;
+            gap: 8px;
+            padding: 0 16px 16px;
+            flex-shrink: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+          "
+        >
+          <div class="pending-tab pending-tab-on">Time Request (2)</div>
+          <div
+            class="pending-tab"
+            onclick="go('s-parent-pending-missions')"
+            style="cursor: pointer"
+          >
+            Appy Club Pending Missions (4)
+          </div>
+        </div>
+
+        <div class="p-body" style="padding-top: 0">
+          <p style="color: #fff; font-size: 15px; font-weight: 600; margin-bottom: 16px">
+            Extra Time Requests
+          </p>
+
+          <!-- child filter -->
+          <div style="display: flex; gap: 10px; margin-bottom: 16px">
+            <div class="child-chip child-chip-on">
+              <span class="child-chip-avatar" style="background: #f59e0b; color: #000">E</span>Ellie
+              (1)
+            </div>
+            <div class="child-chip">
+              <span class="child-chip-avatar" style="background: #22d3ee; color: #000">M</span
+              >Mattie (1)
+            </div>
+          </div>
+
+          <!-- time request card -->
+          <div class="mission-card">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px">
+              <div
+                style="
+                  width: 52px;
+                  height: 52px;
+                  border-radius: 999px;
+                  background: #f59e0b;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #000;
+                  font-weight: 800;
+                  font-size: 22px;
+                  flex-shrink: 0;
+                "
+              >
+                E
+              </div>
+              <div style="flex: 1">
+                <p style="color: #fff; font-size: 15px; font-weight: 700">Ellie</p>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px">
+                <button class="time-stepper">−</button>
+                <div style="text-align: center">
+                  <p class="extra-time">10 mins</p>
+                  <p style="color: rgba(255, 255, 255, 0.45); font-size: 12px">Yesterday</p>
+                </div>
+                <button class="time-stepper">+</button>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px">
+              <button class="mission-btn mission-btn-outline">Decline</button>
+              <button class="mission-btn mission-btn-fill">Approve</button>
+            </div>
+          </div>
+
+          <div class="mission-card">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px">
+              <div
+                style="
+                  width: 52px;
+                  height: 52px;
+                  border-radius: 999px;
+                  background: #22d3ee;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #000;
+                  font-weight: 800;
+                  font-size: 22px;
+                  flex-shrink: 0;
+                "
+              >
+                M
+              </div>
+              <div style="flex: 1">
+                <p style="color: #fff; font-size: 15px; font-weight: 700">Mattie</p>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px">
+                <button class="time-stepper">−</button>
+                <div style="text-align: center">
+                  <p class="extra-time">10 mins</p>
+                  <p style="color: rgba(255, 255, 255, 0.45); font-size: 12px">2 hours ago</p>
+                </div>
+                <button class="time-stepper">+</button>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px">
+              <button class="mission-btn mission-btn-outline">Decline</button>
+              <button class="mission-btn mission-btn-fill">Approve</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-bottom">
+          <div class="p-bnav" onclick="go('s-parent-rewards')">
+            <img src="assets/bonusbox/parents/bottom-nav/rewards.svg" alt="" /><span>Rewards</span>
+          </div>
+          <div class="p-bnav on">
+            <img src="assets/bonusbox/parents/bottom-nav/control-on.svg" alt="" /><span
+              >Control</span
+            >
+          </div>
+          <div class="p-bnav" onclick="go('s-parent-learning')">
+            <img src="assets/bonusbox/parents/bottom-nav/learning.svg" alt="" /><span
+              >Learning</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     KID · BALANCE
+     content image: assets/bonusbox/kids/Bonusbox - Kid's Wallet - crystals.jpg
+     → swap src with cropped content image (no header/footer) when ready
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-kid-balance">
+        <div class="k-topbar">
+          <div class="k-topbar-pill">
+            <img
+              class="k-crystal"
+              src="assets/bonusbox/kids/topbar/Csytal.png"
+              alt=""
+              onclick="go('s-landing')"
+            />
+            <div class="k-right">
+              <img class="k-notif" src="assets/bonusbox/kids/topbar/notification-icon.svg" alt="" />
+              <div class="k-avatar">E</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="k-wallet">
+          <!-- Screen time -->
+          <div class="k-screentime">
+            <p class="k-st-label">Remaining<br />screen&#8209;time</p>
+            <div class="k-st-right">
+              <p class="k-st-value k-dyn-time">22 mins 32 sec</p>
+              <div class="k-rem-bar">
+                <div class="k-rem-fill k-dyn-fill" style="width: 37.6%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Balance summary -->
+          <div class="k-bal-row">
+            <div class="k-bal-item">
+              <img src="assets/bonusbox/kids/crystal.png" class="k-bal-icon" />
+              <p class="k-bal-num">22</p>
+            </div>
+            <div class="k-bal-item k-bal-dim">
+              <img src="assets/bonusbox/kids/reward-nav/money.svg" class="k-bal-icon" />
+              <p class="k-bal-num"><span class="currency-sign">£</span>2.50</p>
+            </div>
+            <div class="k-bal-item k-bal-dim" onclick="go('s-trophies')">
+              <img src="assets/bonusbox/kids/trophy.png" class="k-bal-icon" />
+              <p class="k-bal-num">3</p>
+            </div>
+            <div class="k-bal-item k-bal-dim">
+              <img src="assets/bonusbox/kids/reward-nav/activity.svg" class="k-bal-icon" />
+              <p class="k-bal-num">5</p>
+            </div>
+          </div>
+
+          <!-- Crystal grid -->
+          <div class="k-crystal-grid">
+            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+          </div>
+        </div>
+
+        <div class="k-bottom">
+          <div class="k-bnav" onclick="go('s-kid-apps')">
+            <img src="assets/bonusbox/kids/wallet-actions/Icon Button.svg" alt="Earn More" />
+            <span>Earn More</span>
+          </div>
+          <div class="k-bnav" onclick="go('s-kid-save-time')">
+            <img src="assets/bonusbox/kids/wallet-actions/Icon Button-1.svg" alt="" />
+            <span>Save Time</span>
+          </div>
+          <div class="k-bnav" onclick="go('s-kid-buy-time')">
+            <img src="assets/bonusbox/kids/wallet-actions/Icon Button-2.svg" alt="" />
+            <span>Extra Time</span>
+          </div>
+          <div class="k-bnav" onclick="go('s-kid-ask-parents')">
+            <img src="assets/bonusbox/kids/wallet-actions/Icon Button-3.svg" alt="" />
+            <span>Ask Parents</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     KID · APPS
+     content image: assets/bonusbox/kids/Bonusbox - Kid's apps.jpg
+     → swap src with cropped content image when ready
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-kid-apps">
+        <div class="k-topbar">
+          <div class="k-topbar-pill">
+            <img
+              class="k-crystal"
+              src="assets/bonusbox/kids/topbar/Csytal.png"
+              alt=""
+              onclick="go('s-landing')"
+            />
+            <div class="k-right">
+              <img class="k-notif" src="assets/bonusbox/kids/topbar/notification-icon.svg" alt="" />
+              <div class="k-avatar">E</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="k-modal-back-bar">
+          <button class="k-back-btn" onclick="go('s-kid-balance')">&#8249;</button>
+        </div>
+
+        <div class="k-apps-content">
+          <!-- Crystal balance -->
+          <div class="k-apps-header">
+            <img src="assets/bonusbox/kids/crystal.png" class="k-apps-crystal" />
+            <p class="k-bal-num">22</p>
+          </div>
+
+          <!-- App grid -->
+          <div class="k-app-grid">
+            <img src="assets/bonusbox/kids/apps/app.png" class="k-app-tile" />
+            <img src="assets/bonusbox/kids/apps/app-1.png" class="k-app-tile" />
+            <img src="assets/bonusbox/kids/apps/app-2.png" class="k-app-tile" />
+            <img src="assets/bonusbox/kids/apps/app-3.png" class="k-app-tile" />
+            <img src="assets/bonusbox/kids/apps/app-4.png" class="k-app-tile" />
+            <img src="assets/bonusbox/kids/apps/app-5.png" class="k-app-tile" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     KID · TROPHIES
+     content image: assets/bonusbox/kids/Bonusbox - Kid's Wallet - trophies.jpg
+     → swap src with cropped content image when ready
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-trophies">
+        <div class="k-topbar">
+          <div class="k-topbar-pill">
+            <img
+              class="k-crystal"
+              src="assets/bonusbox/kids/topbar/Csytal.png"
+              alt=""
+              onclick="go('s-kid-balance')"
+            />
+            <div class="k-right">
+              <img class="k-notif" src="assets/bonusbox/kids/topbar/notification-icon.svg" alt="" />
+              <div class="k-avatar">E</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="k-wallet">
+          <!-- Screen time -->
+          <div class="k-screentime">
+            <p class="k-st-label">Remaining<br />screen&#8209;time</p>
+            <div class="k-st-right">
+              <p class="k-st-value k-dyn-time">22 mins 32 sec</p>
+              <div class="k-rem-bar">
+                <div class="k-rem-fill k-dyn-fill" style="width: 37.6%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Balance summary -->
+          <div class="k-bal-row">
+            <div class="k-bal-item k-bal-dim" onclick="go('s-kid-balance')">
+              <img src="assets/bonusbox/kids/crystal.png" class="k-bal-icon" />
+              <p class="k-bal-num">22</p>
+            </div>
+            <div class="k-bal-item k-bal-dim">
+              <img src="assets/bonusbox/kids/reward-nav/money.svg" class="k-bal-icon" />
+              <p class="k-bal-num"><span class="currency-sign">£</span>2.50</p>
+            </div>
+            <div class="k-bal-item">
+              <img src="assets/bonusbox/kids/trophy.png" class="k-bal-icon" />
+              <p class="k-bal-num">3</p>
+            </div>
+            <div class="k-bal-item k-bal-dim">
+              <img src="assets/bonusbox/kids/reward-nav/activity.svg" class="k-bal-icon" />
+              <p class="k-bal-num">5</p>
+            </div>
+          </div>
+
+          <!-- Trophy row -->
+          <div class="k-trophy-row">
+            <img src="assets/bonusbox/kids/trophy.png" class="k-trophy-img" />
+            <img src="assets/bonusbox/kids/trophy.png" class="k-trophy-img" />
+            <img src="assets/bonusbox/kids/trophy.png" class="k-trophy-img" />
+          </div>
+
+          <!-- Unlock message -->
+          <div class="k-unlock-msg" onclick="go('s-unlock')">
+            <span class="k-star" style="top: -10px; left: 10px">⭐</span>
+            <span class="k-star" style="top: -10px; right: 10px">⭐</span>
+            <span class="k-star" style="bottom: 30px; left: 0px; font-size: 18px">⭐</span>
+            <p class="k-unlock-nice">Nice! You've earned 3 trophies.</p>
+            <p class="k-unlock-name">Pancake<br />Morning</p>
+            <p class="k-unlock-sub">is now unlocked, enjoy!</p>
+          </div>
+        </div>
+
+        <div class="k-bottom">
+          <div class="k-bnav" onclick="go('s-kid-apps')">
+            <img src="assets/bonusbox/kids/wallet-actions/Icon Button.svg" alt="Earn More" />
+            <span>Earn More</span>
+          </div>
+          <div class="k-bnav" onclick="go('s-kid-save-time')">
+            <img src="assets/bonusbox/kids/wallet-actions/Icon Button-1.svg" alt="" />
+            <span>Save Time</span>
+          </div>
+          <div class="k-bnav" onclick="go('s-kid-buy-time')">
+            <img src="assets/bonusbox/kids/wallet-actions/Icon Button-2.svg" alt="" />
+            <span>Extra Time</span>
+          </div>
+          <div class="k-bnav" onclick="go('s-kid-ask-parents')">
+            <img src="assets/bonusbox/kids/wallet-actions/Icon Button-3.svg" alt="" />
+            <span>Ask Parents</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     KID · UNLOCKED ACTIVITY
+     content image: assets/bonusbox/kids/Bonusbox - Kid's Wallet-unlocked activities.jpg
+     → swap src with cropped content image when ready
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-unlock">
+        <div class="k-topbar">
+          <div class="k-topbar-pill">
+            <img
+              class="k-crystal"
+              src="assets/bonusbox/kids/topbar/Csytal.png"
+              alt=""
+              onclick="go('s-trophies')"
+            />
+            <div class="k-right">
+              <img class="k-notif" src="assets/bonusbox/kids/topbar/notification-icon.svg" alt="" />
+              <div class="k-avatar">E</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTENT BLOCK — replace src with cropped image -->
+        <div class="content-wrap">
+          <img
+            class="content-img"
+            src="assets/bonusbox/kids/Bonusbox - Kid's Wallet-unlocked activities.jpg"
+            alt=""
+          />
+          <div
+            class="tap"
+            style="bottom: 15%; left: 8%; width: 84%; height: 10%"
+            onclick="go('s-kid-apps')"
+          ></div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     KID · BUY TIME
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-kid-buy-time">
+        <div class="k-topbar">
+          <div class="k-topbar-pill">
+            <img
+              class="k-crystal"
+              src="assets/bonusbox/kids/topbar/Csytal.png"
+              alt=""
+              onclick="go('s-landing')"
+            />
+            <div class="k-right">
+              <img class="k-notif" src="assets/bonusbox/kids/topbar/notification-icon.svg" alt="" />
+              <div class="k-avatar">E</div>
+            </div>
+          </div>
+        </div>
+        <div class="k-modal-back-bar">
+          <button class="k-back-btn" onclick="go('s-kid-balance')">&#8249;</button>
+        </div>
+        <div class="k-modal-overlay" onclick="go('s-kid-balance')">
+          <div class="k-modal-wrap" onclick="event.stopPropagation()">
+            <div class="k-modal-icon-ring">
+              <div class="k-modal-icon-clip">
+                <img src="assets/bonusbox/kids/wallet-actions/buy-time.svg" alt="" />
+              </div>
+            </div>
+            <div class="k-modal-card">
+              <div class="k-modal-q">How many minutes do you want to buy?</div>
+              <div class="k-modal-display">
+                <button class="k-step-btn" onclick="adjustMins('buy', -1)">&#8722;</button>
+                <div class="k-modal-num-wrap">
+                  <span id="buy-mins">2</span>
+                  <p class="k-modal-unit">minutes</p>
+                </div>
+                <button class="k-step-btn" onclick="adjustMins('buy', 1)">+</button>
+              </div>
+              <div class="k-modal-remaining">
+                <div class="k-rem-header">
+                  <span class="k-rem-label">After this</span>
+                  <span class="k-rem-value" id="buy-rem-value">24 mins 32 sec</span>
+                </div>
+                <div class="k-rem-bar">
+                  <div class="k-rem-fill" id="buy-rem-fill" style="width: 40.9%"></div>
+                </div>
+                <p class="k-modal-cost">
+                  You'll spend &nbsp;<span id="buy-cost">1</span
+                  ><img src="assets/bonusbox/kids/crystal.png" class="k-cost-crystal" />
+                </p>
+              </div>
+              <button class="k-modal-action" onclick="confirmAction('buy')">Buy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     KID · SAVE TIME
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-kid-save-time">
+        <div class="k-topbar">
+          <div class="k-topbar-pill">
+            <img
+              class="k-crystal"
+              src="assets/bonusbox/kids/topbar/Csytal.png"
+              alt=""
+              onclick="go('s-landing')"
+            />
+            <div class="k-right">
+              <img class="k-notif" src="assets/bonusbox/kids/topbar/notification-icon.svg" alt="" />
+              <div class="k-avatar">E</div>
+            </div>
+          </div>
+        </div>
+        <div class="k-modal-back-bar">
+          <button class="k-back-btn" onclick="go('s-kid-balance')">&#8249;</button>
+        </div>
+        <div class="k-modal-overlay" onclick="go('s-kid-balance')">
+          <div class="k-modal-wrap" onclick="event.stopPropagation()">
+            <div class="k-modal-icon-ring">
+              <div class="k-modal-icon-clip">
+                <img src="assets/bonusbox/kids/wallet-actions/save-time.svg" alt="" />
+              </div>
+            </div>
+            <div class="k-modal-card">
+              <div class="k-modal-q">How many minutes do you want to save?</div>
+              <div class="k-modal-display">
+                <button class="k-step-btn" onclick="adjustMins('save', -1)">&#8722;</button>
+                <div class="k-modal-num-wrap">
+                  <span id="save-mins">2</span>
+                  <p class="k-modal-unit">minutes</p>
+                </div>
+                <button class="k-step-btn" onclick="adjustMins('save', 1)">+</button>
+              </div>
+              <div class="k-modal-remaining">
+                <div class="k-rem-header">
+                  <span class="k-rem-label">After this</span>
+                  <span class="k-rem-value" id="save-rem-value">20 mins 32 sec</span>
+                </div>
+                <div class="k-rem-bar">
+                  <div class="k-rem-fill" id="save-rem-fill" style="width: 34.2%"></div>
+                </div>
+                <p class="k-modal-cost">
+                  You'll get &nbsp;<span id="save-cost">1</span
+                  ><img src="assets/bonusbox/kids/crystal.png" class="k-cost-crystal" />&nbsp; back
+                </p>
+              </div>
+              <button class="k-modal-action" onclick="confirmAction('save')">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     KID · ASK PARENTS
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-kid-ask-parents">
+        <div class="k-topbar">
+          <div class="k-topbar-pill">
+            <img
+              class="k-crystal"
+              src="assets/bonusbox/kids/topbar/Csytal.png"
+              alt=""
+              onclick="go('s-landing')"
+            />
+            <div class="k-right">
+              <img class="k-notif" src="assets/bonusbox/kids/topbar/notification-icon.svg" alt="" />
+              <div class="k-avatar">E</div>
+            </div>
+          </div>
+        </div>
+        <div class="k-modal-back-bar">
+          <button class="k-back-btn" onclick="go('s-kid-balance')">&#8249;</button>
+        </div>
+        <div class="k-modal-overlay" onclick="go('s-kid-balance')">
+          <div class="k-modal-wrap" onclick="event.stopPropagation()">
+            <div class="k-modal-icon-ring">
+              <div class="k-modal-icon-clip">
+                <img src="assets/bonusbox/kids/wallet-actions/Icon Button-3.svg" alt="" />
+              </div>
+            </div>
+            <div class="k-modal-card">
+              <div class="k-modal-q">Want more screen time? Ask your parents!</div>
+              <div class="k-modal-remaining" style="margin-top: 4px">
+                <div class="k-rem-header">
+                  <span class="k-rem-label">You have</span>
+                  <span class="k-rem-value">22 mins 32 sec</span>
+                </div>
+                <div class="k-rem-bar">
+                  <div class="k-rem-fill" style="width: 37.6%"></div>
+                </div>
+              </div>
+              <p class="k-ask-note">Your parents will set how much extra time you get.</p>
+              <button class="k-modal-action" onclick="go('s-kid-balance')">Ask Parents</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- .phone -->
+
+    <!-- Notification Modal Overlay -->
+    <div class="modal-overlay" id="notificationOverlay" onclick="closeNotificationModal()"></div>
+
+    <!-- Notification Modal -->
+    <div class="notification-modal" id="notificationModal">
+      <div class="modal-header">
+        <h2 class="modal-title">通知</h2>
+        <button class="modal-close" onclick="closeNotificationModal()">✕</button>
+      </div>
+      <div class="notification-list" id="notificationList"></div>
+    </div>
+
+    <script>
+      const _mins = { buy: 2, save: 2, ask: 15 };
+      const _minVal = { buy: 2, save: 2, ask: 1 };
+      let currentSecs = 1352; // mutable — updates on buy/save
+      const TOTAL_SECS = 3600;
+
+      function fmtTime(secs) {
+        const m = Math.floor(secs / 60);
+        const s = secs % 60;
+        return m + " min" + (m !== 1 ? "s" : "") + (s > 0 ? " " + s + " sec" : "");
+      }
+
+      function updateRemaining(type) {
+        const rem =
+          type === "save"
+            ? Math.max(0, currentSecs - _mins[type] * 60)
+            : Math.min(TOTAL_SECS, currentSecs + _mins[type] * 60);
+        const valEl = document.getElementById(type + "-rem-value");
+        const fillEl = document.getElementById(type + "-rem-fill");
+        if (valEl) valEl.textContent = fmtTime(rem);
+        if (fillEl) fillEl.style.width = ((rem / TOTAL_SECS) * 100).toFixed(1) + "%";
+      }
+
+      function syncAllTimers() {
+        const t = fmtTime(currentSecs);
+        const pct = ((currentSecs / TOTAL_SECS) * 100).toFixed(1) + "%";
+        document.querySelectorAll(".k-dyn-time").forEach((el) => (el.textContent = t));
+        document.querySelectorAll(".k-dyn-fill").forEach((el) => (el.style.width = pct));
+      }
+
+      function confirmAction(type) {
+        if (type === "save") currentSecs = Math.max(0, currentSecs - _mins[type] * 60);
+        else if (type === "buy") currentSecs = Math.min(TOTAL_SECS, currentSecs + _mins[type] * 60);
+        syncAllTimers();
+        go("s-kid-balance");
+      }
+
+      function adjustMins(type, delta) {
+        _mins[type] = Math.max(_minVal[type], _mins[type] + delta);
+        document.getElementById(type + "-mins").textContent = _mins[type];
+        const costEl = document.getElementById(type + "-cost");
+        if (costEl) costEl.textContent = Math.round(_mins[type] * 0.5);
+        updateRemaining(type);
+      }
+      function switchCatTab(el, cat) {
+        el.closest(".sc-cat-tabs").querySelectorAll(".sc-cat-tab").forEach((t) => t.classList.remove("on"));
+        el.classList.add("on");
+        el.closest(".sc-body-lockdown").querySelectorAll(".sc-cat-body").forEach((b) => (b.style.display = "none"));
+        document.getElementById("cat-" + cat).style.display = "flex";
+      }
+
+      function switchScTab(el, tab) {
+        el.closest(".sc-tab-row")
+          .querySelectorAll(".sc-tab")
+          .forEach((t) => t.classList.remove("on"));
+        el.classList.add("on");
+        const screen = document.getElementById("s-parent-control");
+        screen.querySelector(".sc-body-playtime").style.display =
+          tab === "playtime" ? "flex" : "none";
+        screen.querySelector(".sc-body-lockdown").style.display =
+          tab === "lockdown" ? "flex" : "none";
+      }
+
+      function go(id) {
+        document.querySelectorAll(".screen").forEach((s) => s.classList.remove("active"));
+        document.getElementById(id).classList.add("active");
+        window.scrollTo(0, 0);
+        if (id === "s-kid-buy-time") {
+          _mins.buy = _minVal.buy;
+          document.getElementById("buy-mins").textContent = _mins.buy;
+          updateRemaining("buy");
+        }
+        if (id === "s-kid-save-time") {
+          _mins.save = _minVal.save;
+          document.getElementById("save-mins").textContent = _mins.save;
+          updateRemaining("save");
+        }
+        // Update URL with screen parameter
+        const params = new URLSearchParams();
+        params.set("screen", id);
+        window.history.pushState({ screen: id }, "", `?${params.toString()}`);
+      }
+
+      // Initialize screen based on URL parameter or default to landing
+      function initializeScreen() {
+        const params = new URLSearchParams(window.location.search);
+        const screenId = params.get("screen");
+
+        if (screenId && document.getElementById(screenId)) {
+          document.querySelectorAll(".screen").forEach((s) => s.classList.remove("active"));
+          document.getElementById(screenId).classList.add("active");
+          window.scrollTo(0, 0);
+        } else {
+          // Default to landing screen
+          document.getElementById("s-landing").classList.add("active");
+        }
+      }
+
+      // Handle browser back/forward buttons
+      window.addEventListener("popstate", (event) => {
+        if (event.state && event.state.screen) {
+          const screen = event.state.screen;
+          document.querySelectorAll(".screen").forEach((s) => s.classList.remove("active"));
+          document.getElementById(screen).classList.add("active");
+          window.scrollTo(0, 0);
+        }
+      });
+
+      // Notification Modal Functions
+      function openNotificationModal() {
+        const modal = document.getElementById("notificationModal");
+        modal.classList.add("active");
+      }
+
+      function closeNotificationModal() {
+        const modal = document.getElementById("notificationModal");
+        modal.classList.remove("active");
+      }
+
+      // Close modal when pressing Escape key
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeNotificationModal();
+        }
+      });
+
+      // Initialize on page load
+      document.addEventListener("DOMContentLoaded", initializeScreen);
+    </script>
+  </body>
+</html>
