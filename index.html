@@ -1601,6 +1601,25 @@
         flex-direction: column;
         gap: 10px;
       }
+      .sc-unlock-cond {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        padding: 11px 14px;
+        cursor: pointer;
+      }
+      .sc-unlock-cond-label {
+        font-size: 14px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .sc-unlock-cond-arrow {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.45);
+      }
 
       /* ── ART CLUB ── */
       #s-art-club {
@@ -1900,7 +1919,7 @@
       .gdc-parent-body,
       .gdc-kid-body {
         flex: 1;
-        overflow-y: hidden;
+        overflow: hidden;
         padding: 12px 16px 16px;
         scrollbar-width: none;
       }
@@ -1908,8 +1927,8 @@
       .gdc-kid-body::-webkit-scrollbar {
         display: none;
       }
-
       .gdc-parent-body {
+        overflow-y: auto;
         background: rgba(0, 0, 0, 0.8);
       }
       .gdc-modal {
@@ -3168,7 +3187,6 @@
             <p class="sc-lock-title">Locked Applications</p>
             <div class="sc-lock-actions">
               <span class="sc-filter-icon">&#9776;</span>
-              <img src="assets/bonusbox/parents/navbar/search.svg" class="sc-search-icon" alt="" />
             </div>
           </div>
           <p class="sc-lock-desc">Different app types can have different unlock conditions.</p>
@@ -3180,7 +3198,7 @@
             <div class="sc-cat-tab" onclick="switchCatTab(this, 'social')">Social</div>
           </div>
 
-          <!-- Gaming -->
+          <!-- Gaming: Roblox, Pokémon GO, Clash of Clans, Candy Crush, Minecraft, Cookie Run, Fortnite -->
           <div class="sc-cat-body" id="cat-gaming">
             <div class="sc-lock-grid">
               <div class="sc-app-wrap locked">
@@ -3193,96 +3211,69 @@
               </div>
               <div class="sc-app-wrap locked">
                 <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
-                <img src="assets/bonusbox/parents/apps/image-2.png" class="sc-app-icon" />
-              </div>
-              <div class="sc-app-wrap locked">
-                <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
                 <img src="assets/bonusbox/parents/apps/image-3.png" class="sc-app-icon" />
               </div>
               <div class="sc-app-wrap locked">
                 <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
                 <img src="assets/bonusbox/parents/apps/image-4.png" class="sc-app-icon" />
               </div>
-            </div>
-            <div class="sc-lock-all-row">
-              <span class="sc-lock-icon">&#128274;</span>
-              <span class="sc-lock-all-label">Lock All</span>
-            </div>
-            <div class="sc-lock-grid">
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image.png" class="sc-app-icon" />
-              </div>
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image-1.png" class="sc-app-icon" />
-              </div>
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image-2.png" class="sc-app-icon" />
-              </div>
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image-3.png" class="sc-app-icon" />
-              </div>
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image-4.png" class="sc-app-icon" />
-              </div>
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image-5.png" class="sc-app-icon" />
-              </div>
-            </div>
-          </div>
-
-          <!-- Video -->
-          <div class="sc-cat-body" id="cat-video" style="display: none">
-            <div class="sc-lock-grid">
               <div class="sc-app-wrap locked">
                 <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
                 <img src="assets/bonusbox/parents/apps/image 2.png" class="sc-app-icon" />
               </div>
               <div class="sc-app-wrap locked">
                 <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
-                <img src="assets/bonusbox/parents/apps/image 2-1.png" class="sc-app-icon" />
+                <img src="assets/bonusbox/parents/apps/image 2-2.png" class="sc-app-icon" />
               </div>
               <div class="sc-app-wrap locked">
                 <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
-                <img src="assets/bonusbox/parents/apps/image 2-2.png" class="sc-app-icon" />
+                <img src="assets/bonusbox/parents/apps/image 2-3.png" class="sc-app-icon" />
               </div>
             </div>
-            <div class="sc-lock-all-row">
-              <span class="sc-lock-icon">&#128274;</span>
-              <span class="sc-lock-all-label">Lock All</span>
-            </div>
-            <div class="sc-lock-grid">
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image-6.png" class="sc-app-icon" />
-              </div>
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image-7.png" class="sc-app-icon" />
-              </div>
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image-8.png" class="sc-app-icon" />
-              </div>
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image-9.png" class="sc-app-icon" />
-              </div>
+            <div class="sc-unlock-cond">
+              <span class="sc-unlock-cond-label">Unlocked condition</span>
+              <span class="sc-unlock-cond-arrow">&#8250;</span>
             </div>
           </div>
 
-          <!-- Social -->
+          <!-- Video: YouTube Kids -->
+          <div class="sc-cat-body" id="cat-video" style="display: none">
+            <div class="sc-lock-grid">
+              <div class="sc-app-wrap locked">
+                <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+                <img src="assets/bonusbox/parents/apps/image-2.png" class="sc-app-icon" />
+              </div>
+            </div>
+            <div class="sc-unlock-cond">
+              <span class="sc-unlock-cond-label">Unlocked condition</span>
+              <span class="sc-unlock-cond-arrow">&#8250;</span>
+            </div>
+          </div>
+
+          <!-- Social: Instagram, TikTok -->
           <div class="sc-cat-body" id="cat-social" style="display: none">
             <div class="sc-lock-grid">
               <div class="sc-app-wrap locked">
                 <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
-                <img src="assets/bonusbox/parents/apps/image 2-3.png" class="sc-app-icon" />
+                <img src="assets/bonusbox/parents/apps/image 2-1.png" class="sc-app-icon" />
               </div>
               <div class="sc-app-wrap locked">
                 <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
                 <img src="assets/bonusbox/parents/apps/image 2-4.png" class="sc-app-icon" />
               </div>
             </div>
-            <div class="sc-lock-all-row">
-              <span class="sc-lock-icon">&#128274;</span>
-              <span class="sc-lock-all-label">Lock All</span>
+            <div class="sc-unlock-cond">
+              <span class="sc-unlock-cond-label">Unlocked condition</span>
+              <span class="sc-unlock-cond-arrow">&#8250;</span>
             </div>
-            <div class="sc-lock-grid">
+          </div>
+
+          <!-- Static unlocked apps (not affected by category tabs) -->
+          <div class="sc-lock-all-row">
+            <span class="sc-lock-icon">&#128274;</span>
+            <span class="sc-lock-all-label">Lock All</span>
+          </div>
+          <div class="sc-lock-grid">
               <div class="sc-app-wrap">
                 <img src="assets/bonusbox/parents/apps/unlocked/image-10.png" class="sc-app-icon" />
               </div>
@@ -3302,7 +3293,6 @@
                 <img src="assets/bonusbox/parents/apps/unlocked/image-15.png" class="sc-app-icon" />
               </div>
             </div>
-          </div>
         </div>
 
         <div class="p-bottom">
