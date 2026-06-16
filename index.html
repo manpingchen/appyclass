@@ -1800,13 +1800,13 @@
       }
       .float-back {
         position: absolute;
-        top: 14px;
-        left: 14px;
+        top: 16px;
+        left: 16px;
         z-index: 100;
         width: 38px;
         height: 38px;
         border-radius: 50%;
-        background: rgba(0, 0, 0, 0.38);
+        background: rgba(88, 88, 88, 0.38);
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
         border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1818,16 +1818,17 @@
         font-size: 22px;
         line-height: 1;
         padding-right: 2px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.38);
       }
       .float-next {
         position: absolute;
-        top: 14px;
-        right: 14px;
+        top: 16px;
+        right: 64px;
         z-index: 100;
         width: 38px;
         height: 38px;
         border-radius: 50%;
-        background: rgba(0, 0, 0, 0.38);
+        background: rgba(88, 88, 88, 0.38);
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
         border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1839,6 +1840,7 @@
         font-size: 22px;
         line-height: 1;
         padding-left: 2px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.38);
       }
       /* ── ART CLUB DETAIL ── */
       #s-art-club-detail {
@@ -1874,14 +1876,17 @@
         display: flex;
         align-items: center;
         gap: 5px;
-        background: rgba(255,255,255,0.72);
+        background: rgba(255, 255, 255, 0.72);
         border-radius: 999px;
         padding: 5px 11px;
         font-size: 12px;
         font-weight: 700;
         color: #1a2c6e;
       }
-      .acd-meta-pill img { width: 14px; height: 14px; }
+      .acd-meta-pill img {
+        width: 14px;
+        height: 14px;
+      }
       .acd-desc {
         font-size: 13px;
         line-height: 1.65;
@@ -1916,7 +1921,11 @@
         flex-shrink: 0;
         margin-top: 1px;
       }
-      .acd-step-text { font-size: 13px; color: #2a3560; line-height: 1.5; }
+      .acd-step-text {
+        font-size: 13px;
+        color: #2a3560;
+        line-height: 1.5;
+      }
       .acd-start-btn {
         width: 100%;
         padding: 14px;
@@ -1945,9 +1954,19 @@
         justify-content: space-between;
         flex-shrink: 0;
       }
-      .acs-logo { height: 48px; object-fit: contain; }
-      .acs-topbar-right { display: flex; align-items: center; gap: 6px; }
-      .acs-icon-btn { width: 36px; height: 36px; }
+      .acs-logo {
+        height: 48px;
+        object-fit: contain;
+      }
+      .acs-topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .acs-icon-btn {
+        width: 36px;
+        height: 36px;
+      }
       .acs-title {
         font-family: "Londrina Solid", sans-serif;
         font-size: 24px;
@@ -1965,7 +1984,9 @@
         flex-shrink: 0;
         scrollbar-width: none;
       }
-      .acs-thumb-row::-webkit-scrollbar { display: none; }
+      .acs-thumb-row::-webkit-scrollbar {
+        display: none;
+      }
       .acs-thumb {
         display: flex;
         flex-direction: column;
@@ -1983,7 +2004,9 @@
         border: 2.5px solid transparent;
         transition: border-color 0.15s;
       }
-      .acs-thumb.on .acs-thumb-img { border-color: #1a2c6e; }
+      .acs-thumb.on .acs-thumb-img {
+        border-color: #1a2c6e;
+      }
       .acs-thumb-label {
         font-size: 11px;
         font-weight: 700;
@@ -2006,17 +2029,23 @@
       }
       .acs-step-title {
         font-family: "Londrina Solid", sans-serif;
-        font-size: 26px;
+        font-size: 32px;
         font-weight: 400;
         color: #1a2c6e;
         text-align: center;
       }
+      .acs-img-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 10px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      }
       .acs-main-img {
         width: 100%;
-        border-radius: 14px;
+        border-radius: 10px;
         aspect-ratio: 4 / 3;
         object-fit: cover;
-        background: #fff;
+        display: block;
       }
       .acs-desc {
         font-size: 14px;
@@ -2043,13 +2072,14 @@
         justify-content: space-between;
         padding: 10px 20px 18px;
         flex-shrink: 0;
-        background: rgba(255,255,255,0.35);
-        backdrop-filter: blur(4px);
+        background-image: url("assets/club/art/navbar-bg.png");
+        background-size: cover;
+        background-position: center;
       }
       .acs-leave {
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 700;
-        color: #666;
+        color: #444;
         cursor: pointer;
       }
       .acs-progress-wrap {
@@ -2066,7 +2096,7 @@
         width: 80px;
         height: 6px;
         border-radius: 999px;
-        background: rgba(0,0,0,0.12);
+        background: rgba(0, 0, 0, 0.12);
         overflow: hidden;
       }
       .acs-progress-fill {
@@ -3899,8 +3929,8 @@
             </div>
           </div>
           <p class="acd-desc">
-            Learn the ancient Japanese art of origami by folding a beautiful paper crane.
-            Use any square paper you like — the more colourful, the better!
+            Learn the ancient Japanese art of origami by folding a beautiful paper crane. Use any
+            square paper you like — the more colourful, the better!
           </p>
           <div class="acd-steps-title">What you need</div>
           <div class="acd-step">
@@ -3957,9 +3987,18 @@
 
         <div class="acs-body">
           <div class="acs-step-title" id="acs-step-title">Step 1</div>
-          <img class="acs-main-img" id="acs-main-img" src="assets/club/art/paper crane/demo.png" alt="" />
-          <p class="acs-desc" id="acs-desc">Fold the paper into a big triangle.<br>Fold again to make a smaller triangle.</p>
-          <button class="acs-next-btn" id="acs-next-btn" onclick="nextCraneStep()">Next Step &rsaquo;</button>
+          <img
+            class="acs-main-img"
+            id="acs-main-img"
+            src="assets/club/art/paper crane/demo.png"
+            alt=""
+          />
+          <p class="acs-desc" id="acs-desc">
+            Fold the paper into a big triangle.<br />Fold again to make a smaller triangle.
+          </p>
+          <button class="acs-next-btn" id="acs-next-btn" onclick="nextCraneStep()">
+            Next Step &rsaquo;
+          </button>
         </div>
 
         <div class="acs-footer">
@@ -3967,7 +4006,7 @@
           <div class="acs-progress-wrap">
             <span class="acs-progress-label">Progress</span>
             <div class="acs-progress-bar">
-              <div class="acs-progress-fill" id="acs-progress-fill" style="width:25%"></div>
+              <div class="acs-progress-fill" id="acs-progress-fill" style="width: 25%"></div>
             </div>
           </div>
         </div>
@@ -4119,40 +4158,54 @@
 
       // Initialize on page load
       document.addEventListener("DOMContentLoaded", initializeScreen);
-    
-  const craneSteps = [
-    { img: 'assets/club/art/paper crane/demo.png', text: 'Fold the paper into a big triangle.<br>Fold again to make a smaller triangle.' },
-    { img: 'assets/club/art/paper crane/Rectangle 2-1.png', text: 'Open the top layer and press it flat<br>to form a neat square shape.' },
-    { img: 'assets/club/art/paper crane/Rectangle 2-2.png', text: 'Fold both bottom edges up to the<br>centre line to create the wings.' },
-    { img: 'assets/club/art/paper crane/Rectangle 2-3.png', text: 'Gently pull the wings apart and<br>your paper crane is complete!' },
-  ];
-  let craneStep = 0;
 
-  function startCraneSteps() {
-    craneStep = 0;
-    goCraneStep(0);
-    go('s-art-club-steps');
-  }
+      const craneSteps = [
+        {
+          img: "assets/club/art/paper crane/demo.png",
+          text: "Fold the paper into a big triangle.<br>Fold again to make a smaller triangle.",
+        },
+        {
+          img: "assets/club/art/paper crane/Rectangle 2-1.png",
+          text: "Open the top layer and press it flat<br>to form a neat square shape.",
+        },
+        {
+          img: "assets/club/art/paper crane/Rectangle 2-2.png",
+          text: "Fold both bottom edges up to the<br>centre line to create the wings.",
+        },
+        {
+          img: "assets/club/art/paper crane/Rectangle 2-3.png",
+          text: "Gently pull the wings apart and<br>your paper crane is complete!",
+        },
+      ];
+      let craneStep = 0;
 
-  function goCraneStep(n) {
-    craneStep = n;
-    const total = craneSteps.length;
-    document.getElementById('acs-step-title').textContent = 'Step ' + (n + 1);
-    document.getElementById('acs-main-img').src = craneSteps[n].img;
-    document.getElementById('acs-desc').innerHTML = craneSteps[n].text;
-    document.getElementById('acs-progress-fill').style.width = ((n + 1) / total * 100) + '%';
-    const btn = document.getElementById('acs-next-btn');
-    btn.textContent = n < total - 1 ? 'Next Step ›' : 'Finish ✓';
-    document.querySelectorAll('.acs-thumb').forEach((t, i) => t.classList.toggle('on', i === n));
-  }
+      function startCraneSteps() {
+        craneStep = 0;
+        goCraneStep(0);
+        go("s-art-club-steps");
+      }
 
-  function nextCraneStep() {
-    if (craneStep < craneSteps.length - 1) {
-      goCraneStep(craneStep + 1);
-    } else {
-      go('s-art-club');
-    }
-  }
-</script>
+      function goCraneStep(n) {
+        craneStep = n;
+        const total = craneSteps.length;
+        document.getElementById("acs-step-title").textContent = "Step " + (n + 1);
+        document.getElementById("acs-main-img").src = craneSteps[n].img;
+        document.getElementById("acs-desc").innerHTML = craneSteps[n].text;
+        document.getElementById("acs-progress-fill").style.width = ((n + 1) / total) * 100 + "%";
+        const btn = document.getElementById("acs-next-btn");
+        btn.textContent = n < total - 1 ? "Next Step ›" : "Finish ✓";
+        document
+          .querySelectorAll(".acs-thumb")
+          .forEach((t, i) => t.classList.toggle("on", i === n));
+      }
+
+      function nextCraneStep() {
+        if (craneStep < craneSteps.length - 1) {
+          goCraneStep(craneStep + 1);
+        } else {
+          go("s-art-club");
+        }
+      }
+    </script>
   </body>
 </html>
