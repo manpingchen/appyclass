@@ -1058,10 +1058,22 @@
         grid-template-columns: repeat(4, 1fr);
         gap: 10px;
       }
+      .k-grid-crystal-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
       .k-grid-crystal {
         width: 100%;
         aspect-ratio: 1;
         object-fit: contain;
+      }
+      .k-grid-crystal-date {
+        font-size: 9px;
+        color: rgba(255, 255, 255, 0.45);
+        text-align: center;
+        line-height: 1.2;
       }
       .k-trophy-row {
         display: flex;
@@ -1073,6 +1085,7 @@
       .k-trophy-img {
         width: 90px;
         object-fit: contain;
+        filter: drop-shadow(0 0 8px rgba(100,210,255,0.7)) drop-shadow(0 0 16px rgba(80,180,255,0.35));
       }
 
       .k-unlock-msg {
@@ -1719,6 +1732,68 @@
         padding-right: 2px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.38);
         transform: translateY(-50%) rotate(-90deg);
+      }
+
+      /* ── ACTIVITY UNLOCK SCREEN ── */
+      #s-activity-unlock {
+        background: #1a1a8e;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+      }
+      .au-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 32px 24px 40px;
+        text-align: center;
+        width: 100%;
+      }
+      .au-title {
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 2.4rem;
+        font-weight: 900;
+        color: #ffaa2a;
+        line-height: 1.1;
+        margin-bottom: 32px;
+        -webkit-text-stroke: 1.5px #fff;
+        paint-order: stroke fill;
+        font-style: italic;
+      }
+      .au-tv-wrap {
+        position: relative;
+        width: 200px;
+        margin-bottom: 28px;
+      }
+      .au-tv {
+        width: 100%;
+        object-fit: contain;
+        position: relative;
+        z-index: 1;
+      }
+      .au-star {
+        position: absolute;
+        z-index: 0;
+      }
+      .au-label {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 24px;
+        letter-spacing: 0.01em;
+      }
+      .au-btn {
+        background: #3d3db8;
+        border-radius: 18px;
+        padding: 18px 24px;
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 1.5rem;
+        color: #fff;
+        font-weight: 400;
+        width: 100%;
+        cursor: pointer;
+        line-height: 1.2;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.3);
       }
 
       /* ── TROPHIES SECTION CARDS ── */
@@ -4028,7 +4103,7 @@
               <img src="assets/bonusbox/kids/reward-nav/money.svg" class="k-bal-icon" />
               <p class="k-bal-num"><span class="currency-sign">£</span>2.50</p>
             </div>
-            <div class="k-bal-item k-bal-dim">
+            <div class="k-bal-item k-bal-dim" onclick="go('s-activity-unlock')">
               <img src="assets/bonusbox/kids/reward-nav/activity.svg" class="k-bal-icon" />
               <p class="k-bal-num">5</p>
             </div>
@@ -4036,16 +4111,46 @@
 
           <!-- Crystal grid -->
           <div class="k-crystal-grid">
-            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-            <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+            <div class="k-grid-crystal-wrap">
+              <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+              <span class="k-grid-crystal-date">Jun 9</span>
+            </div>
+            <div class="k-grid-crystal-wrap">
+              <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+              <span class="k-grid-crystal-date">Jun 9</span>
+            </div>
+            <div class="k-grid-crystal-wrap">
+              <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+              <span class="k-grid-crystal-date">Jun 10</span>
+            </div>
+            <div class="k-grid-crystal-wrap">
+              <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+              <span class="k-grid-crystal-date">Jun 10</span>
+            </div>
+            <div class="k-grid-crystal-wrap">
+              <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+              <span class="k-grid-crystal-date">Jun 11</span>
+            </div>
+            <div class="k-grid-crystal-wrap">
+              <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+              <span class="k-grid-crystal-date">Jun 12</span>
+            </div>
+            <div class="k-grid-crystal-wrap">
+              <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+              <span class="k-grid-crystal-date">Jun 13</span>
+            </div>
+            <div class="k-grid-crystal-wrap">
+              <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+              <span class="k-grid-crystal-date">Jun 14</span>
+            </div>
+            <div class="k-grid-crystal-wrap">
+              <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+              <span class="k-grid-crystal-date">Jun 15</span>
+            </div>
+            <div class="k-grid-crystal-wrap">
+              <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" style="filter: drop-shadow(0 0 6px rgba(100,210,255,0.75)) drop-shadow(0 0 12px rgba(80,180,255,0.45));" />
+              <span class="k-grid-crystal-date" style="color:rgba(140,220,255,0.8);">Jun 16</span>
+            </div>
           </div>
         </div>
 
@@ -4826,6 +4931,28 @@
               <button class="k-modal-action" onclick="confirmAction('save')">Save</button>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     KID · ACTIVITY UNLOCK
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-activity-unlock">
+        <div class="float-back" onclick="go('s-kid-balance')">&#8249;</div>
+        <div class="au-wrap">
+          <p class="au-title">You've unlocked<br>an activity!</p>
+
+          <div class="au-tv-wrap">
+            <!-- stars behind TV -->
+            <img src="assets/bonusbox/kids/celebrate-star.svg" class="au-star" style="width:60px;top:-22px;left:-28px;transform:rotate(-15deg);" />
+            <img src="assets/bonusbox/kids/celebrate-star.svg" class="au-star" style="width:42px;top:-14px;right:-18px;transform:rotate(20deg);" />
+            <img src="assets/bonusbox/kids/celebrate-star.svg" class="au-star" style="width:30px;bottom:10px;left:-20px;transform:rotate(10deg);" />
+            <img src="assets/bonusbox/kids/celebrate-star.svg" class="au-star" style="width:24px;bottom:20px;right:-14px;transform:rotate(-8deg);" />
+            <img src="assets/bonusbox/rewards/activities.png" class="au-tv" />
+          </div>
+
+          <p class="au-label">30 mins of TV time</p>
+          <div class="au-btn">Show this to a parent<br>to redeem!</div>
         </div>
       </div>
 
