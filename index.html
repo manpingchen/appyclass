@@ -1535,6 +1535,144 @@
         flex-direction: column;
         gap: 10px;
       }
+
+      /* ── ART CLUB ── */
+      #s-art-club { background: #c5e3f5; }
+      .ac-header {
+        background: #c5e3f5;
+        padding: 14px 16px 0;
+        flex-shrink: 0;
+      }
+      .ac-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 6px;
+      }
+      .ac-logo { height: 48px; object-fit: contain; }
+      .ac-topbar-right { display: flex; align-items: center; gap: 6px; }
+      .ac-icon-btn { width: 36px; height: 36px; cursor: pointer; }
+      .ac-star-row {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 4px;
+      }
+      .ac-star-icon { width: 22px; height: 22px; }
+      .ac-star-count {
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 22px;
+        color: #1a2c6e;
+        line-height: 1;
+      }
+      .ac-greeting-h1 {
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 30px;
+        color: #1a2c6e;
+        line-height: 1.1;
+        margin: 0;
+        font-weight: 400;
+      }
+      .ac-greeting-sub {
+        font-size: 13px;
+        font-weight: 700;
+        color: #1a2c6e;
+        margin: 3px 0 14px;
+      }
+      .ac-filter-row {
+        display: flex;
+        gap: 8px;
+        padding: 0 16px 12px;
+        overflow-x: auto;
+        flex-shrink: 0;
+        background: #c5e3f5;
+        scrollbar-width: none;
+      }
+      .ac-filter-row::-webkit-scrollbar { display: none; }
+      .ac-filter-pill {
+        background: white;
+        border-radius: 20px;
+        padding: 7px 11px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+        flex-shrink: 0;
+        color: #1a1a1a;
+      }
+      .ac-filter-icon { width: 14px; height: 14px; }
+      .ac-arrow-icon { width: 12px; height: 12px; opacity: 0.6; }
+      .ac-body {
+        flex: 1;
+        overflow-y: auto;
+        background: #daeef9;
+        padding: 14px 12px 14px;
+      }
+      .ac-card-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .ac-card {
+        background: white;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      }
+      .ac-card-title {
+        font-size: 13px;
+        font-weight: 800;
+        color: #1a1a1a;
+        padding: 9px 9px 5px;
+        line-height: 1.2;
+      }
+      .ac-card-img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+      .ac-card-meta {
+        padding: 7px 9px 9px;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+      .ac-meta-row {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 11px;
+        color: #555;
+      }
+      .ac-meta-icon { width: 13px; height: 13px; flex-shrink: 0; }
+      .ac-bottom {
+        display: flex;
+        flex-shrink: 0;
+        background-image: url("assets/club/art/navbar-bg.png");
+        background-size: cover;
+        background-position: center top;
+        border-top: 1px solid rgba(0,0,0,0.08);
+      }
+      .ac-bnav {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        padding: 10px 0 18px;
+        cursor: pointer;
+      }
+      .ac-bnav img { width: 30px; height: 30px; }
+      .ac-bnav span {
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 13px;
+        color: #1a1a1a;
+        font-weight: 400;
+      }
     </style>
   </head>
   <body>
@@ -2884,12 +3022,141 @@
 
           <!-- App grid -->
           <div class="k-app-grid">
-            <img src="assets/bonusbox/kids/apps/app.png" class="k-app-tile" />
+            <img src="assets/bonusbox/kids/apps/app.png" class="k-app-tile" onclick="go('s-art-club')" style="cursor:pointer" />
             <img src="assets/bonusbox/kids/apps/app-1.png" class="k-app-tile" />
             <img src="assets/bonusbox/kids/apps/app-2.png" class="k-app-tile" />
             <img src="assets/bonusbox/kids/apps/app-3.png" class="k-app-tile" />
             <img src="assets/bonusbox/kids/apps/app-4.png" class="k-app-tile" />
             <img src="assets/bonusbox/kids/apps/app-5.png" class="k-app-tile" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     ART CLUB · DISCOVERY
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-art-club">
+        <div class="ac-header">
+          <div class="ac-topbar">
+            <img class="ac-logo" src="assets/club/art/Logo.png" alt="Art Makers" />
+            <div class="ac-topbar-right">
+              <img src="assets/club/art/navbar-icon/Icon Button.svg" class="ac-icon-btn" alt="" />
+              <img src="assets/club/art/navbar-icon/Icon Button-1.svg" class="ac-icon-btn" alt="" />
+              <img src="assets/club/art/navbar-icon/Icon Button-2.svg" class="ac-icon-btn" alt="" />
+            </div>
+          </div>
+          <div class="ac-star-row">
+            <img src="assets/club/art/navbar-icon/star.svg" class="ac-star-icon" alt="" />
+            <span class="ac-star-count">23</span>
+          </div>
+          <h1 class="ac-greeting-h1">Hello Ellie!</h1>
+          <p class="ac-greeting-sub">What do you want to make today?</p>
+        </div>
+
+        <div class="ac-filter-row">
+          <div class="ac-filter-pill">
+            <img src="assets/club/art/navbar-icon/level.svg" class="ac-filter-icon" alt="" />
+            Easy
+            <img src="assets/club/art/navbar-icon/arrow down.svg" class="ac-arrow-icon" alt="" />
+          </div>
+          <div class="ac-filter-pill">
+            Print Only
+            <img src="assets/club/art/navbar-icon/arrow down.svg" class="ac-arrow-icon" alt="" />
+          </div>
+          <div class="ac-filter-pill">
+            <img src="assets/club/art/navbar-icon/Customizable.svg" class="ac-filter-icon" alt="" />
+            <img src="assets/club/art/navbar-icon/arrow down.svg" class="ac-arrow-icon" alt="" />
+          </div>
+        </div>
+
+        <div class="ac-body">
+          <div class="ac-card-grid">
+            <div class="ac-card">
+              <div class="ac-card-title">Easter Hunting</div>
+              <img src="assets/club/art/images/easter.png" class="ac-card-img" alt="" />
+              <div class="ac-card-meta">
+                <div class="ac-meta-row">
+                  <img src="assets/club/art/navbar-icon/Clock.svg" class="ac-meta-icon" alt="" />
+                  <span>30 mins</span>
+                </div>
+                <div class="ac-meta-row">
+                  <img src="assets/club/art/navbar-icon/level.svg" class="ac-meta-icon" alt="" />
+                  <span>Easy</span>
+                </div>
+                <div class="ac-meta-row">
+                  <img src="assets/club/art/navbar-icon/Customizable.svg" class="ac-meta-icon" alt="" />
+                  <span>Customizable</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ac-card">
+              <div class="ac-card-title">My Windmill</div>
+              <img src="assets/club/art/images/crane.png" class="ac-card-img" alt="" />
+              <div class="ac-card-meta">
+                <div class="ac-meta-row">
+                  <img src="assets/club/art/navbar-icon/Clock.svg" class="ac-meta-icon" alt="" />
+                  <span>30 mins</span>
+                </div>
+                <div class="ac-meta-row">
+                  <img src="assets/club/art/navbar-icon/level.svg" class="ac-meta-icon" alt="" />
+                  <span>Easy</span>
+                </div>
+                <div class="ac-meta-row">
+                  <img src="assets/club/art/navbar-icon/Customizable.svg" class="ac-meta-icon" alt="" />
+                  <span>Customizable</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ac-card">
+              <div class="ac-card-title">Halloween Mask</div>
+              <img src="assets/club/art/images/halloween.png" class="ac-card-img" alt="" />
+              <div class="ac-card-meta">
+                <div class="ac-meta-row">
+                  <img src="assets/club/art/navbar-icon/Clock.svg" class="ac-meta-icon" alt="" />
+                  <span>45 mins</span>
+                </div>
+                <div class="ac-meta-row">
+                  <img src="assets/club/art/navbar-icon/level.svg" class="ac-meta-icon" alt="" />
+                  <span>Easy</span>
+                </div>
+                <div class="ac-meta-row">
+                  <img src="assets/club/art/navbar-icon/Customizable.svg" class="ac-meta-icon" alt="" />
+                  <span>Customizable</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ac-card">
+              <div class="ac-card-title">Escape Room</div>
+              <img src="assets/club/art/images/jean.png" class="ac-card-img" alt="" />
+              <div class="ac-card-meta">
+                <div class="ac-meta-row">
+                  <img src="assets/club/art/navbar-icon/Clock.svg" class="ac-meta-icon" alt="" />
+                  <span>60 mins</span>
+                </div>
+                <div class="ac-meta-row">
+                  <img src="assets/club/art/navbar-icon/level.svg" class="ac-meta-icon" alt="" />
+                  <span>Medium</span>
+                </div>
+                <div class="ac-meta-row">
+                  <img src="assets/club/art/navbar-icon/Customizable.svg" class="ac-meta-icon" alt="" />
+                  <span>Customizable</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ac-bottom">
+          <div class="ac-bnav on">
+            <img src="assets/club/art/navbar-icon/Sparks.svg" alt="" />
+            <span>Discovery</span>
+          </div>
+          <div class="ac-bnav">
+            <img src="assets/club/art/navbar-icon/Trophy.svg" alt="" />
+            <span>My Achievements</span>
           </div>
         </div>
       </div>
