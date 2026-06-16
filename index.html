@@ -1844,11 +1844,6 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.38);
       }
       /* ── ART CLUB DETAIL ── */
-      #s-art-club-detail {
-        background-image: url("assets/club/art/bg.jpg");
-        background-size: cover;
-        background-position: center top;
-      }
       .acd-hero {
         width: 100%;
         aspect-ratio: 4 / 3;
@@ -3461,7 +3456,7 @@
 ══════════════════════════════════════════ -->
       <div class="screen" id="s-art-club">
         <div class="float-back" onclick="go('s-kid-apps')">&#8249;</div>
-        <div class="float-next" onclick="go('s-art-club-detail')">&#8250;</div>
+        <div class="float-next" onclick="go('s-art-club-steps')">&#8250;</div>
         <div class="ac-header">
           <div class="ac-topbar">
             <img class="ac-logo" src="assets/club/art/Logo.png" alt="Art Makers" />
@@ -3893,70 +3888,10 @@
       </div>
 
       <!-- ══════════════════════════════════════════
-     ART CLUB · DETAIL (Paper Crane)
-══════════════════════════════════════════ -->
-      <div class="screen" id="s-art-club-detail">
-        <div class="acs-topbar">
-          <img class="acs-logo" src="assets/club/art/Logo.png" alt="Art Makers" />
-          <div class="acs-topbar-right">
-            <img src="assets/club/art/navbar-icon/Icon Button.svg" class="acs-icon-btn" alt="" />
-            <img src="assets/club/art/navbar-icon/Icon Button-1.svg" class="acs-icon-btn" alt="" />
-            <img src="assets/club/art/navbar-icon/Icon Button-2.svg" class="acs-icon-btn" alt="" />
-          </div>
-        </div>
-        <div class="float-back" onclick="go('s-art-club')">&#8249;</div>
-        <img class="acd-hero" src="assets/club/art/images/crane.png" alt="Paper Crane" />
-        <div class="acd-body">
-          <h1 class="acd-title">Paper Crane</h1>
-          <div class="acd-meta">
-            <div class="acd-meta-pill">
-              <img src="assets/club/art/navbar-icon/Clock.svg" alt="" />
-              30 mins
-            </div>
-            <div class="acd-meta-pill">
-              <img src="assets/club/art/navbar-icon/level.svg" alt="" />
-              Easy
-            </div>
-            <div class="acd-meta-pill">
-              <img src="assets/club/art/navbar-icon/Customizable.svg" alt="" />
-              Customizable
-            </div>
-          </div>
-          <p class="acd-desc">
-            Learn the ancient Japanese art of origami by folding a beautiful paper crane. Use any
-            square paper you like — the more colourful, the better!
-          </p>
-          <div class="acd-steps-title">What you need</div>
-          <div class="acd-step">
-            <div class="acd-step-num">1</div>
-            <div class="acd-step-text">One sheet of square paper (15 × 15 cm works great)</div>
-          </div>
-          <div class="acd-step">
-            <div class="acd-step-num">2</div>
-            <div class="acd-step-text">A flat surface to fold on</div>
-          </div>
-          <div class="acd-step">
-            <div class="acd-step-num">3</div>
-            <div class="acd-step-text">Optional: markers or stickers to decorate</div>
-          </div>
-          <button class="acd-start-btn" onclick="startCraneSteps()">Start Activity ✦</button>
-        </div>
-        <div class="ac-bottom">
-          <div class="ac-bnav on">
-            <img src="assets/club/art/navbar-icon/Sparks.svg" alt="" />
-            <span>Discovery</span>
-          </div>
-          <div class="ac-bnav">
-            <img src="assets/club/art/navbar-icon/Trophy.svg" alt="" />
-            <span>My Achievements</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ══════════════════════════════════════════
      ART CLUB · PAPER CRANE STEPS
 ══════════════════════════════════════════ -->
       <div class="screen" id="s-art-club-steps">
+        <div class="float-back" onclick="go('s-art-club')">&#8249;</div>
         <div class="acs-topbar">
           <img class="acs-logo" src="assets/club/art/Logo.png" alt="Art Makers" />
           <div class="acs-topbar-right">
@@ -3998,7 +3933,7 @@
         </div>
 
         <div class="acs-bottom">
-          <div class="acs-bnav" onclick="go('s-art-club-detail')">
+          <div class="acs-bnav" onclick="go('s-art-club')">
             <img src="assets/club/art/navbar-icon/Sparks.svg" alt="" />
             <span>Discovery</span>
             <div class="acs-progress-row">
