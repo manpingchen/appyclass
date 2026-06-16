@@ -1100,8 +1100,26 @@
       }
       .k-star {
         position: absolute;
-        font-size: 22px;
+        width: 42px;
+        height: 42px;
         pointer-events: none;
+        animation: starSpin 3s linear infinite;
+      }
+      .k-star img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      @keyframes starSpin {
+        0% {
+          transform: rotate(0deg) scale(1);
+        }
+        50% {
+          transform: rotate(180deg) scale(1.15);
+        }
+        100% {
+          transform: rotate(360deg) scale(1);
+        }
       }
 
       /* ══ KID APPS SCREEN ══ */
@@ -1132,7 +1150,6 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
-        flex: 1;
         margin-bottom: 14px;
       }
       .k-app-tile {
@@ -1416,7 +1433,6 @@
       .sc-card {
         background: #2d2880;
         border-radius: 16px;
-        overflow: hidden;
       }
       .sc-card-header {
         display: flex;
@@ -1471,7 +1487,6 @@
       .sc-app-add {
         width: 56px;
         height: 56px;
-        background: rgba(255, 255, 255, 0.08);
         border-radius: 12px;
         display: flex;
         align-items: center;
@@ -1619,6 +1634,151 @@
       .sc-unlock-cond-arrow {
         font-size: 18px;
         color: rgba(255, 255, 255, 0.45);
+      }
+
+      /* ── STORY SCREEN ── */
+      #s-story {
+        background: #000;
+        overflow: hidden;
+      }
+      .story-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+      .story-center {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+        padding-bottom: 80px;
+      }
+      .story-quiz {
+        width: 100%;
+        max-width: 400px;
+        object-fit: contain;
+      }
+      .story-bottom-nav {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        display: block;
+        z-index: 2;
+        background-color: white;
+      }
+
+      /* ── LANDSCAPE GAME ── */
+      #s-game-goose {
+        background: #000;
+        overflow: hidden;
+      }
+      .landscape-game-wrap {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100dvh;
+        height: 100dvw;
+        transform: translate(-50%, -50%) rotate(90deg);
+        transform-origin: center center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .landscape-game-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: white;
+      }
+      .landscape-back {
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        z-index: 100;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: rgba(88, 88, 88, 0.38);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #fff;
+        font-size: 22px;
+        line-height: 1;
+        padding-right: 2px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.38);
+        transform: translateY(-50%) rotate(-90deg);
+      }
+
+      /* ── TROPHIES SECTION CARDS ── */
+      .tr-section-card {
+        background: #11112b;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px 0 20px;
+      }
+      .tr-item {
+        background: rgba(37, 34, 112, 0.48);
+        border-radius: 10px;
+        padding: 12px 14px;
+        margin-bottom: 10px;
+      }
+      .tr-item-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .tr-item-title {
+        color: #fff;
+        font-size: 17px;
+        font-weight: 600;
+        flex: 1;
+      }
+      .tr-arrow {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+      .tr-icon {
+        width: 26px;
+        height: 26px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+      .tr-count {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        flex-shrink: 0;
+      }
+      .tr-edit {
+        width: 16px;
+        height: 16px;
+        opacity: 0.45;
+        flex-shrink: 0;
+      }
+      .tr-item-desc {
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 13px;
+        margin-top: 5px;
+      }
+      .tr-add {
+        text-align: center;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 400;
+        padding: 6px 0 2px;
       }
 
       /* ── ART CLUB ── */
@@ -2979,17 +3139,55 @@
             Special rewards celebrate consistent behaviour or completed challenges. Awarded
             instantly.
           </p>
+
           <p class="p-sec">Habit streaks</p>
-          <div class="r-row">
-            <img src="assets/bonusbox/parents/trophies/Frame 432.svg" alt="" />
+          <div class="tr-section-card">
+            <div class="tr-item">
+              <div class="tr-item-row">
+                <span class="tr-item-title">Morning Hero</span>
+                <span class="tr-arrow">→</span>
+                <img src="assets/bonusbox/rewards/trophy.png" class="tr-icon" alt="" />
+                <span class="tr-count">1</span>
+                <img src="assets/bonusbox/parents/edit.svg" class="tr-edit" alt="" />
+              </div>
+              <div class="tr-item-desc">Complete morning habits for 3 consecutive days</div>
+            </div>
+            <div class="tr-add">+ Add options</div>
           </div>
+
           <p class="p-sec">Challenges</p>
-          <div class="r-row">
-            <img src="assets/bonusbox/parents/trophies/Frame 432-1.svg" alt="" />
+          <div class="tr-section-card">
+            <div class="tr-item">
+              <div class="tr-item-row">
+                <span class="tr-item-title">Focus Week</span>
+                <span class="tr-arrow">→</span>
+                <img src="assets/bonusbox/rewards/trophy.png" class="tr-icon" alt="" />
+                <span class="tr-count">1</span>
+                <img src="assets/bonusbox/parents/edit.svg" class="tr-edit" alt="" />
+              </div>
+              <div class="tr-item-desc">Complete all special tasks during a week</div>
+            </div>
+            <div class="tr-add">+ Add options</div>
           </div>
+
           <p class="p-sec">Trophy to crystal conversion</p>
-          <div class="r-row">
-            <img src="assets/bonusbox/parents/trophies/Frame 433.svg" alt="" />
+          <div class="tr-section-card">
+            <div class="tr-item">
+              <div class="tr-item-row">
+                <img src="assets/bonusbox/rewards/trophy.png" class="tr-icon" alt="" />
+                <span class="tr-count">5</span>
+                <span class="tr-arrow">→</span>
+                <img src="assets/bonusbox/rewards/crystal.png" class="tr-icon" alt="" />
+                <span class="tr-count">1</span>
+                <img
+                  src="assets/bonusbox/parents/edit.svg"
+                  class="tr-edit"
+                  style="margin-left: auto"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="tr-add">+ Add options</div>
           </div>
         </div>
         <div class="p-bottom">
@@ -3056,8 +3254,35 @@
             achieved in Appy Club.
           </p>
           <p class="p-sec">Activities &amp; Unlock conditional</p>
-          <div class="r-row">
-            <img src="assets/bonusbox/parents/activities/Frame 432.svg " alt="" />
+          <div class="tr-section-card">
+            <div class="tr-item">
+              <div class="tr-item-row">
+                <img src="assets/bonusbox/rewards/crystal.png" class="tr-icon" alt="" />
+                <span class="tr-count">35</span>
+                <span class="tr-arrow">→</span>
+                <span class="tr-item-title">30 mins of TV time</span>
+                <img src="assets/bonusbox/parents/edit.svg" class="tr-edit" alt="" />
+              </div>
+            </div>
+            <div class="tr-item">
+              <div class="tr-item-row">
+                <img src="assets/bonusbox/rewards/trophy.png" class="tr-icon" alt="" />
+                <span class="tr-count">3</span>
+                <span class="tr-arrow">→</span>
+                <span class="tr-item-title">Pancake Morning</span>
+                <img src="assets/bonusbox/parents/edit.svg" class="tr-edit" alt="" />
+              </div>
+            </div>
+            <div class="tr-item">
+              <div class="tr-item-row">
+                <img src="assets/bonusbox/rewards/trophy.png" class="tr-icon" alt="" />
+                <span class="tr-count">10</span>
+                <span class="tr-arrow">→</span>
+                <span class="tr-item-title">Decide Friday night plan</span>
+                <img src="assets/bonusbox/parents/edit.svg" class="tr-edit" alt="" />
+              </div>
+            </div>
+            <div class="tr-add">+ Add options</div>
           </div>
         </div>
         <div class="p-bottom">
@@ -3274,25 +3499,25 @@
             <span class="sc-lock-all-label">Lock All</span>
           </div>
           <div class="sc-lock-grid">
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image-10.png" class="sc-app-icon" />
-              </div>
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image-11.png" class="sc-app-icon" />
-              </div>
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image-12.png" class="sc-app-icon" />
-              </div>
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image-13.png" class="sc-app-icon" />
-              </div>
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image-14.png" class="sc-app-icon" />
-              </div>
-              <div class="sc-app-wrap">
-                <img src="assets/bonusbox/parents/apps/unlocked/image-15.png" class="sc-app-icon" />
-              </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-10.png" class="sc-app-icon" />
             </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-11.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-12.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-13.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-14.png" class="sc-app-icon" />
+            </div>
+            <div class="sc-app-wrap">
+              <img src="assets/bonusbox/parents/apps/unlocked/image-15.png" class="sc-app-icon" />
+            </div>
+          </div>
         </div>
 
         <div class="p-bottom">
@@ -3795,13 +4020,13 @@
               <img src="assets/bonusbox/kids/crystal.png" class="k-bal-icon" />
               <p class="k-bal-num">22</p>
             </div>
-            <div class="k-bal-item k-bal-dim">
-              <img src="assets/bonusbox/kids/reward-nav/money.svg" class="k-bal-icon" />
-              <p class="k-bal-num"><span class="currency-sign">£</span>2.50</p>
-            </div>
             <div class="k-bal-item k-bal-dim" onclick="go('s-trophies')">
               <img src="assets/bonusbox/kids/trophy.png" class="k-bal-icon" />
               <p class="k-bal-num">3</p>
+            </div>
+            <div class="k-bal-item k-bal-dim">
+              <img src="assets/bonusbox/kids/reward-nav/money.svg" class="k-bal-icon" />
+              <p class="k-bal-num"><span class="currency-sign">£</span>2.50</p>
             </div>
             <div class="k-bal-item k-bal-dim">
               <img src="assets/bonusbox/kids/reward-nav/activity.svg" class="k-bal-icon" />
@@ -3897,24 +4122,44 @@
               style="cursor: pointer"
             />
             <img
-              src="assets/bonusbox/kids/apps/app-3.png"
+              src="assets/bonusbox/kids/apps/app-4.png"
               class="k-app-tile"
-              onclick="go('s-art-club')"
+              onclick="go('s-game-goose')"
               style="cursor: pointer"
             />
             <img
-              src="assets/bonusbox/kids/apps/app-4.png"
+              src="assets/bonusbox/kids/apps/app-3.png"
               class="k-app-tile"
-              onclick="go('s-art-club')"
               style="cursor: pointer"
             />
             <img
               src="assets/bonusbox/kids/apps/app-5.png"
               class="k-app-tile"
-              onclick="go('s-art-club')"
               style="cursor: pointer"
             />
           </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     STORY SCREEN
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-story">
+        <div class="float-back" onclick="go('s-kid-apps')">&#8249;</div>
+        <img src="assets/stories/bg.png" class="story-bg" alt="" />
+        <div class="story-center">
+          <img src="assets/stories/quiz.png" class="story-quiz" alt="" />
+        </div>
+        <img src="assets/stories/bottom-navbar.svg" class="story-bottom-nav" alt="" />
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     GAME · GOOSE (landscape)
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-game-goose">
+        <div class="landscape-back" onclick="go('s-kid-apps')">&#8249;</div>
+        <div class="landscape-game-wrap">
+          <img src="assets/games/goose.jpg" class="landscape-game-img" alt="" />
         </div>
       </div>
 
@@ -4374,13 +4619,13 @@
               <img src="assets/bonusbox/kids/crystal.png" class="k-bal-icon" />
               <p class="k-bal-num">22</p>
             </div>
-            <div class="k-bal-item k-bal-dim">
-              <img src="assets/bonusbox/kids/reward-nav/money.svg" class="k-bal-icon" />
-              <p class="k-bal-num"><span class="currency-sign">£</span>2.50</p>
-            </div>
             <div class="k-bal-item">
               <img src="assets/bonusbox/kids/trophy.png" class="k-bal-icon" />
               <p class="k-bal-num">3</p>
+            </div>
+            <div class="k-bal-item k-bal-dim">
+              <img src="assets/bonusbox/kids/reward-nav/money.svg" class="k-bal-icon" />
+              <p class="k-bal-num"><span class="currency-sign">£</span>2.50</p>
             </div>
             <div class="k-bal-item k-bal-dim">
               <img src="assets/bonusbox/kids/reward-nav/activity.svg" class="k-bal-icon" />
@@ -4397,9 +4642,17 @@
 
           <!-- Unlock message -->
           <div class="k-unlock-msg" onclick="go('s-unlock')">
-            <span class="k-star" style="top: -10px; left: 10px">⭐</span>
-            <span class="k-star" style="top: -10px; right: 10px">⭐</span>
-            <span class="k-star" style="bottom: 30px; left: 0px; font-size: 18px">⭐</span>
+            <span class="k-star" style="top: -10px; left: 5%"
+              ><img src="assets/bonusbox/kids/celebrate-star.svg" alt=""
+            /></span>
+            <span class="k-star" style="width: 28px; top: 10%; right: 10%; animation-delay: -1s"
+              ><img src="assets/bonusbox/kids/celebrate-star.svg" alt=""
+            /></span>
+            <span
+              class="k-star"
+              style="bottom: 30px; left: 15%; width: 18px; height: 18px; animation-delay: -2s"
+              ><img src="assets/bonusbox/kids/celebrate-star.svg" alt=""
+            /></span>
             <p class="k-unlock-nice">Nice! You've earned 3 trophies.</p>
             <p class="k-unlock-name">Pancake<br />Morning</p>
             <p class="k-unlock-sub">is now unlocked, enjoy!</p>
