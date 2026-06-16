@@ -320,7 +320,7 @@
       .r-row img {
         width: 100%;
       }
-      
+
       .r-toggle {
         width: 40px;
         height: 24px;
@@ -1609,8 +1609,16 @@
         background-image: url("assets/club/art/topbar-bg.png");
         background-size: cover;
         background-position: center bottom;
-        padding: 14px 16px 0;
+        padding: 0.25rem 1rem;
         flex-shrink: 0;
+      }
+      .ac-welcome {
+        padding: 2rem 1rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
       }
       .ac-topbar {
         display: flex;
@@ -1638,6 +1646,9 @@
         align-items: center;
         gap: 5px;
         margin-bottom: 4px;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
       }
       .ac-star-icon {
         width: 22px;
@@ -1645,21 +1656,22 @@
       }
       .ac-star-count {
         font-family: "Londrina Solid", sans-serif;
-        font-size: 22px;
+        font-size: 1.5rem;
         color: #1a2c6e;
         line-height: 1;
       }
       .ac-greeting-h1 {
         font-family: "Londrina Solid", sans-serif;
-        font-size: 30px;
+        font-size: 2rem;
         color: #1a2c6e;
         line-height: 1.1;
         margin: 0;
         font-weight: 400;
       }
       .ac-greeting-sub {
-        font-size: 13px;
-        font-weight: 700;
+        font-size: 1.2rem;
+        font-family: "Londrina Solid", sans-serif;
+        font-weight: 500;
         color: #1a2c6e;
         margin: 3px 0 14px;
       }
@@ -1715,14 +1727,17 @@
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
       .ac-card-title {
-        font-size: 13px;
-        font-weight: 800;
+        font-size: 1.5rem;
+        font-weight: 500;
         color: #1a1a1a;
-        padding: 9px 9px 5px;
+        font-family: "Londrina Solid", sans-serif;
+        padding: 0.75rem 0.75rem 0.5rem;
         line-height: 1.2;
+        letter-spacing: 0.0125em;
       }
       .ac-card-img {
-        width: 100%;
+        width: 90%;
+        margin: 0 5%;
         aspect-ratio: 4 / 3;
         object-fit: cover;
       }
@@ -1730,13 +1745,13 @@
         padding: 7px 9px 9px;
         display: flex;
         flex-direction: column;
-        gap: 3px;
+        gap: 0.25rem;
       }
       .ac-meta-row {
         display: flex;
         align-items: center;
-        gap: 5px;
-        font-size: 11px;
+        gap: 8px;
+        font-size: 0.875rem;
         color: #555;
       }
       .ac-meta-icon {
@@ -1843,11 +1858,7 @@
               <span class="r-chevron">›</span>
             </div>
             <div class="r-card" onclick="go('s-parent-crystals')">
-              <img
-                class="r-card-icon"
-                src="assets/bonusbox/parents/reward-nav/crystals.svg"
-                alt=""
-              />
+              <img class="r-card-icon" src="assets/bonusbox/rewards/crystal.png" alt="" />
               <div class="r-card-info">
                 <div class="r-card-name">Crystals</div>
               </div>
@@ -1855,11 +1866,7 @@
               <span class="r-chevron">›</span>
             </div>
             <div class="r-card" onclick="go('s-parent-pocket')">
-              <img
-                class="r-card-icon"
-                src="assets/bonusbox/parents/reward-nav/pocket-money.svg"
-                alt=""
-              />
+              <img class="r-card-icon" src="assets/bonusbox/rewards/pocketmoney.png" alt="" />
               <div class="r-card-info">
                 <div class="r-card-name">Pocket Money</div>
               </div>
@@ -1867,11 +1874,7 @@
               <span class="r-chevron">›</span>
             </div>
             <div class="r-card" onclick="go('s-parent-trophies')">
-              <img
-                class="r-card-icon"
-                src="assets/bonusbox/parents/reward-nav/trophies.svg"
-                alt=""
-              />
+              <img class="r-card-icon" src="assets/bonusbox/rewards/trophy.png" alt="" />
               <div class="r-card-info">
                 <div class="r-card-name">Trophies</div>
                 <div class="r-card-badge">Club only</div>
@@ -1880,11 +1883,7 @@
               <span class="r-chevron">›</span>
             </div>
             <div class="r-card" onclick="go('s-parent-activities')">
-              <img
-                class="r-card-icon"
-                src="assets/bonusbox/parents/reward-nav/activites.svg"
-                alt=""
-              />
+              <img class="r-card-icon" src="assets/bonusbox/rewards/activities.png" alt="" />
               <div class="r-card-info">
                 <div class="r-card-name">Unlocked Activities</div>
                 <div class="r-card-badge">Club only</div>
@@ -1941,24 +1940,16 @@
               <img src="assets/bonusbox/parents/reward-nav/stars.svg" alt="" /><span>Stars</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-crystals')">
-              <img src="assets/bonusbox/parents/reward-nav/crystals.svg" alt="" /><span
-                >Crystals</span
-              >
+              <img src="assets/bonusbox/rewards/crystal.png" alt="" /><span>Crystals</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-pocket')">
-              <img src="assets/bonusbox/parents/reward-nav/pocket-money.svg" alt="" /><span
-                >Pocket Money</span
-              >
+              <img src="assets/bonusbox/rewards/pocketmoney.png" alt="" /><span>Pocket Money</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-trophies')">
-              <img src="assets/bonusbox/parents/reward-nav/trophies.svg" alt="" /><span
-                >Trophies</span
-              >
+              <img src="assets/bonusbox/rewards/trophy.png" alt="" /><span>Trophies</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-activities')">
-              <img src="assets/bonusbox/parents/reward-nav/activites.svg" alt="" /><span
-                >Activities</span
-              >
+              <img src="assets/bonusbox/rewards/activities.png" alt="" /><span>Activities</span>
             </div>
           </div>
         </div>
@@ -2024,24 +2015,16 @@
               <img src="assets/bonusbox/parents/reward-nav/stars.svg" alt="" /><span>Stars</span>
             </div>
             <div class="p-tab on">
-              <img src="assets/bonusbox/parents/reward-nav/crystals.svg" alt="" /><span
-                >Crystals</span
-              >
+              <img src="assets/bonusbox/rewards/crystal.png" alt="" /><span>Crystals</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-pocket')">
-              <img src="assets/bonusbox/parents/reward-nav/pocket-money.svg" alt="" /><span
-                >Pocket Money</span
-              >
+              <img src="assets/bonusbox/rewards/pocketmoney.png" alt="" /><span>Pocket Money</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-trophies')">
-              <img src="assets/bonusbox/parents/reward-nav/trophies.svg" alt="" /><span
-                >Trophies</span
-              >
+              <img src="assets/bonusbox/rewards/trophy.png" alt="" /><span>Trophies</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-activities')">
-              <img src="assets/bonusbox/parents/reward-nav/activites.svg" alt="" /><span
-                >Activities</span
-              >
+              <img src="assets/bonusbox/rewards/activities.png" alt="" /><span>Activities</span>
             </div>
           </div>
         </div>
@@ -2107,24 +2090,16 @@
               <img src="assets/bonusbox/parents/reward-nav/stars.svg" alt="" /><span>Stars</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-crystals')">
-              <img src="assets/bonusbox/parents/reward-nav/crystals.svg" alt="" /><span
-                >Crystals</span
-              >
+              <img src="assets/bonusbox/rewards/crystal.png" alt="" /><span>Crystals</span>
             </div>
             <div class="p-tab on">
-              <img src="assets/bonusbox/parents/reward-nav/pocket-money.svg" alt="" /><span
-                >Pocket Money</span
-              >
+              <img src="assets/bonusbox/rewards/pocketmoney.png" alt="" /><span>Pocket Money</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-trophies')">
-              <img src="assets/bonusbox/parents/reward-nav/trophies.svg" alt="" /><span
-                >Trophies</span
-              >
+              <img src="assets/bonusbox/rewards/trophy.png" alt="" /><span>Trophies</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-activities')">
-              <img src="assets/bonusbox/parents/reward-nav/activites.svg" alt="" /><span
-                >Activities</span
-              >
+              <img src="assets/bonusbox/rewards/activities.png" alt="" /><span>Activities</span>
             </div>
           </div>
         </div>
@@ -2190,24 +2165,16 @@
               <img src="assets/bonusbox/parents/reward-nav/stars.svg" alt="" /><span>Stars</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-crystals')">
-              <img src="assets/bonusbox/parents/reward-nav/crystals.svg" alt="" /><span
-                >Crystals</span
-              >
+              <img src="assets/bonusbox/rewards/crystal.png" alt="" /><span>Crystals</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-pocket')">
-              <img src="assets/bonusbox/parents/reward-nav/pocket-money.svg" alt="" /><span
-                >Pocket Money</span
-              >
+              <img src="assets/bonusbox/rewards/pocketmoney.png" alt="" /><span>Pocket Money</span>
             </div>
             <div class="p-tab on">
-              <img src="assets/bonusbox/parents/reward-nav/trophies.svg" alt="" /><span
-                >Trophies</span
-              >
+              <img src="assets/bonusbox/rewards/trophy.png" alt="" /><span>Trophies</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-activities')">
-              <img src="assets/bonusbox/parents/reward-nav/activites.svg" alt="" /><span
-                >Activities</span
-              >
+              <img src="assets/bonusbox/rewards/activities.png" alt="" /><span>Activities</span>
             </div>
           </div>
         </div>
@@ -2274,24 +2241,16 @@
               <img src="assets/bonusbox/parents/reward-nav/stars.svg" alt="" /><span>Stars</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-crystals')">
-              <img src="assets/bonusbox/parents/reward-nav/crystals.svg" alt="" /><span
-                >Crystals</span
-              >
+              <img src="assets/bonusbox/rewards/crystal.png" alt="" /><span>Crystals</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-pocket')">
-              <img src="assets/bonusbox/parents/reward-nav/pocket-money.svg" alt="" /><span
-                >Pocket Money</span
-              >
+              <img src="assets/bonusbox/rewards/pocketmoney.png" alt="" /><span>Pocket Money</span>
             </div>
             <div class="p-tab" onclick="go('s-parent-trophies')">
-              <img src="assets/bonusbox/parents/reward-nav/trophies.svg" alt="" /><span
-                >Trophies</span
-              >
+              <img src="assets/bonusbox/rewards/trophy.png" alt="" /><span>Trophies</span>
             </div>
             <div class="p-tab on">
-              <img src="assets/bonusbox/parents/reward-nav/activites.svg" alt="" /><span
-                >Activities</span
-              >
+              <img src="assets/bonusbox/rewards/activities.png" alt="" /><span>Activities</span>
             </div>
           </div>
         </div>
@@ -3207,6 +3166,8 @@
               <img src="assets/club/art/navbar-icon/Icon Button-2.svg" class="ac-icon-btn" alt="" />
             </div>
           </div>
+        </div>
+        <div class="ac-welcome">
           <div class="ac-star-row">
             <img src="assets/club/art/navbar-icon/star.svg" class="ac-star-icon" alt="" />
             <span class="ac-star-count">23</span>
