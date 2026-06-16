@@ -2080,11 +2080,35 @@
         background: rgba(0,0,0,0.12);
         overflow: hidden;
       }
-      .acs-progress-fill {
         height: 100%;
         border-radius: 999px;
         background: #1a2c6e;
         transition: width 0.3s ease;
+      }
+      .acs-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px 18px;
+        flex-shrink: 0;
+        background-image: url("assets/club/art/navbar-bg.png");
+        background-size: cover;
+        background-position: center;
+      }
+      .acs-leave {
+        font-size: 14px;
+        font-weight: 700;
+        color: #444;
+        cursor: pointer;
+      }
+      .acs-progress-wrap { display: flex; align-items: center; gap: 8px; }
+      .acs-progress-label { font-size: 12px; font-weight: 700; color: #1a2c6e; }
+      .acs-progress-bar {
+        width: 80px;
+        height: 6px;
+        border-radius: 999px;
+        background: rgba(0,0,0,0.12);
+        overflow: hidden;
       }
     </style>
   </head>
@@ -3904,45 +3928,40 @@
         <div class="acs-title">Paper Crane</div>
 
         <div class="acs-thumb-row">
-          <div class="acs-thumb on" onclick="goCraneStep(0)">
+          <div class="acs-thumb on">
             <img src="assets/club/art/paper crane/Star.svg" class="acs-star" alt="" />
             <img src="assets/club/art/paper crane/Rectangle 2.png" class="acs-thumb-img" alt="" />
             <span class="acs-thumb-label">Step 1</span>
           </div>
-          <div class="acs-thumb" onclick="goCraneStep(1)">
+          <div class="acs-thumb">
             <img src="assets/club/art/paper crane/Rectangle 2-1.png" class="acs-thumb-img" alt="" />
             <span class="acs-thumb-label">Step 2</span>
           </div>
-          <div class="acs-thumb" onclick="goCraneStep(2)">
+          <div class="acs-thumb">
             <img src="assets/club/art/paper crane/Rectangle 2-2.png" class="acs-thumb-img" alt="" />
             <span class="acs-thumb-label">Step 3</span>
           </div>
-          <div class="acs-thumb" onclick="goCraneStep(3)">
+          <div class="acs-thumb">
             <img src="assets/club/art/paper crane/Rectangle 2-3.png" class="acs-thumb-img" alt="" />
             <span class="acs-thumb-label">Step 4</span>
           </div>
         </div>
 
         <div class="acs-body">
-          <div class="acs-step-title" id="acs-step-title">Step 1</div>
+          <div class="acs-step-title">Step 1</div>
           <div class="acs-img-card">
-            <img class="acs-main-img" id="acs-main-img" src="assets/club/art/paper crane/demo.png" alt="" />
+            <img class="acs-main-img" src="assets/club/art/paper crane/demo.png" alt="" />
           </div>
-          <p class="acs-desc" id="acs-desc">Fold the paper into a big triangle.<br>Fold again to make a smaller triangle.</p>
-          <button class="acs-next-btn" id="acs-next-btn" onclick="nextCraneStep()">Next Step &rsaquo;</button>
+          <p class="acs-desc">Fold the paper into a big triangle.<br>Fold again to make a smaller triangle.</p>
+          <button class="acs-next-btn">Next Step &rsaquo;</button>
         </div>
 
-        <div class="acs-bottom">
-          <div class="acs-bnav" onclick="go('s-art-club')">
-            <img src="assets/club/art/navbar-icon/Sparks.svg" alt="" />
-            <span>Discovery</span>
-            <div class="acs-progress-row">
-              <div class="acs-progress-fill" id="acs-progress-fill" style="width:25%"></div>
+        <div class="acs-footer">
+          <span class="acs-leave" onclick="go('s-art-club')">&#8249; Leave</span>
+          <div class="acs-progress-wrap">
+            <span class="acs-progress-label">Progress</span>
+            <div class="acs-progress-bar">
             </div>
-          </div>
-          <div class="acs-bnav">
-            <img src="assets/club/art/navbar-icon/Trophy.svg" alt="" />
-            <span>My Achievements</span>
           </div>
         </div>
       </div>
@@ -4126,7 +4145,6 @@
         document.getElementById("acs-step-title").textContent = "Step " + (n + 1);
         document.getElementById("acs-main-img").src = craneSteps[n].img;
         document.getElementById("acs-desc").innerHTML = craneSteps[n].text;
-        document.getElementById("acs-progress-fill").style.width = ((n + 1) / total) * 100 + "%";
         const btn = document.getElementById("acs-next-btn");
         btn.textContent = n < total - 1 ? "Next Step ›" : "Finish ✓";
         document
