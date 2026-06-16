@@ -272,26 +272,69 @@
         margin: 0 auto;
         width: 100%;
       }
-      .r-row {
-        cursor: pointer;
-        margin-top: 1rem;
-        margin-bottom: 2rem;
-        overflow: hidden;
-      }
-
       .rewards {
         display: flex;
-        gap: 0.5rem;
         flex-direction: column;
+        gap: 10px;
       }
-
-      .rewards .r-row {
-        margin: 0;
+      .r-card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #11112b;
+        border-radius: 14px;
+        padding: 12px 14px;
+        cursor: pointer;
       }
-
-      .r-row img {
-        width: 100%;
-        display: block;
+      .r-card-icon {
+        width: 38px;
+        height: 38px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+      .r-card-info { flex: 1; min-width: 0; }
+      .r-card-name {
+        color: #fff;
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+      .r-card-badge {
+        display: inline-block;
+        background: #7674f2;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 600;
+        border-radius: 999px;
+        padding: 2px 8px;
+        margin-top: 5px;
+      }
+      .r-toggle {
+        width: 40px;
+        height: 24px;
+        border-radius: 12px;
+        background: #3a3a5c;
+        position: relative;
+        flex-shrink: 0;
+      }
+      .r-toggle::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #fff;
+        top: 2px;
+        left: 2px;
+        transition: transform 0.18s ease;
+      }
+      .r-toggle.on { background: #ffaa2a; }
+      .r-toggle.on::after { transform: translateX(16px); }
+      .r-chevron {
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 26px;
+        line-height: 1;
+        flex-shrink: 0;
       }
 
       /* Typography */
@@ -559,17 +602,18 @@
       /* Kids bottom nav */
       .k-bottom {
         display: flex;
-        flex-shrink: 0;
-        position: sticky;
-        bottom: 0;
+        width: 100vw;
         gap: 0.5rem;
         z-index: 10;
         padding: 1rem 1rem 2rem;
+        justify-content: center;
       }
       .k-bnav {
+        align-items: center;
+        max-width: 80px;
+        flex: 1;
         display: flex;
         flex-direction: column;
-        align-items: center;
         gap: 0.5rem;
         cursor: pointer;
         -webkit-tap-highlight-color: transparent;
@@ -1733,32 +1777,50 @@
           <p class="p-h2">Reward Items</p>
           <p class="p-sub">Apply to all Appy Class apps and games.</p>
           <div class="rewards">
-            <div class="r-row" onclick="go('s-parent-stars')">
-              <img src="assets/bonusbox/parents/reward-activation-screen/stars.svg" alt="Stars" />
+            <div class="r-card" onclick="go('s-parent-stars')">
+              <img class="r-card-icon" src="assets/bonusbox/parents/reward-nav/stars.svg" alt="" />
+              <div class="r-card-info">
+                <div class="r-card-name">Stars</div>
+                <div class="r-card-badge">Appy Club only</div>
+              </div>
+              <div class="r-toggle on"></div>
+              <span class="r-chevron">›</span>
             </div>
-            <div class="r-row" onclick="go('s-parent-crystals')">
-              <img
-                src="assets/bonusbox/parents/reward-activation-screen/crystals.svg"
-                alt="Crystals"
-              />
+            <div class="r-card" onclick="go('s-parent-crystals')">
+              <img class="r-card-icon" src="assets/bonusbox/parents/reward-nav/crystals.svg" alt="" />
+              <div class="r-card-info">
+                <div class="r-card-name">Crystals</div>
+                <div class="r-card-badge">Appy Club only</div>
+              </div>
+              <div class="r-toggle on"></div>
+              <span class="r-chevron">›</span>
             </div>
-            <div class="r-row" onclick="go('s-parent-pocket')">
-              <img
-                src="assets/bonusbox/parents/reward-activation-screen/money.svg"
-                alt="Pocket Money"
-              />
+            <div class="r-card" onclick="go('s-parent-pocket')">
+              <img class="r-card-icon" src="assets/bonusbox/parents/reward-nav/pocket-money.svg" alt="" />
+              <div class="r-card-info">
+                <div class="r-card-name">Pocket Money</div>
+                <div class="r-card-badge">All apps</div>
+              </div>
+              <div class="r-toggle on"></div>
+              <span class="r-chevron">›</span>
             </div>
-            <div class="r-row" onclick="go('s-parent-trophies')">
-              <img
-                src="assets/bonusbox/parents/reward-activation-screen/trophies.svg"
-                alt="Trophies"
-              />
+            <div class="r-card" onclick="go('s-parent-trophies')">
+              <img class="r-card-icon" src="assets/bonusbox/parents/reward-nav/trophies.svg" alt="" />
+              <div class="r-card-info">
+                <div class="r-card-name">Trophies</div>
+                <div class="r-card-badge">Appy Club only</div>
+              </div>
+              <div class="r-toggle on"></div>
+              <span class="r-chevron">›</span>
             </div>
-            <div class="r-row" onclick="go('s-parent-activities')">
-              <img
-                src="assets/bonusbox/parents/reward-activation-screen/activities.svg"
-                alt="Unlocked Activities"
-              />
+            <div class="r-card" onclick="go('s-parent-activities')">
+              <img class="r-card-icon" src="assets/bonusbox/parents/reward-nav/activites.svg" alt="" />
+              <div class="r-card-info">
+                <div class="r-card-name">Unlocked Activities</div>
+                <div class="r-card-badge">Appy Club only</div>
+              </div>
+              <div class="r-toggle on"></div>
+              <span class="r-chevron">›</span>
             </div>
           </div>
         </div>
