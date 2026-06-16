@@ -292,7 +292,10 @@
         object-fit: contain;
         flex-shrink: 0;
       }
-      .r-card-info { flex: 1; min-width: 0; }
+      .r-card-info {
+        flex: 1;
+        min-width: 0;
+      }
       .r-card-name {
         color: #fff;
         font-size: 15px;
@@ -309,6 +312,15 @@
         padding: 2px 8px;
         margin-top: 5px;
       }
+
+      .r-row {
+        margin: 1rem 0 2rem;
+      }
+
+      .r-row img {
+        width: 100%;
+      }
+      
       .r-toggle {
         width: 40px;
         height: 24px;
@@ -328,8 +340,12 @@
         left: 2px;
         transition: transform 0.18s ease;
       }
-      .r-toggle.on { background: #ffaa2a; }
-      .r-toggle.on::after { transform: translateX(16px); }
+      .r-toggle.on {
+        background: #ffaa2a;
+      }
+      .r-toggle.on::after {
+        transform: translateX(16px);
+      }
       .r-chevron {
         color: rgba(255, 255, 255, 0.35);
         font-size: 26px;
@@ -610,7 +626,7 @@
       }
       .k-bnav {
         align-items: center;
-        max-width: 80px;
+        max-width: 90px;
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -619,14 +635,17 @@
         -webkit-tap-highlight-color: transparent;
       }
       .k-bnav img {
+        max-width: 70px;
+        max-height: 70px;
         width: 100%;
         height: 100%;
         object-fit: contain;
       }
       .k-bnav span {
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.85rem;
+        color: white;
+        font-size: 1rem;
         text-align: center;
+        letter-spacing: 0.035em;
         font-weight: 300;
         font-family: "Londrina Solid", sans-serif;
       }
@@ -1167,7 +1186,7 @@
         width: 100%;
         height: 10px;
         border-radius: 999px;
-        background: #383090;
+        background: #1d194c;
         overflow: hidden;
       }
       .k-rem-fill {
@@ -1581,7 +1600,9 @@
       }
 
       /* ── ART CLUB ── */
-      #s-art-club { background: #c5e3f5; }
+      #s-art-club {
+        background: #c5e3f5;
+      }
       .ac-header {
         background: #c5e3f5;
         padding: 14px 16px 0;
@@ -1593,9 +1614,20 @@
         justify-content: space-between;
         margin-bottom: 6px;
       }
-      .ac-logo { height: 48px; object-fit: contain; }
-      .ac-topbar-right { display: flex; align-items: center; gap: 6px; }
-      .ac-icon-btn { width: 36px; height: 36px; cursor: pointer; }
+      .ac-logo {
+        height: 48px;
+        object-fit: contain;
+      }
+      .ac-topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .ac-icon-btn {
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+      }
       .ac-star-row {
         display: flex;
         justify-content: flex-end;
@@ -1603,7 +1635,10 @@
         gap: 5px;
         margin-bottom: 4px;
       }
-      .ac-star-icon { width: 22px; height: 22px; }
+      .ac-star-icon {
+        width: 22px;
+        height: 22px;
+      }
       .ac-star-count {
         font-family: "Londrina Solid", sans-serif;
         font-size: 22px;
@@ -1633,7 +1668,9 @@
         background: #c5e3f5;
         scrollbar-width: none;
       }
-      .ac-filter-row::-webkit-scrollbar { display: none; }
+      .ac-filter-row::-webkit-scrollbar {
+        display: none;
+      }
       .ac-filter-pill {
         background: white;
         border-radius: 20px;
@@ -1644,16 +1681,22 @@
         display: flex;
         align-items: center;
         gap: 5px;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
         flex-shrink: 0;
         color: #1a1a1a;
       }
-      .ac-filter-icon { width: 14px; height: 14px; }
-      .ac-arrow-icon { width: 12px; height: 12px; opacity: 0.6; }
+      .ac-filter-icon {
+        width: 14px;
+        height: 14px;
+      }
+      .ac-arrow-icon {
+        width: 12px;
+        height: 12px;
+        opacity: 0.6;
+      }
       .ac-body {
         flex: 1;
         overflow-y: auto;
-        background: #daeef9;
         padding: 14px 12px 14px;
       }
       .ac-card-grid {
@@ -1665,7 +1708,7 @@
         background: white;
         border-radius: 14px;
         overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
       .ac-card-title {
         font-size: 13px;
@@ -1692,14 +1735,20 @@
         font-size: 11px;
         color: #555;
       }
-      .ac-meta-icon { width: 13px; height: 13px; flex-shrink: 0; }
+      .ac-meta-icon {
+        width: 13px;
+        height: 13px;
+        flex-shrink: 0;
+      }
       .ac-bottom {
         display: flex;
         flex-shrink: 0;
         background-image: url("assets/club/art/navbar-bg.png");
         background-size: cover;
         background-position: center top;
-        border-top: 1px solid rgba(0,0,0,0.08);
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 1rem 1rem 0 0;
+        box-shadow: 0 0 10px rgba(118, 116, 242, 0.5);
       }
       .ac-bnav {
         flex: 1;
@@ -1710,7 +1759,10 @@
         padding: 10px 0 18px;
         cursor: pointer;
       }
-      .ac-bnav img { width: 30px; height: 30px; }
+      .ac-bnav img {
+        width: 30px;
+        height: 30px;
+      }
       .ac-bnav span {
         font-family: "Londrina Solid", sans-serif;
         font-size: 13px;
@@ -1781,43 +1833,57 @@
               <img class="r-card-icon" src="assets/bonusbox/parents/reward-nav/stars.svg" alt="" />
               <div class="r-card-info">
                 <div class="r-card-name">Stars</div>
-                <div class="r-card-badge">Appy Club only</div>
+                <div class="r-card-badge">Club only</div>
               </div>
               <div class="r-toggle on"></div>
               <span class="r-chevron">›</span>
             </div>
             <div class="r-card" onclick="go('s-parent-crystals')">
-              <img class="r-card-icon" src="assets/bonusbox/parents/reward-nav/crystals.svg" alt="" />
+              <img
+                class="r-card-icon"
+                src="assets/bonusbox/parents/reward-nav/crystals.svg"
+                alt=""
+              />
               <div class="r-card-info">
                 <div class="r-card-name">Crystals</div>
-                <div class="r-card-badge">Appy Club only</div>
               </div>
               <div class="r-toggle on"></div>
               <span class="r-chevron">›</span>
             </div>
             <div class="r-card" onclick="go('s-parent-pocket')">
-              <img class="r-card-icon" src="assets/bonusbox/parents/reward-nav/pocket-money.svg" alt="" />
+              <img
+                class="r-card-icon"
+                src="assets/bonusbox/parents/reward-nav/pocket-money.svg"
+                alt=""
+              />
               <div class="r-card-info">
                 <div class="r-card-name">Pocket Money</div>
-                <div class="r-card-badge">All apps</div>
               </div>
               <div class="r-toggle on"></div>
               <span class="r-chevron">›</span>
             </div>
             <div class="r-card" onclick="go('s-parent-trophies')">
-              <img class="r-card-icon" src="assets/bonusbox/parents/reward-nav/trophies.svg" alt="" />
+              <img
+                class="r-card-icon"
+                src="assets/bonusbox/parents/reward-nav/trophies.svg"
+                alt=""
+              />
               <div class="r-card-info">
                 <div class="r-card-name">Trophies</div>
-                <div class="r-card-badge">Appy Club only</div>
+                <div class="r-card-badge">Club only</div>
               </div>
               <div class="r-toggle on"></div>
               <span class="r-chevron">›</span>
             </div>
             <div class="r-card" onclick="go('s-parent-activities')">
-              <img class="r-card-icon" src="assets/bonusbox/parents/reward-nav/activites.svg" alt="" />
+              <img
+                class="r-card-icon"
+                src="assets/bonusbox/parents/reward-nav/activites.svg"
+                alt=""
+              />
               <div class="r-card-info">
                 <div class="r-card-name">Unlocked Activities</div>
-                <div class="r-card-badge">Appy Club only</div>
+                <div class="r-card-badge">Club only</div>
               </div>
               <div class="r-toggle on"></div>
               <span class="r-chevron">›</span>
@@ -2371,133 +2437,133 @@
 
           <!-- Category sub-tabs -->
           <div class="sc-cat-tabs">
-            <div class="sc-cat-tab on" onclick="switchCatTab(this,'gaming')">Gaming</div>
-            <div class="sc-cat-tab" onclick="switchCatTab(this,'video')">Video</div>
-            <div class="sc-cat-tab" onclick="switchCatTab(this,'social')">Social</div>
+            <div class="sc-cat-tab on" onclick="switchCatTab(this, 'gaming')">Gaming</div>
+            <div class="sc-cat-tab" onclick="switchCatTab(this, 'video')">Video</div>
+            <div class="sc-cat-tab" onclick="switchCatTab(this, 'social')">Social</div>
           </div>
 
           <!-- Gaming -->
           <div class="sc-cat-body" id="cat-gaming">
-          <div class="sc-lock-grid">
-            <div class="sc-app-wrap locked">
-              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
-              <img src="assets/bonusbox/parents/apps/image.png" class="sc-app-icon" />
+            <div class="sc-lock-grid">
+              <div class="sc-app-wrap locked">
+                <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+                <img src="assets/bonusbox/parents/apps/image.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap locked">
+                <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+                <img src="assets/bonusbox/parents/apps/image-1.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap locked">
+                <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+                <img src="assets/bonusbox/parents/apps/image-2.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap locked">
+                <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+                <img src="assets/bonusbox/parents/apps/image-3.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap locked">
+                <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+                <img src="assets/bonusbox/parents/apps/image-4.png" class="sc-app-icon" />
+              </div>
             </div>
-            <div class="sc-app-wrap locked">
-              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
-              <img src="assets/bonusbox/parents/apps/image-1.png" class="sc-app-icon" />
+            <div class="sc-lock-all-row">
+              <span class="sc-lock-icon">&#128274;</span>
+              <span class="sc-lock-all-label">Lock All</span>
             </div>
-            <div class="sc-app-wrap locked">
-              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
-              <img src="assets/bonusbox/parents/apps/image-2.png" class="sc-app-icon" />
+            <div class="sc-lock-grid">
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image-1.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image-2.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image-3.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image-4.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image-5.png" class="sc-app-icon" />
+              </div>
             </div>
-            <div class="sc-app-wrap locked">
-              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
-              <img src="assets/bonusbox/parents/apps/image-3.png" class="sc-app-icon" />
-            </div>
-            <div class="sc-app-wrap locked">
-              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
-              <img src="assets/bonusbox/parents/apps/image-4.png" class="sc-app-icon" />
-            </div>
-          </div>
-          <div class="sc-lock-all-row">
-            <span class="sc-lock-icon">&#128274;</span>
-            <span class="sc-lock-all-label">Lock All</span>
-          </div>
-          <div class="sc-lock-grid">
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image.png" class="sc-app-icon" />
-            </div>
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image-1.png" class="sc-app-icon" />
-            </div>
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image-2.png" class="sc-app-icon" />
-            </div>
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image-3.png" class="sc-app-icon" />
-            </div>
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image-4.png" class="sc-app-icon" />
-            </div>
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image-5.png" class="sc-app-icon" />
-            </div>
-          </div>
           </div>
 
           <!-- Video -->
-          <div class="sc-cat-body" id="cat-video" style="display:none">
-          <div class="sc-lock-grid">
-            <div class="sc-app-wrap locked">
-              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
-              <img src="assets/bonusbox/parents/apps/image 2.png" class="sc-app-icon" />
+          <div class="sc-cat-body" id="cat-video" style="display: none">
+            <div class="sc-lock-grid">
+              <div class="sc-app-wrap locked">
+                <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+                <img src="assets/bonusbox/parents/apps/image 2.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap locked">
+                <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+                <img src="assets/bonusbox/parents/apps/image 2-1.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap locked">
+                <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+                <img src="assets/bonusbox/parents/apps/image 2-2.png" class="sc-app-icon" />
+              </div>
             </div>
-            <div class="sc-app-wrap locked">
-              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
-              <img src="assets/bonusbox/parents/apps/image 2-1.png" class="sc-app-icon" />
+            <div class="sc-lock-all-row">
+              <span class="sc-lock-icon">&#128274;</span>
+              <span class="sc-lock-all-label">Lock All</span>
             </div>
-            <div class="sc-app-wrap locked">
-              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
-              <img src="assets/bonusbox/parents/apps/image 2-2.png" class="sc-app-icon" />
+            <div class="sc-lock-grid">
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image-6.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image-7.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image-8.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image-9.png" class="sc-app-icon" />
+              </div>
             </div>
-          </div>
-          <div class="sc-lock-all-row">
-            <span class="sc-lock-icon">&#128274;</span>
-            <span class="sc-lock-all-label">Lock All</span>
-          </div>
-          <div class="sc-lock-grid">
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image-6.png" class="sc-app-icon" />
-            </div>
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image-7.png" class="sc-app-icon" />
-            </div>
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image-8.png" class="sc-app-icon" />
-            </div>
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image-9.png" class="sc-app-icon" />
-            </div>
-          </div>
           </div>
 
           <!-- Social -->
-          <div class="sc-cat-body" id="cat-social" style="display:none">
-          <div class="sc-lock-grid">
-            <div class="sc-app-wrap locked">
-              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
-              <img src="assets/bonusbox/parents/apps/image 2-3.png" class="sc-app-icon" />
+          <div class="sc-cat-body" id="cat-social" style="display: none">
+            <div class="sc-lock-grid">
+              <div class="sc-app-wrap locked">
+                <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+                <img src="assets/bonusbox/parents/apps/image 2-3.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap locked">
+                <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
+                <img src="assets/bonusbox/parents/apps/image 2-4.png" class="sc-app-icon" />
+              </div>
             </div>
-            <div class="sc-app-wrap locked">
-              <img src="assets/bonusbox/parents/apps/lock.png" class="sc-lock-badge" />
-              <img src="assets/bonusbox/parents/apps/image 2-4.png" class="sc-app-icon" />
+            <div class="sc-lock-all-row">
+              <span class="sc-lock-icon">&#128274;</span>
+              <span class="sc-lock-all-label">Lock All</span>
             </div>
-          </div>
-          <div class="sc-lock-all-row">
-            <span class="sc-lock-icon">&#128274;</span>
-            <span class="sc-lock-all-label">Lock All</span>
-          </div>
-          <div class="sc-lock-grid">
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image-10.png" class="sc-app-icon" />
+            <div class="sc-lock-grid">
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image-10.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image-11.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image-12.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image-13.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image-14.png" class="sc-app-icon" />
+              </div>
+              <div class="sc-app-wrap">
+                <img src="assets/bonusbox/parents/apps/unlocked/image-15.png" class="sc-app-icon" />
+              </div>
             </div>
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image-11.png" class="sc-app-icon" />
-            </div>
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image-12.png" class="sc-app-icon" />
-            </div>
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image-13.png" class="sc-app-icon" />
-            </div>
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image-14.png" class="sc-app-icon" />
-            </div>
-            <div class="sc-app-wrap">
-              <img src="assets/bonusbox/parents/apps/unlocked/image-15.png" class="sc-app-icon" />
-            </div>
-          </div>
           </div>
         </div>
 
@@ -3084,12 +3150,42 @@
 
           <!-- App grid -->
           <div class="k-app-grid">
-            <img src="assets/bonusbox/kids/apps/app.png" class="k-app-tile" onclick="go('s-art-club')" style="cursor:pointer" />
-            <img src="assets/bonusbox/kids/apps/app-1.png" class="k-app-tile" />
-            <img src="assets/bonusbox/kids/apps/app-2.png" class="k-app-tile" />
-            <img src="assets/bonusbox/kids/apps/app-3.png" class="k-app-tile" />
-            <img src="assets/bonusbox/kids/apps/app-4.png" class="k-app-tile" />
-            <img src="assets/bonusbox/kids/apps/app-5.png" class="k-app-tile" />
+            <img
+              src="assets/bonusbox/kids/apps/app.png"
+              class="k-app-tile"
+              onclick="go('s-story')"
+              style="cursor: pointer"
+            />
+            <img
+              src="assets/bonusbox/kids/apps/app-1.png"
+              class="k-app-tile"
+              onclick="go('s-good-deed-club')"
+              style="cursor: pointer"
+            />
+            <img
+              src="assets/bonusbox/kids/apps/app-2.png"
+              class="k-app-tile"
+              onclick="go('s-art-club')"
+              style="cursor: pointer"
+            />
+            <img
+              src="assets/bonusbox/kids/apps/app-3.png"
+              class="k-app-tile"
+              onclick="go('s-art-club')"
+              style="cursor: pointer"
+            />
+            <img
+              src="assets/bonusbox/kids/apps/app-4.png"
+              class="k-app-tile"
+              onclick="go('s-art-club')"
+              style="cursor: pointer"
+            />
+            <img
+              src="assets/bonusbox/kids/apps/app-5.png"
+              class="k-app-tile"
+              onclick="go('s-art-club')"
+              style="cursor: pointer"
+            />
           </div>
         </div>
       </div>
@@ -3146,7 +3242,11 @@
                   <span>Easy</span>
                 </div>
                 <div class="ac-meta-row">
-                  <img src="assets/club/art/navbar-icon/Customizable.svg" class="ac-meta-icon" alt="" />
+                  <img
+                    src="assets/club/art/navbar-icon/Customizable.svg"
+                    class="ac-meta-icon"
+                    alt=""
+                  />
                   <span>Customizable</span>
                 </div>
               </div>
@@ -3165,7 +3265,11 @@
                   <span>Easy</span>
                 </div>
                 <div class="ac-meta-row">
-                  <img src="assets/club/art/navbar-icon/Customizable.svg" class="ac-meta-icon" alt="" />
+                  <img
+                    src="assets/club/art/navbar-icon/Customizable.svg"
+                    class="ac-meta-icon"
+                    alt=""
+                  />
                   <span>Customizable</span>
                 </div>
               </div>
@@ -3184,7 +3288,11 @@
                   <span>Easy</span>
                 </div>
                 <div class="ac-meta-row">
-                  <img src="assets/club/art/navbar-icon/Customizable.svg" class="ac-meta-icon" alt="" />
+                  <img
+                    src="assets/club/art/navbar-icon/Customizable.svg"
+                    class="ac-meta-icon"
+                    alt=""
+                  />
                   <span>Customizable</span>
                 </div>
               </div>
@@ -3203,7 +3311,11 @@
                   <span>Medium</span>
                 </div>
                 <div class="ac-meta-row">
-                  <img src="assets/club/art/navbar-icon/Customizable.svg" class="ac-meta-icon" alt="" />
+                  <img
+                    src="assets/club/art/navbar-icon/Customizable.svg"
+                    class="ac-meta-icon"
+                    alt=""
+                  />
                   <span>Customizable</span>
                 </div>
               </div>
@@ -3569,9 +3681,13 @@
         updateRemaining(type);
       }
       function switchCatTab(el, cat) {
-        el.closest(".sc-cat-tabs").querySelectorAll(".sc-cat-tab").forEach((t) => t.classList.remove("on"));
+        el.closest(".sc-cat-tabs")
+          .querySelectorAll(".sc-cat-tab")
+          .forEach((t) => t.classList.remove("on"));
         el.classList.add("on");
-        el.closest(".sc-body-lockdown").querySelectorAll(".sc-cat-body").forEach((b) => (b.style.display = "none"));
+        el.closest(".sc-body-lockdown")
+          .querySelectorAll(".sc-cat-body")
+          .forEach((b) => (b.style.display = "none"));
         document.getElementById("cat-" + cat).style.display = "flex";
       }
 
