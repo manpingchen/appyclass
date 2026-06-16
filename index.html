@@ -146,7 +146,7 @@
         display: block;
         color: #fff;
         font-size: 17px;
-        font-weight: 700;
+        font-weight: 500;
       }
       .l-text small {
         color: rgba(255, 255, 255, 0.55);
@@ -301,7 +301,7 @@
       .r-card-name {
         color: #fff;
         font-size: 15px;
-        font-weight: 700;
+        font-weight: 500;
         line-height: 1.2;
       }
       .r-card-badge {
@@ -430,7 +430,7 @@
         padding: 7px 11px;
         color: #fff;
         font-size: 14px;
-        font-weight: 700;
+        font-weight: 500;
         white-space: nowrap;
       }
 
@@ -450,7 +450,7 @@
         gap: 4px;
         color: #fff;
         font-size: 15px;
-        font-weight: 700;
+        font-weight: 500;
       }
       .p-arr {
         color: rgba(255, 255, 255, 0.35);
@@ -488,7 +488,7 @@
         gap: 4px;
         color: #fff;
         font-size: 14px;
-        font-weight: 700;
+        font-weight: 500;
       }
       .p-hdesc {
         color: rgba(255, 255, 255, 0.4);
@@ -702,7 +702,7 @@
       .modal-title {
         color: #fff;
         font-size: 20px;
-        font-weight: 700;
+        font-weight: 500;
       }
       .modal-close {
         background: none;
@@ -747,7 +747,7 @@
         background: #ef4444;
         color: #fff;
         font-size: 11px;
-        font-weight: 700;
+        font-weight: 500;
         border-radius: 999px;
         padding: 2px 8px;
         margin-bottom: 6px;
@@ -992,9 +992,10 @@
       .k-st-value {
         font-family: "Londrina Solid", sans-serif;
         color: #fff;
-        font-size: 24px;
+        font-size: 1.25rem;
         font-weight: 400;
         white-space: nowrap;
+        margin-bottom: 0.25rem;
       }
       .k-progress {
         width: 100%;
@@ -1182,7 +1183,7 @@
       .k-rem-value {
         color: #fff;
         font-size: 1.5rem;
-        font-weight: 700;
+        font-weight: 500;
       }
       .k-rem-bar {
         width: 100%;
@@ -1514,7 +1515,7 @@
       .sc-lock-title {
         color: #fff;
         font-size: 18px;
-        font-weight: 700;
+        font-weight: 500;
       }
       .sc-lock-actions {
         display: flex;
@@ -1572,7 +1573,7 @@
       .sc-lock-all-label {
         color: #fff;
         font-size: 17px;
-        font-weight: 700;
+        font-weight: 500;
       }
 
       /* ── Category sub-tabs ── */
@@ -1694,7 +1695,7 @@
         border-radius: 20px;
         padding: 7px 11px;
         font-size: 12px;
-        font-weight: 700;
+        font-weight: 500;
         white-space: nowrap;
         display: flex;
         align-items: center;
@@ -1780,6 +1781,11 @@
         border-radius: 1rem 1rem 0 0;
         box-shadow: 0 0 10px rgba(118, 116, 242, 0.5);
       }
+      .acs-footer {
+        padding: 1rem;
+        justify-content: space-between;
+        font-family: "Londrina Solid", sans-serif;
+      }
       .ac-bnav {
         flex: 1;
         display: flex;
@@ -1843,6 +1849,458 @@
         padding-left: 2px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.38);
       }
+      /* ── GOOD DEEDS CLUB ── */
+      #s-good-deed-club,
+      #s-good-deed-club-kid {
+        background: #f1b45f;
+        color: #383a4d;
+        font-family: "Readex Pro", sans-serif;
+      }
+      .gdc-header {
+        background: linear-gradient(180deg, #f79923 0%, #f6bd64 100%);
+        padding: 12px 14px 8px;
+        flex-shrink: 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .gdc-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        z-index: 1;
+      }
+      .gdc-logo {
+        height: 64px;
+        object-fit: contain;
+      }
+      .gdc-topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .gdc-icon-btn {
+        width: 46px;
+        height: 46px;
+        filter: drop-shadow(0 4px 6px rgba(91, 63, 34, 0.24));
+      }
+      .gdc-stars {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 32px;
+        line-height: 1;
+        color: #383a4d;
+      }
+      .gdc-stars img {
+        width: 30px;
+        height: 30px;
+      }
+      .gdc-parent-body,
+      .gdc-kid-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 12px 16px 16px;
+        scrollbar-width: none;
+      }
+      .gdc-parent-body::-webkit-scrollbar,
+      .gdc-kid-body::-webkit-scrollbar {
+        display: none;
+      }
+
+      .gdc-parent-body {
+        background: rgba(0, 0, 0, 0.8);
+      }
+      .gdc-modal {
+        background: #efb65f;
+        border-radius: 16px 16px 10px 10px;
+        box-shadow: 0 8px 22px rgba(90, 57, 22, 0.18);
+        min-height: 100%;
+        padding: 56px 20px 24px;
+        position: relative;
+        margin-top: 2rem;
+      }
+      .gdc-modal-top {
+        position: absolute;
+        top: -2rem;
+        left: 50%;
+        width: min(330px, 86%);
+        transform: translateX(-50%);
+      }
+      .gdc-title {
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 38px;
+        line-height: 1;
+        text-align: center;
+        color: #383a4d;
+        margin: 2px 0 20px;
+      }
+      .gdc-field {
+        margin-bottom: 16px;
+      }
+      .gdc-label {
+        display: block;
+        font-weight: 500;
+        font-size: 1rem;
+        color: #383a4d;
+        margin-bottom: 8px;
+      }
+      .gdc-input {
+        width: 100%;
+        min-height: 48px;
+        border-radius: 1rem;
+        border: none;
+        background: #fffaf0;
+        color: #383a4d;
+        padding: 0 1rem;
+        font-size: 1rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+      }
+      .gdc-input.placeholder {
+        color: #c7c9d0;
+      }
+      .gdc-section {
+        background: #ffeda3;
+        border-radius: 20px;
+        padding: 1rem;
+        margin-bottom: 16px;
+      }
+      .gdc-section-head,
+      .gdc-select-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .gdc-section-title,
+      .gdc-select-label {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #050505;
+      }
+      .gdc-chevron {
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 8px solid #66884b;
+      }
+      .gdc-chevron.down {
+        border-bottom: none;
+        border-top: 8px solid #66884b;
+      }
+      .gdc-note {
+        font-size: 0.785rem;
+        line-height: 1.45;
+        color: #333a5d;
+        margin: 12px 0 16px;
+      }
+      .gdc-note a,
+      .gdc-option-meta a {
+        color: #1f2544;
+        text-decoration: underline;
+      }
+      .gdc-radio-card,
+      .gdc-approval-card {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #fff9e7;
+        border-radius: 8px;
+        padding: 0.75rem;
+        margin-bottom: 10px;
+      }
+      .gdc-radio-card.plain {
+        background: transparent;
+        padding: 8px 4px;
+      }
+      .gdc-radio {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #fff;
+        border: 8px solid #fff;
+        box-shadow: 0 0 0 1px #f3edcf;
+        flex-shrink: 0;
+      }
+      .gdc-radio.on {
+        background: #383a4d;
+        box-shadow: 0 0 0 5px #f3d867;
+      }
+      .gdc-option-main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .gdc-option-title {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #383a4d;
+      }
+      .gdc-option-meta {
+        font-size: 0.75rem;
+        color: #383a4d;
+        margin-top: 0.5rem;
+      }
+      .gdc-option-reward {
+        font-size: 0.875rem;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+      .gdc-edit {
+        width: 18px;
+        height: 18px;
+        margin-left: 4px;
+      }
+      .gdc-pill {
+        min-width: 136px;
+        background: #fffaf0;
+        color: #628348;
+        border-radius: 10px;
+        padding: 6px 14px;
+        text-align: center;
+        font-size: 0.875rem;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .gdc-repeat-options {
+        margin-top: 18px;
+        border-left: 1px solid #a04a48;
+        padding-left: 8px;
+      }
+      .gdc-time-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px 18px;
+        margin-top: 12px;
+      }
+      .gdc-time-grid .gdc-radio-card {
+        align-items: center;
+        margin: 0;
+      }
+      .gdc-stepper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 190px;
+        margin-top: 12px;
+      }
+      .gdc-step-btn {
+        width: 52px;
+        height: 52px;
+        border-radius: 10px;
+        border: none;
+        background: #94ad56;
+        color: #fff;
+        font-size: 26px;
+        font-weight: 900;
+      }
+      .gdc-step-num {
+        font-size: 18px;
+        font-weight: 900;
+      }
+      .gdc-date-row {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-top: 12px;
+      }
+      .gdc-checkbox {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        background: #fffaf0;
+        flex-shrink: 0;
+      }
+      .gdc-date-input {
+        flex: 1;
+        min-height: 30px;
+        border-radius: 8px;
+        background: #fffaf0;
+        color: #c7c9d0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 300;
+        max-width: 150px;
+        font-size: 0.875rem;
+      }
+      .gdc-assignee {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 16px;
+      }
+      .gdc-avatar {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: #f7981d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        font-weight: 900;
+        color: #12162f;
+        position: relative;
+      }
+      .gdc-avatar.blue {
+        background: #56c7d3;
+      }
+      .gdc-avatar.checked::before {
+        content: "✓";
+        position: absolute;
+        top: -8px;
+        left: -10px;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #6b8d4d;
+        color: #ffd15b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.875rem;
+      }
+      .gdc-avatar-name {
+        font-size: 0.875rem;
+        color: #383a4d;
+        text-align: center;
+        margin-top: 4px;
+      }
+      .gdc-save {
+        width: 100%;
+        height: 66px;
+        border-radius: 20px;
+        border: 7px solid #a34846;
+        background: #66884b;
+        color: #fff;
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 1rem;
+        margin-top: 18px;
+        box-shadow: 0 8px 14px rgba(90, 57, 22, 0.2);
+      }
+      .gdc-kid-hero {
+        text-align: center;
+        padding: 16px 0 6px;
+        position: relative;
+        z-index: 1;
+      }
+      .gdc-kid-title {
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 46px;
+        line-height: 1;
+        color: #383a4d;
+        margin: 8px 0 2px;
+      }
+      .gdc-kid-subtitle {
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 27px;
+        color: #383a4d;
+      }
+      .gdc-ribbon {
+        background: #66884b;
+        color: #fffaf0;
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 29px;
+        text-align: center;
+        padding: 11px 8px 14px;
+        margin: 10px -16px 20px;
+        border-radius: 0 0 22px 22px;
+      }
+      .gdc-mission-row {
+        display: flex;
+        gap: 12px;
+        overflow-x: hidden;
+        margin-bottom: 26px;
+      }
+      .gdc-mission-card {
+        min-width: 274px;
+        min-height: 170px;
+        background: #fffaf0;
+        border-radius: 10px;
+        padding: 34px 16px 16px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .gdc-card-star {
+        position: absolute;
+        top: -20px;
+        left: 16px;
+        width: 48px;
+      }
+      .gdc-mission-card h3 {
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 31px;
+        line-height: 1.05;
+        color: #66884b;
+        text-align: center;
+      }
+      .gdc-pick {
+        min-width: 104px;
+        height: 66px;
+        border-radius: 18px;
+        border: 7px solid #ffb000;
+        background: #a94747;
+        color: #fff;
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 26px;
+      }
+      .gdc-day-tabs {
+        display: flex;
+        gap: 10px;
+        margin: 0 0 18px;
+      }
+      .gdc-day-tab {
+        flex: 1;
+        min-height: 48px;
+        border-radius: 999px;
+        background: #ffeda3;
+        color: #383a4d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 23px;
+      }
+      .gdc-day-tab img {
+        width: 32px;
+      }
+      .gdc-bottom {
+        display: flex;
+        flex-shrink: 0;
+        margin: 0 14px 12px;
+        border-radius: 34px;
+        background: #ef9b35;
+        box-shadow: 0 -3px 12px rgba(127, 74, 23, 0.13);
+        overflow: hidden;
+      }
+      .gdc-bnav {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        padding: 10px 0 12px;
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 21px;
+        color: #383a4d;
+      }
+      .gdc-bnav img {
+        width: 38px;
+        height: 38px;
+      }
       /* ── ART CLUB DETAIL ── */
       .acd-hero {
         width: 100%;
@@ -1876,7 +2334,7 @@
         border-radius: 999px;
         padding: 5px 11px;
         font-size: 12px;
-        font-weight: 700;
+        font-weight: 500;
         color: #1a2c6e;
       }
       .acd-meta-pill img {
@@ -1936,7 +2394,7 @@
       }
       /* ── ART CLUB STEPS ── */
       #s-art-club-steps {
-        background: #fef8e6;
+        background-image: url("assets/club/art/paper\ crane/bg.jpg");
       }
       .acs-topbar {
         background-image: url("assets/club/art/topbar-bg.png");
@@ -1948,9 +2406,19 @@
         justify-content: space-between;
         flex-shrink: 0;
       }
-      .acs-logo { height: 48px; object-fit: contain; }
-      .acs-topbar-right { display: flex; align-items: center; gap: 6px; }
-      .acs-icon-btn { width: 36px; height: 36px; }
+      .acs-logo {
+        height: 48px;
+        object-fit: contain;
+      }
+      .acs-topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .acs-icon-btn {
+        width: 36px;
+        height: 36px;
+      }
       .acs-title {
         font-size: 20px;
         font-weight: 900;
@@ -1967,7 +2435,9 @@
         flex-shrink: 0;
         scrollbar-width: none;
       }
-      .acs-thumb-row::-webkit-scrollbar { display: none; }
+      .acs-thumb-row::-webkit-scrollbar {
+        display: none;
+      }
       .acs-thumb {
         display: flex;
         flex-direction: column;
@@ -1979,17 +2449,14 @@
       }
       .acs-thumb-img {
         width: 72px;
-        height: 58px;
+        height: 72px;
         object-fit: cover;
-        border-radius: 8px;
-        border: 2.5px solid transparent;
-        transition: border-color 0.15s;
-        background: #ddd;
+        border-radius: 1rem;
+        overflow: hidden;
       }
-      .acs-thumb.on .acs-thumb-img { border-color: #1a2c6e; }
       .acs-thumb-label {
         font-size: 11px;
-        font-weight: 700;
+        font-weight: 500;
         color: #111;
       }
       .acs-star {
@@ -2018,7 +2485,7 @@
         background: #fff;
         border-radius: 16px;
         padding: 10px;
-        box-shadow: 0 4px 18px rgba(0,0,0,0.11);
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.11);
       }
       .acs-main-img {
         width: 100%;
@@ -2039,7 +2506,7 @@
         padding: 14px 48px;
         border-radius: 50px;
         border: none;
-        background: #1a2c6e;
+        background: #0b54a2;
         color: #fff;
         font-size: 16px;
         font-weight: 800;
@@ -2063,7 +2530,10 @@
         cursor: pointer;
         position: relative;
       }
-      .acs-bnav img { width: 30px; height: 30px; }
+      .acs-bnav img {
+        width: 30px;
+        height: 30px;
+      }
       .acs-bnav span {
         font-family: "Londrina Solid", sans-serif;
         font-size: 13px;
@@ -2077,38 +2547,14 @@
         width: 80px;
         height: 4px;
         border-radius: 999px;
-        background: rgba(0,0,0,0.12);
+        background: rgba(0, 0, 0, 0.12);
         overflow: hidden;
       }
+      .acs-progress-fill {
         height: 100%;
         border-radius: 999px;
         background: #1a2c6e;
         transition: width 0.3s ease;
-      }
-      .acs-footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 20px 18px;
-        flex-shrink: 0;
-        background-image: url("assets/club/art/navbar-bg.png");
-        background-size: cover;
-        background-position: center;
-      }
-      .acs-leave {
-        font-size: 14px;
-        font-weight: 700;
-        color: #444;
-        cursor: pointer;
-      }
-      .acs-progress-wrap { display: flex; align-items: center; gap: 8px; }
-      .acs-progress-label { font-size: 12px; font-weight: 700; color: #1a2c6e; }
-      .acs-progress-bar {
-        width: 80px;
-        height: 6px;
-        border-radius: 999px;
-        background: rgba(0,0,0,0.12);
-        overflow: hidden;
       }
     </style>
   </head>
@@ -3241,7 +3687,7 @@
                 E
               </div>
               <div style="flex: 1">
-                <p style="color: #fff; font-size: 15px; font-weight: 700">Ellie</p>
+                <p style="color: #fff; font-size: 15px; font-weight: 500">Ellie</p>
               </div>
               <div style="display: flex; align-items: center; gap: 8px">
                 <button class="time-stepper">−</button>
@@ -3278,7 +3724,7 @@
                 M
               </div>
               <div style="flex: 1">
-                <p style="color: #fff; font-size: 15px; font-weight: 700">Mattie</p>
+                <p style="color: #fff; font-size: 15px; font-weight: 500">Mattie</p>
               </div>
               <div style="display: flex; align-items: center; gap: 8px">
                 <button class="time-stepper">−</button>
@@ -3625,6 +4071,274 @@
       </div>
 
       <!-- ══════════════════════════════════════════
+     GOOD DEEDS CLUB · PARENT CREATES MISSION
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-good-deed-club">
+        <div class="float-back" onclick="go('s-kid-apps')">&#8249;</div>
+        <div class="float-next" onclick="go('s-good-deed-club-kid')">&#8250;</div>
+
+        <div class="gdc-parent-body">
+          <div class="gdc-modal">
+            <img src="assets/club/chores/modal-top-frame.svg" class="gdc-modal-top" alt="" />
+            <h1 class="gdc-title">Create New Mission</h1>
+
+            <div class="gdc-field">
+              <label class="gdc-label">Mission Name</label>
+              <div class="gdc-input">Clean up toys after playing</div>
+            </div>
+
+            <div class="gdc-field">
+              <label class="gdc-label">Description (Optional)</label>
+              <div class="gdc-input placeholder">What should your child do?</div>
+            </div>
+
+            <div class="gdc-section">
+              <div class="gdc-section-head">
+                <span class="gdc-section-title">Type</span>
+                <span class="gdc-chevron"></span>
+              </div>
+              <p class="gdc-note">
+                Mission reward synced from <a>Reward Settings</a>, overridable per mission
+              </p>
+              <div class="gdc-radio-card">
+                <span class="gdc-radio on"></span>
+                <div style="flex: 1">
+                  <div class="gdc-option-main">
+                    <span class="gdc-option-title">Weekly Routines</span>
+                  </div>
+                  <div class="gdc-option-main gdc-option-meta">
+                    <span>Default Reward</span>
+                    <span class="gdc-option-reward">5 Stars</span>
+                    <img class="gdc-edit" src="assets/club/chores/edit-icon.svg" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="gdc-radio-card plain">
+                <span class="gdc-radio"></span>
+                <div style="flex: 1">
+                  <div class="gdc-option-title">Special Missions</div>
+                  <div class="gdc-option-main gdc-option-meta">
+                    <span>Special Reward</span>
+                    <span class="gdc-option-reward">10 Stars</span>
+                    <img class="gdc-edit" src="assets/club/chores/edit-icon.svg" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="gdc-section">
+              <div class="gdc-select-row">
+                <span class="gdc-select-label">Repeat On</span>
+                <span class="gdc-pill">Every Day</span>
+                <span class="gdc-chevron down"></span>
+              </div>
+              <div class="gdc-repeat-options">
+                <div class="gdc-radio-card plain">
+                  <span class="gdc-radio"></span>
+                  <span class="gdc-option-title">One Time</span>
+                </div>
+                <div class="gdc-radio-card">
+                  <span class="gdc-radio on"></span>
+                  <span class="gdc-option-title">Every Day</span>
+                </div>
+                <div class="gdc-radio-card plain">
+                  <span class="gdc-radio"></span>
+                  <span class="gdc-option-title">Every Week</span>
+                </div>
+
+                <div class="gdc-field" style="margin-top: 18px">
+                  <label class="gdc-label">Preferred Time (Optional)</label>
+                  <div class="gdc-time-grid">
+                    <div class="gdc-radio-card">
+                      <span class="gdc-radio on"></span>
+                      <span class="gdc-option-title">Flexible</span>
+                    </div>
+                    <div class="gdc-radio-card plain">
+                      <span class="gdc-radio"></span>
+                      <span class="gdc-option-title">Morning</span>
+                    </div>
+                    <div class="gdc-radio-card plain">
+                      <span class="gdc-radio"></span>
+                      <span class="gdc-option-title">Afternoon</span>
+                    </div>
+                    <div class="gdc-radio-card plain">
+                      <span class="gdc-radio"></span>
+                      <span class="gdc-option-title">Evening</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gdc-field">
+                  <label class="gdc-label">How many times per day?</label>
+                  <div class="gdc-stepper">
+                    <button class="gdc-step-btn">&#8722;</button>
+                    <span class="gdc-step-num">1</span>
+                    <button class="gdc-step-btn">+</button>
+                  </div>
+                </div>
+
+                <div class="gdc-field">
+                  <label class="gdc-label">End Date (Optional)</label>
+                  <div class="gdc-date-row">
+                    <span class="gdc-checkbox"></span>
+                    <span class="gdc-date-input">DD / MM / YYYY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="gdc-section">
+              <div class="gdc-select-row">
+                <span class="gdc-select-label">Approval</span>
+                <span class="gdc-pill">Instant Reward</span>
+                <span class="gdc-chevron down"></span>
+              </div>
+              <div class="gdc-approval-card" style="margin-top: 16px">
+                <span class="gdc-radio on"></span>
+                <div>
+                  <div class="gdc-option-title">Instant Reward</div>
+                  <div class="gdc-option-meta">Stars sent instantly upon completion.</div>
+                </div>
+              </div>
+              <div class="gdc-radio-card plain">
+                <span class="gdc-radio"></span>
+                <div>
+                  <div class="gdc-option-title">Parent Review</div>
+                  <div class="gdc-option-meta">
+                    Reviewed in <a>Pending Missions</a> before rewards are sent.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="gdc-section">
+              <div class="gdc-select-row">
+                <span class="gdc-select-label">Assignee</span>
+                <span class="gdc-pill">Everyone</span>
+                <span class="gdc-chevron"></span>
+              </div>
+              <div class="gdc-assignee">
+                <span class="gdc-checkbox"></span>
+                Everyone
+              </div>
+              <div class="gdc-assignee">
+                <div>
+                  <div class="gdc-avatar checked">E</div>
+                  <div class="gdc-avatar-name">Ellie</div>
+                </div>
+                <div>
+                  <div class="gdc-avatar blue">M</div>
+                  <div class="gdc-avatar-name">Mattie</div>
+                </div>
+              </div>
+            </div>
+
+            <button class="gdc-save">Save</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     GOOD DEEDS CLUB · KID MISSION LIST
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-good-deed-club-kid">
+        <div class="float-back" onclick="go('s-good-deed-club')">&#8249;</div>
+
+        <div class="gdc-header">
+          <div class="gdc-topbar">
+            <img class="gdc-logo" src="assets/club/chores/Logo.png" alt="Good Deeds Appy Club" />
+            <div class="gdc-topbar-right">
+              <img
+                src="assets/club/chores/navbar-icon/Icon Button.svg"
+                class="gdc-icon-btn"
+                alt=""
+              />
+              <img
+                src="assets/club/chores/navbar-icon/Icon Button-1.svg"
+                class="gdc-icon-btn"
+                alt=""
+              />
+              <div class="gdc-stars">
+                <img src="assets/club/chores/navbar-icon/reward-star.svg" alt="" />
+                <span>35</span>
+              </div>
+            </div>
+          </div>
+          <div class="gdc-kid-hero">
+            <h1 class="gdc-kid-title">Hello Ellie!</h1>
+            <div class="gdc-kid-subtitle">What do you want to do today?</div>
+          </div>
+        </div>
+
+        <div class="gdc-kid-body">
+          <div class="gdc-ribbon">Pick for this morning</div>
+          <div class="gdc-mission-row">
+            <div class="gdc-mission-card">
+              <img
+                src="assets/club/chores/navbar-icon/card-star.svg"
+                class="gdc-card-star"
+                alt=""
+              />
+              <h3>Brush your teeth</h3>
+              <button class="gdc-pick">Pick</button>
+            </div>
+            <div class="gdc-mission-card">
+              <img
+                src="assets/club/chores/navbar-icon/card-star.svg"
+                class="gdc-card-star"
+                alt=""
+              />
+              <h3>Help your room</h3>
+              <button class="gdc-pick">Pick</button>
+            </div>
+          </div>
+
+          <div class="gdc-ribbon">Missions of the today</div>
+          <div class="gdc-day-tabs">
+            <div class="gdc-day-tab">
+              <img src="assets/club/chores/navbar-icon/Icon Button-2.svg" alt="" />
+              Morning (2)
+            </div>
+            <div class="gdc-day-tab">
+              <img src="assets/club/chores/navbar-icon/Icon Button-2.svg" alt="" />
+              Afternoon (1)
+            </div>
+          </div>
+          <div class="gdc-mission-row">
+            <div class="gdc-mission-card">
+              <img
+                src="assets/club/chores/navbar-icon/card-star.svg"
+                class="gdc-card-star"
+                alt=""
+              />
+              <h3>Wipe Dining Table</h3>
+              <button class="gdc-pick">Pick</button>
+            </div>
+            <div class="gdc-mission-card">
+              <img
+                src="assets/club/chores/navbar-icon/card-star.svg"
+                class="gdc-card-star"
+                alt=""
+              />
+              <h3>Say hello</h3>
+              <button class="gdc-pick">Pick</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gdc-bottom">
+          <div class="gdc-bnav">
+            <img src="assets/club/chores/navbar-icon/Spark.svg" alt="" />
+            <span>Missions</span>
+          </div>
+          <div class="gdc-bnav">
+            <img src="assets/club/chores/navbar-icon/Rewards.svg" alt="" />
+            <span>My Achievements</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
      KID · TROPHIES
      content image: assets/bonusbox/kids/Bonusbox - Kid's Wallet - trophies.jpg
      → swap src with cropped content image when ready
@@ -3952,16 +4666,17 @@
           <div class="acs-img-card">
             <img class="acs-main-img" src="assets/club/art/paper crane/demo.png" alt="" />
           </div>
-          <p class="acs-desc">Fold the paper into a big triangle.<br>Fold again to make a smaller triangle.</p>
+          <p class="acs-desc">
+            Fold the paper into a big triangle.<br />Fold again to make a smaller triangle.
+          </p>
           <button class="acs-next-btn">Next Step &rsaquo;</button>
         </div>
 
-        <div class="acs-footer">
+        <div class="acs-footer ac-bottom">
           <span class="acs-leave" onclick="go('s-art-club')">&#8249; Leave</span>
-          <div class="acs-progress-wrap">
+          <div class="acs-progress-wrap" style="display: flex; gap: 0.5rem">
             <span class="acs-progress-label">Progress</span>
-            <div class="acs-progress-bar">
-            </div>
+            <img src="assets/club/art/progress-bar.svg" alt="progress bar" width="100" />
           </div>
         </div>
       </div>
@@ -4048,8 +4763,13 @@
       }
 
       function go(id) {
+        const target = document.getElementById(id);
+        if (!target) {
+          console.warn("Unknown screen:", id);
+          return;
+        }
         document.querySelectorAll(".screen").forEach((s) => s.classList.remove("active"));
-        document.getElementById(id).classList.add("active");
+        target.classList.add("active");
         window.scrollTo(0, 0);
         if (id === "s-kid-buy-time") {
           _mins.buy = _minVal.buy;
@@ -4086,8 +4806,10 @@
       window.addEventListener("popstate", (event) => {
         if (event.state && event.state.screen) {
           const screen = event.state.screen;
+          const target = document.getElementById(screen);
+          if (!target) return;
           document.querySelectorAll(".screen").forEach((s) => s.classList.remove("active"));
-          document.getElementById(screen).classList.add("active");
+          target.classList.add("active");
           window.scrollTo(0, 0);
         }
       });
@@ -4145,6 +4867,7 @@
         document.getElementById("acs-step-title").textContent = "Step " + (n + 1);
         document.getElementById("acs-main-img").src = craneSteps[n].img;
         document.getElementById("acs-desc").innerHTML = craneSteps[n].text;
+        document.getElementById("acs-progress-fill").style.width = ((n + 1) / total) * 100 + "%";
         const btn = document.getElementById("acs-next-btn");
         btn.textContent = n < total - 1 ? "Next Step ›" : "Finish ✓";
         document
