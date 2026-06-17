@@ -326,6 +326,52 @@
         width: 100%;
       }
 
+      /* ── REWARD VALUE CARDS ── */
+      .rv-card {
+        background: #0d0d2b;
+        border-radius: 14px;
+        width: 100%;
+        overflow: hidden;
+      }
+      .rv-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 16px;
+        gap: 12px;
+      }
+      .rv-row + .rv-row {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .rv-row-left { flex: 1; }
+      .rv-row-title { color: #fff; font-size: 15px; font-weight: 600; }
+      .rv-row-sub { color: rgba(255, 255, 255, 0.45); font-size: 12px; margin-top: 2px; }
+      .rv-stepper {
+        background: #1a1a4e;
+        border-radius: 10px;
+        padding: 10px 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+      .rv-stepper-val { display: flex; align-items: center; gap: 5px; }
+      .rv-stepper-icon { width: 18px; height: 18px; object-fit: contain; }
+      .rv-stepper-num { color: #fff; font-size: 17px; font-weight: 700; min-width: 20px; text-align: center; }
+      .rv-stepper-eq { color: rgba(255, 255, 255, 0.55); font-size: 14px; }
+      .rv-stepper-arrows {
+        display: flex;
+        flex-direction: column;
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 9px;
+        line-height: 1.2;
+      }
+      .rv-card-footer {
+        padding: 0 16px 14px;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.4);
+      }
+
       .r-toggle {
         width: 40px;
         height: 24px;
@@ -2479,8 +2525,8 @@
         align-items: center;
       }
       .gdc-icon-btn {
-        width: 64px;
-        height: 64px;
+        width: 56px;
+        height: 56px;
         filter: drop-shadow(0 4px 6px rgba(91, 63, 34, 0.24));
       }
       .gdc-stars {
@@ -3335,13 +3381,71 @@
           <p class="p-sec">Reward value</p>
           <p class="p-sec-sub">Stars are awarded instantly.</p>
           <div class="r-row">
-            <img src="assets/bonusbox/parents/stars/Frame 432.svg" alt="" />
+            <div class="rv-card">
+              <div class="rv-row">
+                <div class="rv-row-left">
+                  <p class="rv-row-title">Default value</p>
+                  <p class="rv-row-sub">Routine weekly missions</p>
+                </div>
+                <div class="rv-stepper">
+                  <div class="rv-stepper-val">
+                    <img src="assets/bonusbox/parents/reward-nav/stars.svg" class="rv-stepper-icon" />
+                    <span class="rv-stepper-num">5</span>
+                  </div>
+                  <div class="rv-stepper-arrows"><span>︿</span><span>﹀</span></div>
+                </div>
+              </div>
+              <div class="rv-row">
+                <div class="rv-row-left">
+                  <p class="rv-row-title">Special value</p>
+                  <p class="rv-row-sub">Special missions</p>
+                </div>
+                <div class="rv-stepper">
+                  <div class="rv-stepper-val">
+                    <img src="assets/bonusbox/parents/reward-nav/stars.svg" class="rv-stepper-icon" />
+                    <span class="rv-stepper-num">10</span>
+                  </div>
+                  <div class="rv-stepper-arrows"><span>︿</span><span>﹀</span></div>
+                </div>
+              </div>
+              <p class="rv-card-footer">Auto-linked by mission type and overridable per mission.</p>
+            </div>
           </div>
 
           <p class="p-sec">Star to crystal conversion</p>
           <p class="p-sec-sub">Crystals are converted weekly.</p>
           <div class="r-row">
-            <img src="assets/bonusbox/parents/stars/Frame 433.svg" alt="" />
+            <div class="rv-card">
+              <div class="rv-row">
+                <div class="rv-row-left">
+                  <p class="rv-row-title">Minimum stars required</p>
+                  <p class="rv-row-sub">No crystals below this</p>
+                </div>
+                <div class="rv-stepper">
+                  <div class="rv-stepper-val">
+                    <img src="assets/bonusbox/parents/reward-nav/stars.svg" class="rv-stepper-icon" />
+                    <span class="rv-stepper-num">20</span>
+                  </div>
+                  <div class="rv-stepper-arrows"><span>︿</span><span>﹀</span></div>
+                </div>
+              </div>
+              <div class="rv-row">
+                <div class="rv-row-left">
+                  <p class="rv-row-title">Conversion rate</p>
+                  <p class="rv-row-sub">Proportional to stars earned</p>
+                </div>
+                <div class="rv-stepper">
+                  <div class="rv-stepper-val">
+                    <img src="assets/bonusbox/parents/reward-nav/stars.svg" class="rv-stepper-icon" />
+                    <span class="rv-stepper-num">10</span>
+                    <span class="rv-stepper-eq">=</span>
+                    <span class="rv-stepper-num">1</span>
+                    <img src="assets/bonusbox/rewards/crystal.png" class="rv-stepper-icon" />
+                  </div>
+                  <div class="rv-stepper-arrows"><span>︿</span><span>﹀</span></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -3408,13 +3512,43 @@
           <p class="p-sec">Academic achievements</p>
           <p class="p-sec-sub">Crystals are awarded instantly.</p>
           <div class="r-row">
-            <img src="assets/bonusbox/parents/crystals/Frame 432.svg" alt="" />
+            <div class="rv-card">
+              <div class="rv-row">
+                <div class="rv-row-left">
+                  <p class="rv-row-title">Default value</p>
+                </div>
+                <div class="rv-stepper">
+                  <div class="rv-stepper-val">
+                    <img src="assets/bonusbox/rewards/crystal.png" class="rv-stepper-icon" />
+                    <span class="rv-stepper-num">3</span>
+                  </div>
+                  <div class="rv-stepper-arrows"><span>︿</span><span>﹀</span></div>
+                </div>
+              </div>
+            </div>
           </div>
           <span class="club-badge">Club-Only</span>
           <p class="p-sec" style="margin-top: 8px">Behavioural achievements</p>
           <p class="p-sec-sub">Crystals are awarded weekly.</p>
           <div class="r-row">
-            <img src="assets/bonusbox/parents/crystals/Frame 433.svg" alt="" />
+            <div class="rv-card">
+              <div class="rv-row">
+                <div class="rv-row-left">
+                  <p class="rv-row-title">Conversion rate</p>
+                  <p class="rv-row-sub">Based on Stars earned</p>
+                </div>
+                <div class="rv-stepper">
+                  <div class="rv-stepper-val">
+                    <img src="assets/bonusbox/parents/reward-nav/stars.svg" class="rv-stepper-icon" />
+                    <span class="rv-stepper-num">10</span>
+                    <span class="rv-stepper-eq">=</span>
+                    <span class="rv-stepper-num">1</span>
+                    <img src="assets/bonusbox/rewards/crystal.png" class="rv-stepper-icon" />
+                  </div>
+                  <div class="rv-stepper-arrows"><span>︿</span><span>﹀</span></div>
+                </div>
+              </div>
+            </div>
           </div>
           <span class="p-link">Update conversion rate in Stars &gt;</span>
         </div>
