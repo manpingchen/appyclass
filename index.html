@@ -1005,7 +1005,7 @@
       .k-bal-row {
         display: flex;
         align-items: flex-end;
-        gap: 1rem;
+        gap: 0.5rem;
         margin-bottom: 20px;
         overflow-x: auto;
         scrollbar-width: none;
@@ -1027,19 +1027,15 @@
         cursor: pointer;
       }
       .k-bal-icon {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         object-fit: contain;
-      }
-      .k-bal-emoji {
-        font-size: 30px;
-        line-height: 1;
       }
       .k-bal-num {
         font-family: "Londrina Solid", sans-serif;
-        font-size: 20px;
-        font-weight: 400;
-        color: #fff;
+        font-size: 1.15rem;
+        font-weight: 300;
+        color: #ffffffd3;
         line-height: 1;
       }
       .currency-sign {
@@ -1056,13 +1052,54 @@
       .k-crystal-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
+        gap: 2rem 1rem;
+        margin-top: 1rem;
       }
       .k-grid-crystal-wrap {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 3px;
+        position: relative;
+      }
+      .k-grid-trophy-star {
+        position: absolute;
+        top: -6px;
+        right: 4px;
+        width: 18px;
+        height: 18px;
+        pointer-events: none;
+        animation: starSpin 3s linear infinite;
+        animation-delay: -0.5s;
+      }
+      /* ── Trophy unlock popup ── */
+      .trophy-popup-overlay {
+        display: none;
+        position: absolute;
+        inset: 0;
+        z-index: 200;
+        background: rgba(10, 8, 40, 0.72);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        align-items: center;
+        justify-content: center;
+      }
+      .trophy-popup-overlay.open {
+        display: flex;
+      }
+      .trophy-popup-card {
+        width: min(300px, 86%);
+        border-radius: 22px;
+        padding: 32px 24px 28px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        position: relative;
+        overflow: visible;
+      }
+      .trophy-popup-card .k-star {
+        animation: starSpin 3s linear infinite;
       }
       .k-grid-crystal-img {
         width: 62%;
@@ -1084,21 +1121,23 @@
         line-height: 1;
       }
       .k-grid-crystal-source {
-        font-size: 1.35rem;
+        font-size: 1.65rem;
         font-weight: 300;
         color: white;
         text-align: center;
         font-family: "Londrina Solid", sans-serif;
-        line-height: 1.2;
+        line-height: 1;
+        margin-bottom: 0.5rem;
       }
       .k-grid-trophy-name {
         font-family: "Londrina Solid", sans-serif;
-        font-size: 1.5rem;
+        font-size: 1.65rem;
         font-weight: 300;
         color: rgba(255, 210, 80, 0.9);
         text-align: center;
         line-height: 1;
         letter-spacing: 0.01em;
+        margin-bottom: 0.5rem;
       }
       .k-grid-crystal-date {
         font-size: 9px;
@@ -4165,21 +4204,42 @@
             </div>
           </div>
 
+          <!-- Trophy unlock popup -->
+          <div class="trophy-popup-overlay" id="trophy-popup" onclick="closeTrophyPopup()">
+            <div class="trophy-popup-card" onclick="event.stopPropagation()">
+              <span class="k-star" style="top: -14px; left: 12%"><img src="assets/bonusbox/kids/celebrate-star.svg" alt="" /></span>
+              <span class="k-star" style="width: 26px; top: -8px; right: 10%; animation-delay: -1s"><img src="assets/bonusbox/kids/celebrate-star.svg" alt="" /></span>
+              <span class="k-star" style="width: 16px; bottom: 20px; left: 8%; animation-delay: -2s"><img src="assets/bonusbox/kids/celebrate-star.svg" alt="" /></span>
+              <p class="k-unlock-nice">Nice! You've earned 3 trophies.</p>
+              <p class="k-unlock-name">Pancake<br />Morning</p>
+              <p class="k-unlock-sub">is now unlocked, enjoy!</p>
+            </div>
+          </div>
+
           <!-- Crystal & Trophy grid -->
           <p
             style="
               font-family: &quot;Londrina Solid&quot;, sans-serif;
-              font-size: 18px;
-              color: white;
+              font-size: 1.5rem;
+              color: rgba(255, 255, 255, 0.74);
               letter-spacing: 0.06em;
               text-transform: uppercase;
               text-align: center;
-              margin: 1rem 0;
+              font-weight: 400;
+              margin: 2rem 0 1.5rem;
             "
           >
-            Your Learning Path
+            Your Journey
           </p>
           <div class="k-crystal-grid">
+            <div class="k-grid-crystal-wrap" onclick="openTrophyPopup()" style="cursor:pointer">
+              <img class="k-grid-trophy-star" src="assets/bonusbox/kids/celebrate-star.svg" alt="" />
+              <div class="k-grid-crystal-img">
+                <img src="assets/bonusbox/rewards/trophy.png" class="k-grid-crystal" style="filter: drop-shadow(0 0 6px rgba(255, 200, 60, 0.7)) drop-shadow(0 0 12px rgba(245, 158, 11, 0.4));" />
+              </div>
+              <span class="k-grid-trophy-name">Rise &<br />Shine</span>
+              <span class="k-grid-crystal-date">Jun 17</span>
+            </div>
             <div class="k-grid-crystal-wrap">
               <div class="k-grid-crystal-img">
                 <img
@@ -4191,47 +4251,49 @@
                   "
                 />
               </div>
-              <span class="k-grid-crystal-source" style="color: rgba(140, 220, 255, 0.75)"
-                >ECO</span
-              >
-              <span class="k-grid-crystal-date" style="color: rgba(140, 220, 255, 0.5)"
-                >Jun 16</span
-              >
+              <span class="k-grid-crystal-source">ECO</span>
+              <span class="k-grid-crystal-date">Jun 16</span>
+            </div>
+            <div class="k-grid-crystal-wrap">
+              <div class="k-grid-crystal-img">
+                <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+              </div>
+              <span class="k-grid-crystal-source">Good<br />Deed</span>
+              <span class="k-grid-crystal-date">Jun 15</span>
             </div>
             <div class="k-grid-crystal-wrap">
               <div class="k-grid-crystal-img">
                 <img src="assets/bonusbox/rewards/trophy.png" class="k-grid-crystal" />
               </div>
-              <span class="k-grid-trophy-name">Morning Hero</span>
-              <span class="k-grid-crystal-date">Jun 15</span>
+              <span class="k-grid-trophy-name">Morning<br />Hero</span><span class="k-grid-crystal-date">Jun 14</span>
             </div>
             <div class="k-grid-crystal-wrap">
               <div class="k-grid-crystal-img">
                 <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
               </div>
-              <span class="k-grid-crystal-source">Good Deed</span>
-              <span class="k-grid-crystal-date">Jun 14</span>
-            </div>
-            <div class="k-grid-crystal-wrap">
-              <div class="k-grid-crystal-img">
-                <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-              </div>
-              <span class="k-grid-crystal-source">Art Makers</span>
+              <span class="k-grid-crystal-source">Art<br />Makers</span>
               <span class="k-grid-crystal-date">Jun 13</span>
             </div>
             <div class="k-grid-crystal-wrap">
               <div class="k-grid-crystal-img">
                 <img src="assets/bonusbox/rewards/trophy.png" class="k-grid-crystal" />
               </div>
-              <span class="k-grid-trophy-name">Focus Week</span>
+              <span class="k-grid-trophy-name">Focus<br />Week</span>
               <span class="k-grid-crystal-date">Jun 12</span>
             </div>
             <div class="k-grid-crystal-wrap">
               <div class="k-grid-crystal-img">
                 <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
               </div>
-              <span class="k-grid-crystal-source">Maths</span>
+              <span class="k-grid-crystal-source">Maths<br />Minigames</span>
               <span class="k-grid-crystal-date">Jun 11</span>
+            </div>
+            <div class="k-grid-crystal-wrap">
+              <div class="k-grid-crystal-img">
+                <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+              </div>
+              <span class="k-grid-crystal-source">Reading</span>
+              <span class="k-grid-crystal-date">Jun 10</span>
             </div>
           </div>
         </div>
@@ -4774,100 +4836,6 @@
      content image: assets/bonusbox/kids/Bonusbox - Kid's Wallet - trophies.jpg
      → swap src with cropped content image when ready
 ══════════════════════════════════════════ -->
-      <div class="screen" id="s-trophies">
-        <div class="k-topbar">
-          <div class="k-topbar-pill">
-            <img
-              class="k-crystal"
-              src="assets/bonusbox/kids/topbar/Csytal.png"
-              alt=""
-              onclick="go('s-kid-balance')"
-            />
-            <div class="k-right">
-              <img class="k-notif" src="assets/bonusbox/kids/topbar/notification-icon.svg" alt="" />
-              <div class="k-avatar">E</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="k-wallet">
-          <!-- Screen time -->
-          <div class="k-screentime">
-            <p class="k-st-label">Remaining<br />screen&#8209;time</p>
-            <div class="k-st-right">
-              <p class="k-st-value k-dyn-time">22 mins 32 sec</p>
-              <div class="k-rem-bar">
-                <div class="k-rem-fill k-dyn-fill" style="width: 37.6%"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Balance summary -->
-          <div class="k-bal-row">
-            <div class="k-bal-item k-bal-dim" onclick="go('s-kid-balance')">
-              <img src="assets/bonusbox/kids/crystal.png" class="k-bal-icon" />
-              <p class="k-bal-num">22</p>
-            </div>
-            <div class="k-bal-item">
-              <img src="assets/bonusbox/kids/trophy.png" class="k-bal-icon" />
-              <p class="k-bal-num">3</p>
-            </div>
-            <div class="k-bal-item k-bal-dim" onclick="go('s-coming-soon')">
-              <img src="assets/bonusbox/rewards/pocketmoney.png" class="k-bal-icon" />
-              <p class="k-bal-num"><span class="currency-sign">£</span>2.50</p>
-            </div>
-            <div class="k-bal-item k-bal-dim" onclick="go('s-coming-soon')">
-              <img src="assets/bonusbox/rewards/activities.png" class="k-bal-icon" />
-              <p class="k-bal-num">5</p>
-            </div>
-          </div>
-
-          <!-- Trophy row -->
-          <div class="k-trophy-row">
-            <img src="assets/bonusbox/kids/trophy.png" class="k-trophy-img" />
-            <img src="assets/bonusbox/kids/trophy.png" class="k-trophy-img" />
-            <img src="assets/bonusbox/kids/trophy.png" class="k-trophy-img" />
-          </div>
-
-          <!-- Unlock message -->
-          <div class="k-unlock-msg">
-            <span class="k-star" style="top: -10px; left: 5%"
-              ><img src="assets/bonusbox/kids/celebrate-star.svg" alt=""
-            /></span>
-            <span class="k-star" style="width: 28px; top: 10%; right: 10%; animation-delay: -1s"
-              ><img src="assets/bonusbox/kids/celebrate-star.svg" alt=""
-            /></span>
-            <span
-              class="k-star"
-              style="bottom: 30px; left: 15%; width: 18px; height: 18px; animation-delay: -2s"
-              ><img src="assets/bonusbox/kids/celebrate-star.svg" alt=""
-            /></span>
-            <p class="k-unlock-nice">Nice! You've earned 3 trophies.</p>
-            <p class="k-unlock-name">Pancake<br />Morning</p>
-            <p class="k-unlock-sub">is now unlocked, enjoy!</p>
-          </div>
-        </div>
-
-        <div class="k-bottom">
-          <div class="k-bnav" onclick="go('s-kid-apps')">
-            <img src="assets/bonusbox/kids/wallet-actions/Icon Button.svg" alt="My Apps" />
-            <span>My Apps</span>
-          </div>
-          <div class="k-bnav" onclick="go('s-kid-save-time')">
-            <img src="assets/bonusbox/kids/wallet-actions/Icon Button-1.svg" alt="" />
-            <span>Save Time</span>
-          </div>
-          <div class="k-bnav" onclick="go('s-kid-buy-time')">
-            <img src="assets/bonusbox/kids/wallet-actions/Icon Button-2.svg" alt="" />
-            <span>Extra Time</span>
-          </div>
-          <div class="k-bnav" onclick="go('s-kid-ask-parents')">
-            <img src="assets/bonusbox/kids/wallet-actions/Icon Button-3.svg" alt="" />
-            <span>Ask Parents</span>
-          </div>
-        </div>
-      </div>
-
       <!-- ══════════════════════════════════════════
      KID · UNLOCKED ACTIVITY
      content image: assets/bonusbox/kids/Bonusbox - Kid's Wallet-unlocked activities.jpg
@@ -4880,7 +4848,7 @@
               class="k-crystal"
               src="assets/bonusbox/kids/topbar/Csytal.png"
               alt=""
-              onclick="go('s-trophies')"
+              onclick="go('s-kid-balance')"
             />
             <div class="k-right">
               <img class="k-notif" src="assets/bonusbox/kids/topbar/notification-icon.svg" alt="" />
@@ -5364,6 +5332,13 @@
 
       // Initialize on page load
       document.addEventListener("DOMContentLoaded", initializeScreen);
+
+      function openTrophyPopup() {
+        document.getElementById("trophy-popup").classList.add("open");
+      }
+      function closeTrophyPopup() {
+        document.getElementById("trophy-popup").classList.remove("open");
+      }
 
       const craneSteps = [
         {
