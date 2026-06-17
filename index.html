@@ -1055,16 +1055,17 @@
       }
       .k-crystal-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
       }
       .k-grid-crystal-wrap {
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 3px;
       }
       .k-grid-crystal-img {
-        width: 100%;
+        width: 62%;
       }
       .k-grid-crystal {
         width: 100%;
@@ -1080,9 +1081,24 @@
         text-align: center;
         line-height: 1;
       }
+      .k-grid-crystal-source {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.6);
+        text-align: center;
+        line-height: 1.2;
+      }
+      .k-grid-trophy-name {
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 11px;
+        font-weight: 400;
+        color: rgba(255, 210, 80, 0.9);
+        text-align: center;
+        line-height: 1.2;
+        letter-spacing: 0.01em;
+      }
       .k-grid-crystal-date {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.45);
+        font-size: 9px;
+        color: rgba(255, 255, 255, 0.35);
         text-align: center;
         line-height: 1.2;
       }
@@ -4142,69 +4158,68 @@
             </div>
           </div>
 
-          <!-- Crystal grid -->
+          <!-- Crystal & Trophy grid -->
           <div class="k-crystal-grid">
-            <div class="k-grid-crystal-wrap">
-              <div class="k-grid-crystal-img">
-                <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-                <span class="k-grid-crystal-count">+2</span>
-              </div>
-              <span class="k-grid-crystal-date">Jun 9</span>
-            </div>
-            <div class="k-grid-crystal-wrap">
-              <div class="k-grid-crystal-img">
-                <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-                <span class="k-grid-crystal-count">+1</span>
-              </div>
-              <span class="k-grid-crystal-date">Jun 9</span>
-            </div>
             <div class="k-grid-crystal-wrap">
               <div class="k-grid-crystal-img">
                 <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
                 <span class="k-grid-crystal-count">+3</span>
               </div>
-              <span class="k-grid-crystal-date">Jun 10</span>
+              <span class="k-grid-crystal-source">Maths</span>
+              <span class="k-grid-crystal-date">Jun 9</span>
             </div>
             <div class="k-grid-crystal-wrap">
               <div class="k-grid-crystal-img">
                 <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-                <span class="k-grid-crystal-count">+2</span>
+                <span class="k-grid-crystal-count">+4</span>
               </div>
+              <span class="k-grid-crystal-source">Art Makers</span>
               <span class="k-grid-crystal-date">Jun 10</span>
             </div>
             <div class="k-grid-crystal-wrap">
               <div class="k-grid-crystal-img">
-                <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-                <span class="k-grid-crystal-count">+2</span>
+                <img src="assets/bonusbox/rewards/trophy.png" class="k-grid-crystal" />
               </div>
+              <span class="k-grid-trophy-name">Focus Week</span>
               <span class="k-grid-crystal-date">Jun 11</span>
             </div>
             <div class="k-grid-crystal-wrap">
               <div class="k-grid-crystal-img">
                 <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-                <span class="k-grid-crystal-count">+3</span>
+                <span class="k-grid-crystal-count">+4</span>
               </div>
+              <span class="k-grid-crystal-source">Good Deed</span>
               <span class="k-grid-crystal-date">Jun 12</span>
             </div>
             <div class="k-grid-crystal-wrap">
               <div class="k-grid-crystal-img">
                 <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-                <span class="k-grid-crystal-count">+2</span>
+                <span class="k-grid-crystal-count">+3</span>
               </div>
+              <span class="k-grid-crystal-source">ECO</span>
               <span class="k-grid-crystal-date">Jun 13</span>
-            </div>
-            <div class="k-grid-crystal-wrap">
-              <div class="k-grid-crystal-img">
-                <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
-                <span class="k-grid-crystal-count">+2</span>
-              </div>
-              <span class="k-grid-crystal-date">Jun 14</span>
             </div>
             <div class="k-grid-crystal-wrap">
               <div class="k-grid-crystal-img">
                 <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
                 <span class="k-grid-crystal-count">+3</span>
               </div>
+              <span class="k-grid-crystal-source">Maths</span>
+              <span class="k-grid-crystal-date">Jun 14</span>
+            </div>
+            <div class="k-grid-crystal-wrap">
+              <div class="k-grid-crystal-img">
+                <img src="assets/bonusbox/rewards/trophy.png" class="k-grid-crystal" />
+              </div>
+              <span class="k-grid-trophy-name">Morning Hero</span>
+              <span class="k-grid-crystal-date">Jun 15</span>
+            </div>
+            <div class="k-grid-crystal-wrap">
+              <div class="k-grid-crystal-img">
+                <img src="assets/bonusbox/kids/crystal.png" class="k-grid-crystal" />
+                <span class="k-grid-crystal-count">+3</span>
+              </div>
+              <span class="k-grid-crystal-source">Art Makers</span>
               <span class="k-grid-crystal-date">Jun 15</span>
             </div>
             <div class="k-grid-crystal-wrap">
@@ -4216,7 +4231,8 @@
                 />
                 <span class="k-grid-crystal-count" style="color:rgba(140,220,255,0.6);">+2</span>
               </div>
-              <span class="k-grid-crystal-date" style="color: rgba(140, 220, 255, 0.8)">Jun 16</span>
+              <span class="k-grid-crystal-source" style="color:rgba(140,220,255,0.7);">Good Deed</span>
+              <span class="k-grid-crystal-date" style="color:rgba(140,220,255,0.5);">Jun 16</span>
             </div>
           </div>
         </div>
