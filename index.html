@@ -571,7 +571,7 @@
              KIDS — shared chrome
           ══════════════════════════════════════ */
       .k-topbar {
-        background: #1a1870;
+        width: 100%;
         padding: 10px 12px;
         flex-shrink: 0;
         position: sticky;
@@ -1737,7 +1737,7 @@
 
       /* ── ACTIVITY UNLOCK SCREEN ── */
       #s-activity-unlock {
-        background: #1a1a8e;
+        background: radial-gradient(#1a1870, #13104a);
         justify-content: flex-start;
         align-items: center;
         gap: 0;
@@ -1755,13 +1755,10 @@
       .au-title {
         font-family: "Londrina Solid", sans-serif;
         font-size: 2.4rem;
-        font-weight: 900;
+        font-weight: 400;
         color: #ffaa2a;
         line-height: 1.1;
         margin-bottom: 32px;
-        -webkit-text-stroke: 1.5px #fff;
-        paint-order: stroke fill;
-        font-style: italic;
       }
       .au-tv-wrap {
         position: relative;
@@ -1775,18 +1772,31 @@
         z-index: 1;
       }
       @keyframes au-star-pulse {
-        0%, 100% { transform: scale(1) rotate(var(--r)); }
-        50% { transform: scale(1.25) rotate(var(--r)); }
+        0%,
+        100% {
+          transform: scale(1) rotate(var(--r));
+        }
+        50% {
+          transform: scale(1.25) rotate(var(--r));
+        }
       }
       .au-star {
         position: absolute;
         z-index: 0;
         animation: au-star-pulse 1.8s ease-in-out infinite;
       }
-      .au-star:nth-child(1) { animation-delay: 0s; }
-      .au-star:nth-child(2) { animation-delay: 0.45s; }
-      .au-star:nth-child(3) { animation-delay: 0.9s; }
-      .au-star:nth-child(4) { animation-delay: 1.35s; }
+      .au-star:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .au-star:nth-child(2) {
+        animation-delay: 0.45s;
+      }
+      .au-star:nth-child(3) {
+        animation-delay: 0.9s;
+      }
+      .au-star:nth-child(4) {
+        animation-delay: 1.35s;
+      }
       .au-label {
         font-size: 1.3rem;
         font-weight: 700;
@@ -4982,22 +4992,22 @@
             <img
               src="assets/bonusbox/kids/celebrate-star.svg"
               class="au-star"
-              style="--r: -15deg; width: 60px; top: -22px; left: -28px;"
+              style="--r: -15deg; width: 60px; top: -22px; left: -28px"
             />
             <img
               src="assets/bonusbox/kids/celebrate-star.svg"
               class="au-star"
-              style="--r: 20deg; width: 42px; top: -14px; right: -18px;"
+              style="--r: 20deg; width: 42px; top: -14px; right: -18px"
             />
             <img
               src="assets/bonusbox/kids/celebrate-star.svg"
               class="au-star"
-              style="--r: 10deg; width: 30px; bottom: 10px; left: -20px;"
+              style="--r: 10deg; width: 30px; bottom: 10px; left: -20px"
             />
             <img
               src="assets/bonusbox/kids/celebrate-star.svg"
               class="au-star"
-              style="--r: -8deg; width: 24px; bottom: 20px; right: -14px;"
+              style="--r: -8deg; width: 24px; bottom: 20px; right: -14px"
             />
             <img src="assets/bonusbox/rewards/activities.png" class="au-tv" />
           </div>
