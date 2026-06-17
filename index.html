@@ -2200,10 +2200,252 @@
       }
       /* ── GOOD DEEDS CLUB ── */
       #s-good-deed-club,
-      #s-good-deed-club-kid {
+      #s-good-deed-club-kid,
+      #s-good-deed-club-parent {
         background: #f1b45f;
         color: #383a4d;
         font-family: "Readex Pro", sans-serif;
+      }
+
+      /* ── GDC PARENT LIST ── */
+      .gdcp-hero {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-between;
+        padding: 8px 0 14px;
+      }
+      .gdcp-greeting {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: #383a4d;
+        margin-bottom: 10px;
+      }
+      .gdcp-approval-badge-wrap {
+        position: relative;
+      }
+      .gdcp-approval-badge {
+        background: #5c1a1a;
+        color: #fff;
+        border: none;
+        border-radius: 999px;
+        padding: 12px 22px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: block;
+
+        -webkit-tap-highlight-color: transparent;
+      }
+      .gdcp-star-hero {
+        height: 36px;
+        width: auto;
+        position: absolute;
+        top: -18px;
+        right: -10px;
+      }
+      .gdcp-body {
+        flex: 1;
+        overflow-y: auto;
+        scrollbar-width: none;
+        padding-bottom: 5.5rem;
+      }
+      .gdcp-body::-webkit-scrollbar {
+        display: none;
+      }
+      .gdcp-approval-scroll {
+        display: flex;
+        gap: 10px;
+        overflow: hidden;
+        padding: 0 16px 4px;
+      }
+      .gdcp-approval-scroll::-webkit-scrollbar {
+        display: none;
+      }
+      .gdcp-approval-card {
+        min-width: 140px;
+        background: #fffaf0;
+        border-radius: 14px;
+        padding: 12px;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 156px;
+        gap: 8px;
+      }
+      .gdcp-approval-thumb {
+        width: 100%;
+        height: 66px;
+        border-radius: 8px;
+        object-fit: cover;
+        flex-shrink: 0;
+        display: block;
+      }
+      .gdcp-approval-card-title {
+        font-weight: 700;
+        font-size: 0.88rem;
+        color: #383a4d;
+        line-height: 1.3;
+        flex: 1;
+      }
+      .gdcp-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: auto;
+      }
+      .gdcp-mini-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #f7981d;
+        color: #12162f;
+        font-size: 0.85rem;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .gdcp-mini-avatar.blue {
+        background: #56c7d3;
+      }
+      .gdcp-check-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        border: none;
+        background: #66884b;
+        color: #fff;
+        font-size: 1.4rem;
+        cursor: pointer;
+        flex-shrink: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .gdcp-approve-all {
+        text-align: center;
+        text-decoration: underline;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #383a4d;
+        padding: 8px 16px 2px;
+        cursor: pointer;
+      }
+      .gdcp-time-pills {
+        display: flex;
+        gap: 10px;
+        padding: 0 16px 14px;
+      }
+      .gdcp-time-pill {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 10px 8px;
+        border-radius: 999px;
+        background: #ffeda3;
+        font-family: "Londrina Solid", sans-serif;
+        font-size: 1.1rem;
+        color: #383a4d;
+      }
+      .gdcp-time-pill img {
+        width: 20px;
+        height: 20px;
+      }
+      .gdcp-mission-scroll {
+        display: flex;
+        gap: 10px;
+        overflow: hidden;
+        padding: 0 16px 12px;
+      }
+      .gdcp-mission-scroll::-webkit-scrollbar {
+        display: none;
+      }
+      .gdcp-mission-card-p {
+        min-width: 56%;
+        background: #fffaf0;
+        border-radius: 14px;
+        padding: 14px;
+        flex-shrink: 0;
+      }
+      .gdcp-mission-card-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      .gdcp-mission-name {
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: #383a4d;
+        line-height: 1.3;
+        flex: 1;
+      }
+      .gdcp-mission-dots {
+        color: #383a4d;
+        font-size: 1.3rem;
+        font-weight: 900;
+        letter-spacing: -1px;
+        line-height: 1;
+        margin-left: 6px;
+      }
+      .gdcp-tag-row {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .gdcp-tag {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.78rem;
+        color: #555;
+      }
+      .gdcp-tag img {
+        width: 13px;
+        height: 13px;
+        opacity: 0.7;
+      }
+      .gdcp-tag-reward {
+        color: #5a6e2e;
+        font-weight: 600;
+      }
+      .gdcp-tag-review {
+        color: #7a4a10;
+        font-weight: 600;
+      }
+      .gdcp-tag-assignee {
+        display: flex;
+        gap: 4px;
+        margin-top: 2px;
+      }
+      #s-good-deed-club-parent .gdc-ribbon {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .gdcp-fab {
+        position: fixed;
+        bottom: 5.75rem;
+        right: 1rem;
+        width: 58px;
+        height: 58px;
+        border-radius: 14px;
+        border: 8px solid #5c1a1a;
+        background: #66884b;
+        color: #fff;
+        font-size: 2.4rem;
+        font-weight: 300;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 14px rgba(90, 57, 22, 0.35);
+        z-index: 50;
+        line-height: 1;
+        -webkit-tap-highlight-color: transparent;
       }
       .gdc-header {
         padding: 12px 14px 8px;
@@ -2226,11 +2468,10 @@
       .gdc-topbar-right {
         display: flex;
         align-items: center;
-        gap: 8px;
       }
       .gdc-icon-btn {
-        width: 46px;
-        height: 46px;
+        width: 64px;
+        height: 64px;
         filter: drop-shadow(0 4px 6px rgba(91, 63, 34, 0.24));
       }
       .gdc-stars {
@@ -2562,8 +2803,12 @@
         font-family: "Londrina Solid", sans-serif;
         font-size: 26px;
         text-align: center;
-        padding: 8px 8px 22px;
-        margin: 6px -16px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 60px;
+        padding-bottom: 12px;
+        margin: 6px -16px;
         border-radius: 0;
       }
       .gdc-mission-row {
@@ -4207,9 +4452,15 @@
           <!-- Trophy unlock popup -->
           <div class="trophy-popup-overlay" id="trophy-popup" onclick="closeTrophyPopup()">
             <div class="trophy-popup-card" onclick="event.stopPropagation()">
-              <span class="k-star" style="top: -14px; left: 12%"><img src="assets/bonusbox/kids/celebrate-star.svg" alt="" /></span>
-              <span class="k-star" style="width: 26px; top: -8px; right: 10%; animation-delay: -1s"><img src="assets/bonusbox/kids/celebrate-star.svg" alt="" /></span>
-              <span class="k-star" style="width: 16px; bottom: 20px; left: 8%; animation-delay: -2s"><img src="assets/bonusbox/kids/celebrate-star.svg" alt="" /></span>
+              <span class="k-star" style="top: -14px; left: 12%"
+                ><img src="assets/bonusbox/kids/celebrate-star.svg" alt=""
+              /></span>
+              <span class="k-star" style="width: 26px; top: -8px; right: 10%; animation-delay: -1s"
+                ><img src="assets/bonusbox/kids/celebrate-star.svg" alt=""
+              /></span>
+              <span class="k-star" style="width: 16px; bottom: 20px; left: 8%; animation-delay: -2s"
+                ><img src="assets/bonusbox/kids/celebrate-star.svg" alt=""
+              /></span>
               <p class="k-unlock-nice">Nice! You've earned 3 trophies.</p>
               <p class="k-unlock-name">Pancake<br />Morning</p>
               <p class="k-unlock-sub">is now unlocked, enjoy!</p>
@@ -4232,10 +4483,21 @@
             Your Journey
           </p>
           <div class="k-crystal-grid">
-            <div class="k-grid-crystal-wrap" onclick="openTrophyPopup()" style="cursor:pointer">
-              <img class="k-grid-trophy-star" src="assets/bonusbox/kids/celebrate-star.svg" alt="" />
+            <div class="k-grid-crystal-wrap" onclick="openTrophyPopup()" style="cursor: pointer">
+              <img
+                class="k-grid-trophy-star"
+                src="assets/bonusbox/kids/celebrate-star.svg"
+                alt=""
+              />
               <div class="k-grid-crystal-img">
-                <img src="assets/bonusbox/rewards/trophy.png" class="k-grid-crystal" style="filter: drop-shadow(0 0 6px rgba(255, 200, 60, 0.7)) drop-shadow(0 0 12px rgba(245, 158, 11, 0.4));" />
+                <img
+                  src="assets/bonusbox/rewards/trophy.png"
+                  class="k-grid-crystal"
+                  style="
+                    filter: drop-shadow(0 0 6px rgba(255, 200, 60, 0.7))
+                      drop-shadow(0 0 12px rgba(245, 158, 11, 0.4));
+                  "
+                />
               </div>
               <span class="k-grid-trophy-name">Rise &<br />Shine</span>
               <span class="k-grid-crystal-date">Jun 17</span>
@@ -4265,7 +4527,8 @@
               <div class="k-grid-crystal-img">
                 <img src="assets/bonusbox/rewards/trophy.png" class="k-grid-crystal" />
               </div>
-              <span class="k-grid-trophy-name">Morning<br />Hero</span><span class="k-grid-crystal-date">Jun 14</span>
+              <span class="k-grid-trophy-name">Morning<br />Hero</span
+              ><span class="k-grid-crystal-date">Jun 14</span>
             </div>
             <div class="k-grid-crystal-wrap">
               <div class="k-grid-crystal-img">
@@ -4361,7 +4624,7 @@
             <img
               src="assets/bonusbox/kids/apps/app-1.png"
               class="k-app-tile"
-              onclick="go('s-good-deed-club')"
+              onclick="go('s-good-deed-club-parent')"
               style="cursor: pointer"
             />
             <img
@@ -4566,8 +4829,213 @@
       <!-- ══════════════════════════════════════════
      GOOD DEEDS CLUB · PARENT CREATES MISSION
 ══════════════════════════════════════════ -->
-      <div class="screen" id="s-good-deed-club">
+      <!-- ══════════════════════════════════════════
+     GOOD DEEDS CLUB · PARENT MISSION LIST (page 1)
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-good-deed-club-parent">
         <div class="float-back" onclick="go('s-kid-apps')">&#8249;</div>
+        <div class="float-next" onclick="go('s-good-deed-club')">&#8250;</div>
+
+        <div class="gdc-header">
+          <div class="gdc-topbar">
+            <img class="gdc-logo" src="assets/club/chores/Logo.png" alt="Good Deeds Appy Club" />
+            <div class="gdc-topbar-right">
+              <img
+                src="assets/club/chores/navbar-icon/Icon Button.svg"
+                class="gdc-icon-btn"
+                alt=""
+              />
+              <img
+                src="assets/club/chores/navbar-icon/Icon Button-1.svg"
+                class="gdc-icon-btn"
+                alt=""
+              />
+              <div
+                style="
+                  width: 46px;
+                  height: 46px;
+                  border-radius: 50%;
+                  background: #a94747;
+                  color: #fff;
+                  font-size: 1.25rem;
+                  font-weight: 900;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-shrink: 0;
+                "
+              >
+                M
+              </div>
+            </div>
+          </div>
+          <div class="gdcp-hero">
+            <p class="gdcp-greeting">Hey there,</p>
+            <div class="gdcp-approval-badge-wrap">
+              <img src="assets/club/chores/star-button.svg" class="gdcp-star-hero" alt="" />
+              <button class="gdcp-approval-badge" onclick="go('s-good-deed-club')">
+                4 Approval waiting
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gdcp-body">
+          <!-- Approval Waiting -->
+          <div class="gdc-ribbon">Approval Waiting (4)</div>
+          <div class="gdcp-approval-scroll">
+            <div class="gdcp-approval-card">
+              <img
+                class="gdcp-approval-thumb"
+                src="assets/bonusbox/parents/missions/bed.png"
+                alt=""
+              />
+              <p class="gdcp-approval-card-title">Make Your Bed</p>
+              <div class="gdcp-card-footer">
+                <div class="gdcp-mini-avatar">E</div>
+                <button class="gdcp-check-btn">✓</button>
+              </div>
+            </div>
+            <div class="gdcp-approval-card">
+              <img
+                class="gdcp-approval-thumb"
+                src="assets/bonusbox/parents/missions/table.png"
+                alt=""
+              />
+              <p class="gdcp-approval-card-title">Wipe Dining Table</p>
+              <div class="gdcp-card-footer">
+                <div class="gdcp-mini-avatar blue">M</div>
+                <button class="gdcp-check-btn">✓</button>
+              </div>
+            </div>
+            <div class="gdcp-approval-card">
+              <img
+                class="gdcp-approval-thumb"
+                src="assets/bonusbox/parents/missions/feed-dog.jpg"
+                alt=""
+              />
+              <p class="gdcp-approval-card-title">Doggy Dinner Time</p>
+              <div class="gdcp-card-footer">
+                <div class="gdcp-mini-avatar">E</div>
+                <button class="gdcp-check-btn">✓</button>
+              </div>
+            </div>
+            <div class="gdcp-approval-card">
+              <img
+                class="gdcp-approval-thumb"
+                src="assets/bonusbox/parents/missions/bed.png"
+                alt=""
+              />
+              <p class="gdcp-approval-card-title">Tidy Your Room</p>
+              <div class="gdcp-card-footer">
+                <div class="gdcp-mini-avatar blue">M</div>
+                <button class="gdcp-check-btn">✓</button>
+              </div>
+            </div>
+          </div>
+          <p class="gdcp-approve-all">Approve All</p>
+
+          <!-- Mission Board -->
+          <div class="gdc-ribbon">Mission Board</div>
+          <div class="gdcp-time-pills">
+            <div class="gdcp-time-pill">
+              <img src="assets/club/chores/clock.svg" alt="" />
+              Morning (2)
+            </div>
+            <div class="gdcp-time-pill">
+              <img src="assets/club/chores/clock.svg" alt="" />
+              Afternoon (1)
+            </div>
+          </div>
+          <div class="gdcp-mission-scroll">
+            <div class="gdcp-mission-card-p">
+              <div class="gdcp-mission-card-header">
+                <span class="gdcp-mission-name">Brush Your Teeth</span>
+                <span class="gdcp-mission-dots">⋮</span>
+              </div>
+              <div class="gdcp-tag-row">
+                <div class="gdcp-tag">
+                  <img src="assets/club/chores/clock.svg" alt="" />Routine · Every Morning
+                </div>
+                <div class="gdcp-tag gdcp-tag-reward">⚡ Instant Reward</div>
+                <div class="gdcp-tag gdcp-tag-assignee">
+                  <div
+                    class="gdcp-mini-avatar"
+                    style="width: 20px; height: 20px; font-size: 0.65rem"
+                  >
+                    E
+                  </div>
+                  <div
+                    class="gdcp-mini-avatar blue"
+                    style="width: 20px; height: 20px; font-size: 0.65rem"
+                  >
+                    M
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="gdcp-mission-card-p">
+              <div class="gdcp-mission-card-header">
+                <span class="gdcp-mission-name">Help your sibling</span>
+                <span class="gdcp-mission-dots">⋮</span>
+              </div>
+              <div class="gdcp-tag-row">
+                <div class="gdcp-tag">
+                  <img src="assets/club/chores/clock.svg" alt="" />Routine · Every Morning
+                </div>
+                <div class="gdcp-tag gdcp-tag-review">👀 Parent Review</div>
+                <div class="gdcp-tag gdcp-tag-assignee">
+                  <div
+                    class="gdcp-mini-avatar"
+                    style="width: 20px; height: 20px; font-size: 0.65rem"
+                  >
+                    E
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="gdcp-mission-card-p">
+              <div class="gdcp-mission-card-header">
+                <span class="gdcp-mission-name">Water the plants</span>
+                <span class="gdcp-mission-dots">⋮</span>
+              </div>
+              <div class="gdcp-tag-row">
+                <div class="gdcp-tag">
+                  <img src="assets/club/chores/clock.svg" alt="" />Special · Afternoon
+                </div>
+                <div class="gdcp-tag gdcp-tag-reward">⚡ Instant Reward</div>
+                <div class="gdcp-tag gdcp-tag-assignee">
+                  <div
+                    class="gdcp-mini-avatar blue"
+                    style="width: 20px; height: 20px; font-size: 0.65rem"
+                  >
+                    M
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="gdcp-fab" onclick="go('s-good-deed-club')">+</button>
+
+        <div class="gdc-bottom">
+          <div class="gdc-bnav">
+            <img src="assets/club/chores/navbar-icon/Spark.svg" alt="" />
+            <span>Missions</span>
+          </div>
+          <div class="gdc-bnav">
+            <img src="assets/club/chores/navbar-icon/Rewards.svg" alt="" />
+            <span>History</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     GOOD DEEDS CLUB · CREATE MISSION (page 2)
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-good-deed-club">
+        <div class="float-back" onclick="go('s-good-deed-club-parent')">&#8249;</div>
         <div class="float-next" onclick="go('s-good-deed-club-kid')">&#8250;</div>
 
         <div class="gdc-parent-body">
