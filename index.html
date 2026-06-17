@@ -1068,12 +1068,14 @@
         width: 62%;
       }
       .k-grid-crystal {
-        width: 100%;
+        width: 70%;
+        display: block;
+        margin: 0 auto;
         aspect-ratio: 1;
         object-fit: contain;
       }
       .k-grid-crystal-count {
-        font-size: 12px;
+        font-size: 1rem;
         display: block;
         width: 100%;
         font-weight: 700;
@@ -1082,18 +1084,18 @@
         line-height: 1;
       }
       .k-grid-crystal-source {
-        font-size: 10px;
+        font-size: 1rem;
         color: rgba(255, 255, 255, 0.6);
         text-align: center;
         line-height: 1.2;
       }
       .k-grid-trophy-name {
         font-family: "Londrina Solid", sans-serif;
-        font-size: 11px;
+        font-size: 1.5rem;
         font-weight: 400;
         color: rgba(255, 210, 80, 0.9);
         text-align: center;
-        line-height: 1.2;
+        line-height: 1;
         letter-spacing: 0.01em;
       }
       .k-grid-crystal-date {
@@ -1110,7 +1112,10 @@
         margin-bottom: 16px;
       }
       .k-trophy-img {
-        width: 90px;
+        max-width: 80px;
+        width: 80%;
+        margin: 0 auto;
+        display: block;
         object-fit: contain;
         filter: drop-shadow(0 0 8px rgba(100, 210, 255, 0.7))
           drop-shadow(0 0 16px rgba(80, 180, 255, 0.35));
@@ -4144,21 +4149,22 @@
               <img src="assets/bonusbox/kids/crystal.png" class="k-bal-icon" />
               <p class="k-bal-num">22</p>
             </div>
-            <div class="k-bal-item k-bal-dim" onclick="go('s-trophies')">
+            <div class="k-bal-item">
               <img src="assets/bonusbox/kids/trophy.png" class="k-bal-icon" />
               <p class="k-bal-num">3</p>
             </div>
-            <div class="k-bal-item k-bal-dim" onclick="go('s-coming-soon')">
+            <div class="k-bal-item">
               <img src="assets/bonusbox/rewards/pocketmoney.png" class="k-bal-icon" />
               <p class="k-bal-num"><span class="currency-sign">£</span>2.50</p>
             </div>
-            <div class="k-bal-item k-bal-dim" onclick="go('s-coming-soon')">
+            <div class="k-bal-item">
               <img src="assets/bonusbox/rewards/activities.png" class="k-bal-icon" />
               <p class="k-bal-num">5</p>
             </div>
           </div>
 
           <!-- Crystal & Trophy grid -->
+          <p style="font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;">Your journey</p>
           <div class="k-crystal-grid">
             <div class="k-grid-crystal-wrap">
               <div class="k-grid-crystal-img">
@@ -4227,12 +4233,19 @@
                 <img
                   src="assets/bonusbox/kids/crystal.png"
                   class="k-grid-crystal"
-                  style="filter: drop-shadow(0 0 6px rgba(100,210,255,0.75)) drop-shadow(0 0 12px rgba(80,180,255,0.45));"
+                  style="
+                    filter: drop-shadow(0 0 6px rgba(100, 210, 255, 0.75))
+                      drop-shadow(0 0 12px rgba(80, 180, 255, 0.45));
+                  "
                 />
-                <span class="k-grid-crystal-count" style="color:rgba(140,220,255,0.6);">+2</span>
+                <span class="k-grid-crystal-count" style="color: rgba(140, 220, 255, 0.6)">+2</span>
               </div>
-              <span class="k-grid-crystal-source" style="color:rgba(140,220,255,0.7);">Good Deed</span>
-              <span class="k-grid-crystal-date" style="color:rgba(140,220,255,0.5);">Jun 16</span>
+              <span class="k-grid-crystal-source" style="color: rgba(140, 220, 255, 0.7)"
+                >Good Deed</span
+              >
+              <span class="k-grid-crystal-date" style="color: rgba(140, 220, 255, 0.5)"
+                >Jun 16</span
+              >
             </div>
           </div>
         </div>
