@@ -4121,11 +4121,11 @@
               <img src="assets/bonusbox/kids/trophy.png" class="k-bal-icon" />
               <p class="k-bal-num">3</p>
             </div>
-            <div class="k-bal-item k-bal-dim">
+            <div class="k-bal-item k-bal-dim" onclick="go('s-coming-soon')">
               <img src="assets/bonusbox/kids/reward-nav/money.svg" class="k-bal-icon" />
               <p class="k-bal-num"><span class="currency-sign">£</span>2.50</p>
             </div>
-            <div class="k-bal-item k-bal-dim" onclick="go('s-activity-unlock')">
+            <div class="k-bal-item k-bal-dim" onclick="go('s-coming-soon')">
               <img src="assets/bonusbox/kids/reward-nav/activity.svg" class="k-bal-icon" />
               <p class="k-bal-num">5</p>
             </div>
@@ -4759,11 +4759,11 @@
               <img src="assets/bonusbox/kids/trophy.png" class="k-bal-icon" />
               <p class="k-bal-num">3</p>
             </div>
-            <div class="k-bal-item k-bal-dim">
+            <div class="k-bal-item k-bal-dim" onclick="go('s-coming-soon')">
               <img src="assets/bonusbox/kids/reward-nav/money.svg" class="k-bal-icon" />
               <p class="k-bal-num"><span class="currency-sign">£</span>2.50</p>
             </div>
-            <div class="k-bal-item k-bal-dim" onclick="go('s-activity-unlock')">
+            <div class="k-bal-item k-bal-dim" onclick="go('s-coming-soon')">
               <img src="assets/bonusbox/kids/reward-nav/activity.svg" class="k-bal-icon" />
               <p class="k-bal-num">5</p>
             </div>
@@ -4962,6 +4962,17 @@
               <button class="k-modal-action" onclick="confirmAction('save')">Save</button>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+     KID · COMING SOON
+══════════════════════════════════════════ -->
+      <div class="screen" id="s-coming-soon" style="background:#1a1a8e;justify-content:center;align-items:center;">
+        <div class="float-back" onclick="go('s-kid-balance')">&#8249;</div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;padding:40px 32px;">
+          <p style="font-family:'Londrina Solid',sans-serif;font-size:2.8rem;font-weight:900;color:#ffaa2a;font-style:italic;-webkit-text-stroke:1.5px #fff;paint-order:stroke fill;line-height:1.1;">Coming<br/>Soon!</p>
+          <p style="font-size:1rem;color:rgba(255,255,255,0.7);max-width:220px;">This feature is on its way. Stay tuned!</p>
         </div>
       </div>
 
